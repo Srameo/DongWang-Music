@@ -51,7 +51,7 @@ public class UserController {
         if (userInfo == null){
             return Response.USERNAME_PASSWORD_INVALID;
         }
-        if (!userInfo.getPassword().equalsIgnoreCase(password)){
+        if (!userInfo.getPassword().equalsIgnoreCase(MD.md5(password))){
             return Response.USERNAME_PASSWORD_INVALID;
         }
 
