@@ -29,4 +29,9 @@ hs_err_pid*
 # python
 __pycache__/
 
+.DS_Store
+
+venv/
+
+*.iml
 
