@@ -10,10 +10,14 @@ import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
 public class TestMessageService {
+
+    static String host = "127.0.0.1";
+    static int port = 9090;
+
     public static void main(String[] args) throws TException {
         // RPC - Socket\Transport\Protocol
         // 1. 声明一个 Socket 用来连接 ServerSocket
-        TSocket socket = new TSocket("127.0.0.1", 9090, 3000);
+        TSocket socket = new TSocket(host, port, 3000);
         // 2. 指定生成一个传输方式对象 -- 基于 Socket 链接创建一个帧传输对象
         TTransport transport = new TFramedTransport(socket);
         try {
