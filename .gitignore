@@ -29,4 +29,7 @@ hs_err_pid*
 # python
 __pycache__/
 
+# venv
+venv/
+
 
