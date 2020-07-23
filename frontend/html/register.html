@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="description" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>懂王音乐——没有人比我更懂音乐</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="oneMusic-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="albums-store.html">Albums</a></li>
+
+                                    <li><a href="event.html">Events</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="albums-store.html">Albums</a></li>
+                                            <li><a href="event.html">Events</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="elements.html">Elements</a></li>
+                                            <li><a href="login.html">Login</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <!-- Login/Register & Cart Button -->
+                                <div class="login-register-cart-button d-flex align-items-center">
+                                    <!-- Login/Register -->
+                                    <!-- Login/Register -->
+                                    <div class="login-register-btn mr-50 chuanpu-picture">
+                                        <a href="login.html" id="loginBtn">Login &nbsp &nbsp</a>                                             
+                                        <a href="register.html" id="registerBtn">Register</a>
+                                    </div>
+
+                                    <!-- Cart Button -->
+                                    <div class="cart-btn">
+                                        <p><span class="icon-shopping-cart"></span> <span class="quantity">1</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+        <div class="bradcumbContent">
+            <p>See what’s new</p>
+            <h2>Register</h2>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Login Area Start ##### -->
+    <section class="login-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="login-content">
+                        <h3>Welcome</h3>
+                        <!-- Login Form -->
+                        <div class="login-form">
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <label for="InputUsername">Username</label>
+                                    <input type="username" class="form-control" id="inputUsername"
+                                        placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword">Password</label>
+                                    <input type="password" class="form-control" id="inputPassword"
+                                        placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail">Email address</label>
+                                    <input type="email" class="form-control" id="inputEmail"
+                                        aria-describedby="emailHelp" placeholder="Enter E-mail">
+                                    <small id="emailHelp" class="form-text text-muted"><i
+                                            class="fa fa-lock mr-2"></i>We'll never share your email with anyone
+                                        else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAge">Age</label>
+                                    <input type="number" class="form-control" id="inputAge" placeholder="Age">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputGender">Gender</label>
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 男
+                                          </label>
+                                          <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
+                                          </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputLocation">Location</label>
+                                    <select class="form-control">
+                                        <option>北京市</option>
+                                        <option>上海市</option>
+                                        <option>天津市</option>
+                                        <option>重庆市</option>
+                                        <option>安徽省</option>
+                                        <option>福建省</option>
+                                        <option>甘肃省</option>
+                                        <option>广东省</option>
+                                        <option>贵州省</option>
+                                        <option>海南省</option>
+                                        <option>河北省</option>
+                                        <option>河南省</option>
+                                        <option>黑龙江省</option>
+                                        <option>湖北省</option>
+                                        <option>湖南省</option>
+                                        <option>吉林省</option>
+                                        <option>江苏省</option>
+                                        <option>江西省</option>
+                                        <option>辽宁省</option>
+                                        <option>青海省</option>
+                                        <option>山东省</option>
+                                        <option>山西省</option>
+                                        <option>陕西省</option>
+                                        <option>四川省</option>
+                                        <option>台湾省</option>
+                                        <option>云南省</option>
+                                        <option>浙江省</option>
+                                        <option>广西壮族自治区</option>
+                                        <option>内蒙古自治区</option>
+                                        <option>宁夏回族自治区</option>
+                                        <option>西藏自治区</option>
+                                        <option>新疆维吾尔自治区</option>
+                                        <option>澳门特别行政区</option>
+                                        <option>香港特别行政区</option>
+                                      </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Preference</label>
+                                    <div>
+                                        <div>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox1" value="option1"> 华语
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox2" value="option2"> 欧美
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox3" value="option3"> 日语
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox4" value="option4"> 韩语
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox5" value="option5"> 粤语
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox6" value="option6"> 流行
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox7" value="option7"> 摇滚
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox8" value="option8"> 民谣
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox9" value="option9"> 电子
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox10" value="option10"> 舞曲
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox11" value="option11"> 说唱
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox12" value="option12"> 轻音乐
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox13" value="option13"> 爵士
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox14" value="option14"> 乡村
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox15" value="option15"> R&B/Soul
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox16" value="option16"> 古典
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox17" value="option17"> 民族
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox18" value="option18"> 英伦
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox19" value="option19"> 金属
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox20" value="option20"> 朋克
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox21" value="option21"> 蓝调
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox22" value="option22"> 雷鬼
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox23" value="option23"> 世界音乐
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox24" value="option24"> 拉丁
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox25" value="option25"> New Age
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox26" value="option26"> 古风
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox27" value="option27"> 后摇
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox28" value="option28"> Bossa
+                                                Nova
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox29" value="option29"> 清晨
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox30" value="option30"> 夜晚
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox31" value="option31"> 学习
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox32" value="option32"> 工作
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox33" value="option33"> 午休
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox34" value="option34"> 下午茶
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox35" value="option35"> 地铁
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox36" value="option36"> 驾车
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox37" value="option37"> 运动
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox38" value="option38"> 旅行
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox39" value="option39"> 散步
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox40" value="option40"> 酒吧
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox41" value="option41"> 怀旧
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox42" value="option42"> 清新
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox43" value="option43"> 浪漫
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox44" value="option44"> 伤感
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox45" value="option45"> 治愈
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox46" value="option46"> 放松
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox47" value="option47"> 孤独
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox48" value="option48"> 感动
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox49" value="option49"> 兴奋
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox50" value="option50"> 快乐
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox51" value="option51"> 安静
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox52" value="option52"> 思念
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox53" value="option53"> 综艺
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox54" value="option54"> 影视原声
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox55" value="option55"> ACG
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox56" value="option56"> 儿童
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox57" value="option57"> 校园
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox58" value="option58"> 游戏
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox59" value="option59"> 70后
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox60" value="option60"> 80后
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox61" value="option61"> 90后
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox62" value="option62"> 网络歌曲
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox63" value="option63"> KTV
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox64" value="option64"> 经典
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox65" value="option65"> 翻唱
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox66" value="option66"> 吉他
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox67" value="option67"> 钢琴
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox68" value="option68"> 器乐
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox69" value="option69"> 榜单
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox70" value="option70"> 00后
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn oneMusic-btn mt-30">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Login Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row d-flex flex-wrap align-items-center">
+                <div class="col-12 col-md-6">
+                    <a href="#"><img src="img/core-img/logo.png" alt=""></a>
+                    <p class="copywrite-text"><a href="contact.html">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | 中软小组007 <i class="fa fa-heart-o" aria-hidden="true"></i>
+</p>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="footer-nav">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Albums</a></li>
+                            <li><a href="#">Events</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+
+    <!-- ##### All Javascript Script #####
+    <script src="https://cdn.staticfile.org/bootstrap-table/1.13.5/locale/bootstrap-table.js"></script>
+    <script src="https://cdn.staticfile.org/bootstrap-table/1.13.5/locale/bootstrap-table-zh-CN.min.js"></script> -->
+
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+</body>
+
+</html>
