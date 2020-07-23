@@ -9,6 +9,7 @@
 |    id    |   int   |       用户信息主键       |
 | username | varchar |          用户名          |
 | password | varchar |           密码           |
+|  style   | varchar |       用户喜好风格       |
 |  email   | varchar | 用户邮箱，用来接收验证码 |
 |   age    |   int   |         用户年龄         |
 |  gender  | varchar |         用户性别         |
