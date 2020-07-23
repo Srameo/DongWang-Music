@@ -150,18 +150,15 @@ class SpiderUtil:
         for cls in self.classes:
             i = 0
             while i < pages:
-                req = requests.get(self.search_url % (cls, i), headers={"User-Agent": "Mozilla/5.0"})
-                if req.status_code is not 200:
-                    print("try page %d of %s failed, try again!" % (i, cls))
-                    continue
-                js = json.loads(req.text)
-                if js['result']['songCount'] <= 0:
-                    print("%s 没有那么多歌！下一个！" % cls)
-                    break
-                songs = js['result']['songs']
-                for song in songs:
-                    song['tag'] = cls
                 try:
+                    req = requests.get(self.search_url % (cls, i), headers={"User-Agent": "Mozilla/5.0"})
+                    js = json.loads(req.text)
+                    if js['result']['songCount'] <= 0:
+                        print("%s 没有那么多歌！下一个！" % cls)
+                        break
+                    songs = js['result']['songs']
+                    for song in songs:
+                        song['tag'] = cls
                     self.table.insert_many(songs)
                 except Exception as e:
                     print(e)
