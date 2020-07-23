@@ -127,9 +127,24 @@
             mainClass: 'mfp-fade',
             removalDelay: 160,
             preloader: true,
-            fixedContentPos: false
+            fixedContentPos: false,
+            
+            closeOnBgClick:true
         });
     }
+        // :: 5.5 Video Active Code
+        if ($.fn.magnificPopup) {
+            $('.chuanpu-picture').magnificPopup({
+                disableOn: 0,
+                type: 'image',
+                mainClass: 'mfp-img',
+                removalDelay: 160,
+                preloader: true,
+                fixedContentPos: false,
+                
+                closeOnBgClick:true
+            });
+        }
 
     // :: 6.0 ScrollUp Active Code
     if ($.fn.scrollUp) {
