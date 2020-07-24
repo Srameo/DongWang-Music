@@ -1,6 +1,7 @@
 package com.music.service;
 
 import com.music.domain.CommentInfo;
+import com.music.domain.HistoryInfo;
 import com.music.domain.StarInfo;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -29,5 +30,10 @@ public interface MusicService {
      * 删除评论
      */
     void cancelCommentMusic(int uid, int mid, Date commentTime);
+
+    /**
+     * 记录用户播放记录
+     */
+    void record(HistoryInfo historyInfo);
 
 }

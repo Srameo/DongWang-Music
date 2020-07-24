@@ -1,6 +1,7 @@
 package com.music.mapper;
 
 import com.music.domain.CommentInfo;
+import com.music.domain.HistoryInfo;
 import com.music.domain.StarInfo;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -37,5 +38,11 @@ public interface MusicMapper {
      */
     @Delete("delete from comment where uid = #{u} and mid = #{m} and comment_time = #{c}")
     void cancelCommentMusic(@Param("u") int uid, @Param("m") int mid, @Param("c") Date commentTime);
+
+    /**
+     * 记录用户播放记录
+     */
+    @Insert("insert into history_list(uid,mid,play_time) values(#{h.uid},#{h.mid},#{h.playTime})")
+    void record(@Param("h") HistoryInfo historyInfo);
 
 }

@@ -1,6 +1,7 @@
 package com.music.service.impl;
 
 import com.music.domain.CommentInfo;
+import com.music.domain.HistoryInfo;
 import com.music.domain.StarInfo;
 import com.music.mapper.MusicMapper;
 import com.music.service.MusicService;
@@ -33,5 +34,10 @@ public class MusicServiceImpl implements MusicService {
     @Override
     public void cancelCommentMusic(int uid, int mid, Date commentTime) {
         musicMapper.cancelCommentMusic(uid, mid, commentTime);
+    }
+
+    @Override
+    public void record(HistoryInfo historyInfo) {
+        musicMapper.record(historyInfo);
     }
 }

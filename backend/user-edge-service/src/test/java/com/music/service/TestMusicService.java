@@ -1,6 +1,7 @@
 package com.music.service;
 
 import com.music.domain.CommentInfo;
+import com.music.domain.HistoryInfo;
 import com.music.domain.StarInfo;
 import com.music.util.date.GetDate;
 import org.junit.jupiter.api.Test;
@@ -40,6 +41,12 @@ public class TestMusicService {
     public void cancelCommentMusic() throws ParseException {
         Date date = new SimpleDateFormat("yy-MM-dd HH:mm:ss").parse("2020-07-24 09:39:28");
         musicService.cancelCommentMusic(1, 1, date);
+    }
+
+    @Test
+    public void recordTest(){
+        HistoryInfo historyInfo = new HistoryInfo(1, 1, new Date());
+        musicService.record(historyInfo);
     }
 
 }
