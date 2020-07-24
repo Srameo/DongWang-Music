@@ -1,10 +1,13 @@
 package com.music.mapper;
 
+import com.music.domain.CommentInfo;
 import com.music.domain.StarInfo;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 @Component
 public interface MusicMapper {
@@ -25,6 +28,14 @@ public interface MusicMapper {
     /**
      * 评论歌曲
      */
-    void commentMusic(@Param("id") int id, @Param("content") String content);
+    @Insert("insert into comment(uid,mid,content,comment_time) " +
+            "values(#{c.uid},#{c.mid},#{c.content},#{c.commentTime})")
+    void commentMusic(@Param("c") CommentInfo commentInfo);
+
+    /**
+     * 删除评论
+     */
+    @Delete("delete from comment where uid = #{u} and mid = #{m} and comment_time = #{c}")
+    void cancelCommentMusic(@Param("u") int uid, @Param("m") int mid, @Param("c") Date commentTime);
 
 }

@@ -1,8 +1,9 @@
 package com.music.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class StarInfo {
+public class StarInfo implements Serializable {
 
     private int uid;
     private int mid;
