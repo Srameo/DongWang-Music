@@ -1218,17 +1218,20 @@ img {
     }
 }
 
-/* :: 11.0 Miscellaneous Area CSS */
+/* :: 11.0 排行榜 CSS */
 
 .weeks-top-area {
     position: relative;
     z-index: 1;
     padding: 45px 30px;
     @include trans-duration(500ms);
-    border: 1px solid transparent;
+    border: 1px solid #d8d8d8;
+    background-color: #f5f9fa;
+    border-color: #d8d8d8;
     .single-top-item {
         position: relative;
         z-index: 1;
+        border-bottom: 1px solid #d8d8d8;
         margin-bottom: 21px;
         &:last-child {
             margin-bottom: 0;
@@ -1249,11 +1252,6 @@ img {
                 margin-bottom: 0;
             }
         }
-    }
-    &:hover,
-    &:focus {
-        background-color: #f5f9fa;
-        border-color: #d8d8d8;
     }
 }
 

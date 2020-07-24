@@ -31,7 +31,8 @@
 
     <!-- ##### Header Area Start ##### -->
 
-    <header class="header-area"> <!--   页面标题  -->
+    <header class="header-area">
+        <!--   页面标题  -->
         <!-- Navbar Area -->
         <div class="oneMusic-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -42,7 +43,7 @@
                         <!-- Nav brand -->
                         <div class="col-2 ">
                             <a href="index.html" class="nav-brand"><img src="img/core-img/logo1.png" alt=""></a>
-                        <!-- <a href="index.html" class="nav-brand"><img src="img/core-img/timg.jpg" alt=""></a> -->
+                            <!-- <a href="index.html" class="nav-brand"><img src="img/core-img/timg.jpg" alt=""></a> -->
                         </div>
 
 
@@ -85,24 +86,27 @@
                                 <div class="login-register-cart-button d-flex align-items-center">
                                     <!-- 搜索框-->
                                     <div class="cart-btn">
-                                            <div class="col-lg-9 ">
-                                                <div class="input-group input-group-sm">
-                                                  <input type="text" class="form-control" placeholder="音乐">
-                                                  <button class="btn btn-sm" type="button" ><span class="icon-loupe"></span></button>
-                                                </div><!-- /input-group -->
-                                            </div>
-                                    </div >
+                                        <div class="col-lg-9 ">
+                                            <div class="input-group input-group-sm">
+                                                <input type="text" class="form-control" placeholder="音乐">
+                                                <button class="btn btn-sm" type="button"><span
+                                                        class="icon-loupe"></span></button>
+                                            </div><!-- /input-group -->
+                                        </div>
+                                    </div>
                                     <!-- Login/Register -->
                                     <div class="login-register-btn mr-50 ">
-                                        <a href="login.html" id="loginBtn">Login &nbsp &nbsp</a>                                             
+                                        <a href="login.html" id="loginBtn">Login &nbsp &nbsp</a>
                                         <a href="register.html" id="registerBtn">Register</a>
                                     </div>
 
                                     <!-- Cart Button   考虑模态框-->
                                     <div class="cart-btn">
-                                        <a class="chuanpu-picture" href="img/core-img/timg.jpg"><p><span class="icon-favorites "></span></p></a>
+                                        <a class="chuanpu-picture" href="img/core-img/timg.jpg">
+                                            <p><span class="icon-favorites "></span></p>
+                                        </a>
                                     </div>
-                                    <!-- <href="//music.163.com/outchain/player?type=2&id=36990266&auto=1&height=66"><p><span class="icon-favorites "></span></p></a> --> 
+                                    <!-- <href="//music.163.com/outchain/player?type=2&id=36990266&auto=1&height=66"><p><span class="icon-favorites "></span></p></a> -->
 
                                 </div>
                             </div>
@@ -114,30 +118,48 @@
             </div>
         </div>
     </header>
-   
+
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
-            <p>See what’s new</p>
-            <h2>Events</h2>
+            <h2>排行榜</h2>
         </div>
     </section>
-        <!-- ##### Miscellaneous Area Start排行榜 ##### -->
-        <section class="miscellaneous-area section-padding-100-0">
-            <div class="container">
-                <div class="row">
-                    <!-- ***** Weeks Top ***** -->
-                    <div class="col-12 col-lg-4">
-                        <div class="weeks-top-area mb-100">
-                            <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-                                <p>See what’s new</p>
-                                <h2>This week’s top</h2>
-                            </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="100ms">
+    <!-- ##### Miscellaneous Area Start排行榜 ##### -->
+    <section class="miscellaneous-area section-padding-100-0">
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+    </section>
+    <section class="album-catagory section-padding-100-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="browse-by-catagories catagory-menu d-flex flex-wrap align-items-center mb-70">
+                        <a href="#" data-filter=".Western">欧美</a>
+                        <a href="#" data-filter=".Japanese">日语</a>
+                        <a href="#" data-filter=".Korean">韩语</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row oneMusic-albums">
+                <!-- Single Album -->
+                <div class="col-12 col-sm-4 col-md-3 col-lg-12 single-album-item Western">
+                    <div class="weeks-top-area mb-100">
+                        <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
+                            <p>See what’s new</p>
+                            <h2>This week’s top</h2>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp " data-wow-delay="100ms">
+                            
+                            <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt1.jpg" alt="">
                                 </div>
@@ -146,9 +168,18 @@
                                     <p>Underground</p>
                                 </div>
                             </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="150ms">
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                            
+
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="150ms">
+                            <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt2.jpg" alt="">
                                 </div>
@@ -157,9 +188,16 @@
                                     <p>In my mind</p>
                                 </div>
                             </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="200ms">
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="200ms">
+                            <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt3.jpg" alt="">
                                 </div>
@@ -168,9 +206,16 @@
                                     <p>My Music</p>
                                 </div>
                             </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="250ms">
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="250ms">
+                            <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt4.jpg" alt="">
                                 </div>
@@ -179,9 +224,16 @@
                                     <p>Underground</p>
                                 </div>
                             </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="300ms">
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="300ms">
+                            <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt5.jpg" alt="">
                                 </div>
@@ -190,9 +242,16 @@
                                     <p>Songs and stuff</p>
                                 </div>
                             </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-top-item d-flex wow fadeInUp" data-wow-delay="350ms">
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="350ms">
+                            <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/wt6.jpg" alt="">
                                 </div>
@@ -201,201 +260,281 @@
                                     <p>Pop Songs</p>
                                 </div>
                             </div>
-    
-                        </div>
-                    </div>
-    
-                    <!-- ***** New Hits Songs ***** -->
-                    <div class="col-12 col-lg-4">
-                        <div class="new-hits-area mb-100">
-                            <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-                                <p>See what’s new</p>
-                                <h2>New Hits</h2>
-                            </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="100ms">
-                                <div class="first-part d-flex align-items-center">
-                                    <div class="thumbnail">
-                                        <img src="img/bg-img/wt7.jpg" alt="">
-                                    </div>
-                                    <div class="content-">
-                                        <h6>Sam Smith</h6>
-                                        <p>Underground</p>
-                                    </div>
-                                </div>
-                                <audio preload="auto" controls>
-                                    <source src="audio/dummy-audio.mp3">
-                                </audio>
-                            </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="150ms">
-                                <div class="first-part d-flex align-items-center">
-                                    <div class="thumbnail">
-                                        <img src="img/bg-img/wt8.jpg" alt="">
-                                    </div>
-                                    <div class="content-">
-                                        <h6>Power Play</h6>
-                                        <p>In my mind</p>
-                                    </div>
-                                </div>
-                                <audio preload="auto" controls>
-                                    <source src="audio/dummy-audio.mp3">
-                                </audio>
-                            </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="200ms">
-                                <div class="first-part d-flex align-items-center">
-                                    <div class="thumbnail">
-                                        <img src="img/bg-img/wt9.jpg" alt="">
-                                    </div>
-                                    <div class="content-">
-                                        <h6>Cristinne Smith</h6>
-                                        <p>My Music</p>
-                                    </div>
-                                </div>
-                                <audio preload="auto" controls>
-                                    <source src="audio/dummy-audio.mp3">
-                                </audio>
-                            </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="250ms">
-                                <div class="first-part d-flex align-items-center">
-                                    <div class="thumbnail">
-                                        <img src="img/bg-img/wt10.jpg" alt="">
-                                    </div>
-                                    <div class="content-">
-                                        <h6>The Music Band</h6>
-                                        <p>Underground</p>
-                                    </div>
-                                </div>
-                                <audio preload="auto" controls>
-                                    <source src="audio/dummy-audio.mp3">
-                                </audio>
-                            </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="300ms">
-                                <div class="first-part d-flex align-items-center">
-                                    <div class="thumbnail">
-                                        <img src="img/bg-img/wt11.jpg" alt="">
-                                    </div>
-                                    <div class="content-">
-                                        <h6>Creative Lyrics</h6>
-                                        <p>Songs and stuff</p>
-                                    </div>
-                                </div>
-                                <audio preload="auto" controls>
-                                    <source src="audio/dummy-audio.mp3">
-                                </audio>
-                            </div>
-    
-                            <!-- Single Top Item -->
-                            <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="350ms">
-                                <div class="first-part d-flex align-items-center">
-                                    <div class="thumbnail">
-                                        <img src="img/bg-img/wt12.jpg" alt="">
-                                    </div>
-                                    <div class="content-">
-                                        <h6>The Culture</h6>
-                                        <p>Pop Songs</p>
-                                    </div>
-                                </div>
-                                <audio preload="auto" controls>
-                                    <source src="audio/dummy-audio.mp3">
-                                </audio>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
                             </div>
                         </div>
+
                     </div>
-    
-                    <!-- ***** Popular Artists ***** -->
-                    <div class="col-12 col-lg-4">
-                        <div class="popular-artists-area mb-100">
-                            <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
-                                <p>See what’s new</p>
-                                <h2>Popular Artist</h2>
+                </div>
+
+                <!-- Single Album -->
+                <div class="col-12 col-sm-4 col-md-3 col-lg-12 single-album-item Japanese">
+                    <div class="new-hits-area mb-100">
+                        <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
+                            <p>See what’s new</p>
+                            <h2>New Hits</h2>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                            data-wow-delay="100ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/wt7.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>Sam Smith</h6>
+                                    <p>Underground</p>
+                                </div>
                             </div>
-    
-                            <!-- Single Artist -->
-                            <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="100ms">
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                            data-wow-delay="150ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/wt8.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>Power Play</h6>
+                                    <p>In my mind</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                            data-wow-delay="200ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/wt9.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>Cristinne Smith</h6>
+                                    <p>My Music</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                            data-wow-delay="250ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/wt10.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>The Music Band</h6>
+                                    <p>Underground</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                            data-wow-delay="300ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/wt11.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>Creative Lyrics</h6>
+                                    <p>Songs and stuff</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Top Item -->
+                        <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp"
+                            data-wow-delay="350ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/wt12.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>The Culture</h6>
+                                    <p>Pop Songs</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Album -->
+                <div class="col-12 col-sm-4 col-md-3 col-lg-12 single-album-item Korean">
+                    <div class="popular-artists-area mb-100">
+                        <div class="section-heading text-left mb-50 wow fadeInUp" data-wow-delay="50ms">
+                            <p>See what’s new</p>
+                            <h2>Popular Artist</h2>
+                        </div>
+
+                        <!-- Single Artist -->
+                        <div class="single-artists d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="100ms">
+                            <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/pa1.jpg" alt="">
                                 </div>
                                 <div class="content-">
+                                    <h6>The Culture</h6>
                                     <p>Sam Smith</p>
                                 </div>
                             </div>
-    
-                            <!-- Single Artist -->
-                            <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="150ms">
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Artist -->
+                        <div class="single-artists d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="150ms">
+                            <div class="first-part d-flex align-items-center">
                                 <div class="thumbnail">
                                     <img src="img/bg-img/pa2.jpg" alt="">
                                 </div>
                                 <div class="content-">
-                                    <p>William Parker</p>
+                                    <h6>The Culture</h6>
+                                    <p>Sam Smith</p>
                                 </div>
                             </div>
-    
-                            <!-- Single Artist -->
-                            <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="200ms">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/pa3.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <p>Jessica Walsh</p>
-                                </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
                             </div>
-    
-                            <!-- Single Artist -->
-                            <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="250ms">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/pa4.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <p>Tha Stoves</p>
-                                </div>
-                            </div>
-    
-                            <!-- Single Artist -->
-                            <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="300ms">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/pa5.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <p>DJ Ajay</p>
-                                </div>
-                            </div>
-    
-                            <!-- Single Artist -->
-                            <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="350ms">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/pa6.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <p>Radio Vibez</p>
-                                </div>
-                            </div>
-    
-                            <!-- Single Artist -->
-                            <div class="single-artists d-flex align-items-center wow fadeInUp" data-wow-delay="400ms">
-                                <div class="thumbnail">
-                                    <img src="img/bg-img/pa7.jpg" alt="">
-                                </div>
-                                <div class="content-">
-                                    <p>Music 4u</p>
-                                </div>
-                            </div>
-    
                         </div>
+
+                        <!-- Single Artist -->
+                        <div class="single-artists d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="200ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/pa2.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>The Culture</h6>
+                                    <p>Sam Smith</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Artist -->
+                        <div class="single-artists d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="250ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/pa2.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>The Culture</h6>
+                                    <p>Sam Smith</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Artist -->
+                        <div class="single-artists d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="300ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/pa2.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>The Culture</h6>
+                                    <p>Sam Smith</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Artist -->
+                        <div class="single-artists d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="350ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/pa2.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>The Culture</h6>
+                                    <p>Sam Smith</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Single Artist -->
+                        <div class="single-artists d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="400ms">
+                            <div class="first-part d-flex align-items-center">
+                                <div class="thumbnail">
+                                    <img src="img/bg-img/pa2.jpg" alt="">
+                                </div>
+                                <div class="content-">
+                                    <h6>The Culture</h6>
+                                    <p>Sam Smith</p>
+                                </div>
+                            </div>
+                            <div class="listen-counts">
+                                <p>
+                                    当前播放量为：
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- ##### Miscellaneous Area End ##### -->
-    
+        </div>
+    </section>
+    <!-- ##### Miscellaneous Area End ##### -->
+
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Events Area Start ##### -->
@@ -584,7 +723,8 @@
                         <div class="newsletter-form">
                             <form action="#">
                                 <input type="search" name="search" id="newsletterSearch" placeholder="E-mail">
-                                <button type="submit" class="btn oneMusic-btn">Subscribe <i class="fa fa-angle-double-right"></i></button>
+                                <button type="submit" class="btn oneMusic-btn">Subscribe <i
+                                        class="fa fa-angle-double-right"></i></button>
                             </form>
                         </div>
                     </div>
@@ -592,7 +732,8 @@
 
                 <!-- Testimonials Area -->
                 <div class="col-12 col-lg-6">
-                    <div class="testimonials-area mb-100 bg-img bg-overlay" style="background-image: url(img/bg-img/bg-3.jpg);">
+                    <div class="testimonials-area mb-100 bg-img bg-overlay"
+                        style="background-image: url(img/bg-img/bg-3.jpg);">
                         <div class="section-heading white text-left mb-50">
                             <p>See what’s new</p>
                             <h2>Testimonial</h2>
@@ -601,7 +742,9 @@
                         <div class="testimonials-slide owl-carousel">
                             <!-- Single Slide -->
                             <div class="single-slide">
-                                <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum.</p>
+                                <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam
+                                    varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse
+                                    eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum.</p>
                                 <div class="testimonial-info d-flex align-items-center">
                                     <div class="testimonial-thumb">
                                         <img src="img/bg-img/t1.jpg" alt="">
@@ -611,7 +754,9 @@
                             </div>
                             <!-- Single Slide -->
                             <div class="single-slide">
-                                <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum.</p>
+                                <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam
+                                    varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse
+                                    eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum.</p>
                                 <div class="testimonial-info d-flex align-items-center">
                                     <div class="testimonial-thumb">
                                         <img src="img/bg-img/t1.jpg" alt="">
@@ -635,8 +780,10 @@
                 <div class="col-12 col-md-6">
                     <a href="#"><img src="img/core-img/logo.png" alt=""></a>
                     <p class="copywrite-text"><a href="contact.html">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | 中软小组007 <i class="fa fa-heart-o" aria-hidden="true"></i>
-</p>
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | 中软小组007 <i
+                                class="fa fa-heart-o" aria-hidden="true"></i>
+                    </p>
                 </div>
 
                 <div class="col-12 col-md-6">
