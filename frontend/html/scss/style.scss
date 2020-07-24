@@ -146,7 +146,6 @@ img {
 }
 
 /* :: 3.2.0 Height */
-
 .height-400 {
     height: 400px !important;
 }
@@ -876,7 +875,6 @@ img {
 }
 
 /* :: 8.0 Newsletter Area CSS */
-
 .newsletter-area {
     position: relative;
     z-index: 1;
@@ -1223,7 +1221,7 @@ img {
 .weeks-top-area {
     position: relative;
     z-index: 1;
-    padding: 45px 30px;
+    padding: 0px 30px;
     @include trans-duration(500ms);
     border: 1px solid transparent;
     .single-top-item {

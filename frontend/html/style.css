@@ -316,11 +316,12 @@ img {
       bottom: 30px; } }
   #scrollUp:hover {
     background-color: #fff;
-    color: #232323; }
+    color: #232323;
+  }
 
 /* :: 3.8.0 oneMusic Button */
 .oneMusic-btn {
-  background-color: #fff;
+  background-color: aqua;
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
   position: relative;
