@@ -37,7 +37,7 @@ MAE = sum(abs(p(b(u, :) > 0) - b(u, b(u, :) > 0))) / count;
 %% ===== test ===== %
 all_p = zeros(row, column);
 for i = 1:row
-    all_p(i, :) = predict(X, sim2, i, k);
+    all_p(i, :) = predict(b, sim, i, k);
 end
 all_p(isnan(all_p)) = 0;
 count = sum(sum(b > 0));

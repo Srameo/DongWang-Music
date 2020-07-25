@@ -4,15 +4,7 @@ sim = zeros(row);
 
 for i = 1:row
     for j = i + 1:row
-        Ui = x(i, :); % i 已经评过分的项目
-        Uj = x(j, :); % j 已经评过分的项目
-        si = norm(Ui);
-        sj = norm(Uj);
-        if si * sj == 0
-            continue
-        else
-            sim(i, j) = dot(Ui, Uj) / (si * sj);
-        end
+        sim(i, j) = personSim(x(i, :), x(j, :));
     end
     fprintf("user %d finished!\n", i);
 end
