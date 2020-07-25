@@ -1,6 +1,8 @@
 package com.music.service;
 
 import com.music.domain.UserInfo;
+import com.music.domain.UserStyleInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,4 +11,5 @@ import org.springframework.stereotype.Service;
 public interface UserService {
     UserInfo getUserByName(String username);
     void registerUser(UserInfo userInfo);
+    void setUserStyle(UserStyleInfo userStyle);
 }
