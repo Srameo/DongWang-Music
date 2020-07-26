@@ -7,6 +7,6 @@ for i = 1:row
         continue
     end
     X(i, :) = X(i, :) / sumsim;
-    fprintf("user %d finished!\n", i);
+    fprintf("user %d add data finished!\n", i);
 end
 end

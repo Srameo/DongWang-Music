@@ -6,7 +6,7 @@ for i = 1:row
     for j = i + 1:row
         sim(i, j) = personSim(x(i, :), x(j, :));
     end
-    fprintf("user %d finished!\n", i);
+    fprintf("user %d calculate sim finished!\n", i);
 end
 
 sim = sim + sim' + eye(size(sim));
