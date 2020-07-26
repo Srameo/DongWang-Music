@@ -9,6 +9,7 @@ for i = 1:row
     fprintf("user %d calculate sim finished!\n", i);
 end
 
-sim = sim + sim' + eye(size(sim));
+%sim = sim + sim' + eye(size(sim));
+sim = sim + sim';
 
 end
