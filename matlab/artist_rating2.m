@@ -39,8 +39,12 @@ end
 all_p(isnan(all_p)) = 0;
 
 %% ===== MAE ===== %
-count = sum(sum(b > 0));         % 用户总共评分的总数
-MAE = sum(sum(abs(all_p(b > 0) - b(b > 0)))) / count;
+raw_MAE = 0;
+for i = 1:row
+    delta = sum(abs(b(i, b(i, :) > 0) - all_p(i, b(i, :) > 0)));
+    raw_MEA = delta / sum(b(i, :) > 0) + raw_MEA;
+end
+MAE = raw_MAE / row;
 
 %% ===== precision ===== %
 recommand_num = 30;     % 推荐个数
