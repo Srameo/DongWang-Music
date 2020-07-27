@@ -19,6 +19,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+class MapReduceArgsException extends IOException {
+    public MapReduceArgsException(String message) {
+        super(message);
+    }
+
+    public MapReduceArgsException() {
+        super("MapReduce 数据不全！");
+    }
+}
+
 public class RecommendMapReduce {
 
     static {
@@ -41,8 +51,8 @@ public class RecommendMapReduce {
     public static class RecommendDataFormatMapper
             extends Mapper<LongWritable, Text, IntWritable, Text> {
 
-        private IntWritable row = new IntWritable();
-        private Text text = new Text();
+        private final IntWritable row = new IntWritable();
+        private final Text text = new Text();
 
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -85,7 +95,7 @@ public class RecommendMapReduce {
         }
     }
 
-    public static Job getJob(String[] args) throws IOException {
+    public static Job getJob(String[] args) throws IOException, MapReduceArgsException {
         // 0. 初始化 mr 的状态
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "My Data Format ver1.0");    // 生成一个 mr 的job
@@ -96,7 +106,7 @@ public class RecommendMapReduce {
         String[] hadoopArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
         if (hadoopArgs.length < 2) {
             System.err.println("Args is Error, Usage LoadData <inpath> [<inpath> ...] <outpath>");
-            System.exit(2);
+            throw new MapReduceArgsException();
         }
         for (int i = 0; i < hadoopArgs.length - 1; i++) {
             Path path = new Path(hadoopArgs[i]);
@@ -133,7 +143,7 @@ public class RecommendMapReduce {
         return job;
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException, MapReduceArgsException {
         Job job = getJob(args);
 
         // 8. 提交 MR job
