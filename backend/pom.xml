@@ -11,6 +11,7 @@
     <modules>
         <module>message-thrift-java-api</module>
         <module>user-edge-service</module>
+        <module>recommend-thrift-java-api</module>
     </modules>
 
 </project>
