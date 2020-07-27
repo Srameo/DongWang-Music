@@ -85,7 +85,7 @@ public class LoadDataAndFormatMapReduce {
         }
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+    public static Job getJob(String[] args) throws IOException {
         // 0. 初始化 mr 的状态
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "My Data Format ver1.0");    // 生成一个 mr 的job
@@ -129,6 +129,12 @@ public class LoadDataAndFormatMapReduce {
         FileOutputFormat.setOutputPath(job, outPath);
         // 7-1. 输出的类型，文本文件可以省略
         job.setOutputFormatClass(TextOutputFormat.class);
+
+        return job;
+    }
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+        Job job = getJob(args);
 
         // 8. 提交 MR job
         boolean resultCompletion = job.waitForCompletion(true);

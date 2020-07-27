@@ -37,7 +37,7 @@
                         <archive>
                             <manifest>
                                 <!-- 指定main入口函数位置信息 -->
-                                <mainClass>com.test.hadoop.mr.MyWC01</mainClass>
+                                <mainClass>com.music.mapred.CalculateSimMapReduce</mainClass>
                             </manifest>
                         </archive>
                         <excludes>
