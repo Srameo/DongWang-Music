@@ -4,7 +4,6 @@ def cosSim(x):
         return 1
     return 1 / (mod_x) ** 0.5
 
-
 def calculateSim(data):
     row, column = data.shape
     sim = data * data.transpose()
