@@ -37,3 +37,8 @@ venv/
 
 *.m~
 *.mat
+
+recommand-python/output/
+recommand-python/input/
+mapred/input/
+mapred/output/
