@@ -1,6 +1,7 @@
 package com.music.controller;
 
 import com.music.domain.UserInfo;
+import com.music.domain.UserStyleInfo;
 import com.music.redis.RedisClient;
 import com.music.service.UserService;
 import com.music.thrift.ServiceProvider;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -102,6 +104,7 @@ public class UserController {
                              @RequestParam("age") int age,
                              @RequestParam("gender") int gender,
                              @RequestParam("location") String location,
+                             @RequestParam("style") List<Integer> style,
                              @RequestParam("verifyCode") String verifyCode){
 
         UserInfo userInfoGot = userService.getUserByName(username);
@@ -123,6 +126,14 @@ public class UserController {
         userInfo.setLocation(location);
 
         userService.registerUser(userInfo);
+
+        userInfoGot = userService.getUserByName(username);
+        UserStyleInfo userStyleInfo = new UserStyleInfo();
+        userStyleInfo.setUid(userInfoGot.getId());
+        for (Integer i : style){
+            userStyleInfo.setSid(i);
+            userService.setUserStyle(userStyleInfo);
+        }
 
         return Response.SUCCESS;
 

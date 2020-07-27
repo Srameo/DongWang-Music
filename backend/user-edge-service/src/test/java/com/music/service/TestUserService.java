@@ -1,5 +1,6 @@
 package com.music.service;
 
+import com.music.domain.UserStyleInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,6 +15,11 @@ public class TestUserService {
     @Test
     public void getUserByNameTest(){
         System.out.println(userService.getUserByName("zhangsan"));
+    }
+
+    @Test void setUserStyleTest(){
+        UserStyleInfo userStyleInfo = new UserStyleInfo(1, 1);
+        userService.setUserStyle(userStyleInfo);
     }
 
 }
