@@ -1,6 +1,7 @@
 package com.music.thrift;
 
 import com.music.thrift.message.MessageService;
+import com.music.thrift.recommend.RecommendService;
 import org.apache.thrift.TServiceClient;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
@@ -18,9 +19,14 @@ public class ServiceProvider {
     private String messageServerIP;
     @Value("${thrift.message.port}")
     private int messageServerPort;
+    @Value("${thrift.recommend.ip}")
+    private String recommendServerIP;
+    @Value("${thrift.recommend.port}")
+    private int recommendServerPort;
 
     private enum ServiceType{
-        MESSAGE
+        MESSAGE,
+        RECOMMEND
     }
 
     public <T> T getService(String ip, int port, ServiceType serviceType){
@@ -38,6 +44,8 @@ public class ServiceProvider {
             case MESSAGE:
                 result = new MessageService.Client(protocol);
                 break;
+            case RECOMMEND:
+                result = new RecommendService.Client(protocol);
         }
 
         return (T)result;
@@ -45,6 +53,10 @@ public class ServiceProvider {
 
     public MessageService.Client getMessageService(){
         return getService(messageServerIP, messageServerPort, ServiceType.MESSAGE);
+    }
+
+    public RecommendService.Client getRecommendService() {
+        return getService(recommendServerIP, recommendServerPort, ServiceType.RECOMMEND);
     }
 
 }
