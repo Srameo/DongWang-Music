@@ -12,8 +12,6 @@ public class RecommendServiceImpl implements RecommendService {
     @Override
     public boolean recommend() throws IOException, ClassNotFoundException, InterruptedException {
         String[] args = new String[] {
-                "2100",
-                "18745",
                 "input/"
         };
         Job job = RecommendMapReduce.getJob(args);
