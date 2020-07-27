@@ -118,6 +118,30 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <!-- 使用 Maven 打包 jar 配置 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <configuration>
+                        <finalName>UserEdgeService</finalName>
+                        <archive>
+                            <manifest>
+                                <!-- 指定main入口函数位置信息 -->
+                                <mainClass>com.music.ServiceApplication</mainClass>
+                            </manifest>
+                        </archive>
+                        <excludes>
+                            <exclude>
+                                org/apache/hadoop/io/nativeio/*
+                            </exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
