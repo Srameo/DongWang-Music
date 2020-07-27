@@ -4,7 +4,7 @@ sim = zeros(row);
 
 for i = 1:row
     for j = i + 1:row
-        sim(i, j) = personSim(x(i, :), x(j, :));
+        sim(i, j) = cosSim(x(i, :), x(j, :));
     end
     fprintf("user %d calculate sim finished!\n", i);
 end
