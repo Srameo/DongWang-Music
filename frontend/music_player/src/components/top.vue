@@ -1,36 +1,17 @@
 <template>
 	<!-- 页面顶部组件 -->
-	<div id="top" v-waves>
-<template>
-	<!-- 主页 -->
-	<div class="index">
-		<index-top></index-top>
-		<index-main></index-main>
-	</div>
-</template>
-<script>
-import Top from '../index/Top.vue'
-import Main from '../index/Main.vue'
-
-export default {
-	data () {
-		return {
-		}
-	},
-	methods: {
-	},
-	components: {
-		'index-top': Top,
-		'index-main': Main
-	}
-}
-</script>
-<style lang="stylus" scoped>
-.index
-	display: flex
-	flex-direction: column
-	height: 100vh
-</style>
+	<div id="top" >
+		<div class="icon-button">
+			<el-tooltip content="后退一步" :enterable="false" placement="bottom" effect="light">
+				<i @click="back()" class="el-icon-arrow-left"></i>
+			</el-tooltip>
+			<el-tooltip content="前进一步" :enterable="false" placement="bottom" effect="light">
+				<i @click="go()" class="el-icon-arrow-right"></i>
+			</el-tooltip>
+			<el-tooltip content="刷新页面" :enterable="false" placement="bottom" effect="light">
+				<i @click="reload()" class="el-icon-refresh-right"></i>
+			</el-tooltip>
+		</div>
 		<div class="search">
 			<!-- 搜索框 -->
 			<el-input size="small" prefix-icon="el-icon-search" v-model="inputValue" placeholder="搜索" @keyup.native.enter="toResult">

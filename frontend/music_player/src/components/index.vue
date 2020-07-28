@@ -6,7 +6,7 @@
 	</div>
 </template>
 <script>
-import Top from '../index/top.vue'
+import top from './top'
 
 export default {
 	data () {
@@ -16,7 +16,7 @@ export default {
 	methods: {
 	},
 	components: {
-		'index-top': Top,
+		'index-top': top,
 		// 'index-main': Main
 	}
 }
