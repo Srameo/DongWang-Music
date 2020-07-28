@@ -27,7 +27,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">主页</a></li>
+                                    <li><router-link to="/index">主页</router-link></li>
                                     <li><a href="recommend.html">我的收藏</a></li>
                                     <li><a href="albums-store.html">歌曲</a></li>
                                     <li><a href="event.html">排行榜</a></li>
@@ -79,6 +79,7 @@
             </div>
         </div>
     </div>
+    <div>?????????????</div>
     <div>
         <!-- <transition name="el-fade-in-linear"> -->
 			<router-view></router-view>
@@ -91,6 +92,7 @@
 </template>
 <script>
 export default {
+    name:'index',
 	data () {
 		return {
 			inputValue: ''

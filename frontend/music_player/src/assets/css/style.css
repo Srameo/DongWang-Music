@@ -257,6 +257,12 @@ img {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat; }
+  .bg-img-1 {
+    background-image: url(../core-img/bg-1.jpg);
+  }
+  .bg-img-2 {
+    background-image: url(../core-img/bg-2.jpg);
+  }
 
 .bg-white {
   background-color: #ffffff !important; }
