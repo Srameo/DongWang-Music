@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import login from './components/Login'
 import index from './components/index.vue';
 // import main from './components/main.vue'
 export default {

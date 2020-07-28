@@ -5,6 +5,7 @@ import index from '../components/index.vue'
 import main from '../components/main.vue';
 import register from '../components/register.vue'
 import contact from '../components/contact.vue'
+import result from '../components/result.vue';
 // import main from '../components/main.vue'
 
 Vue.use(VueRouter)
@@ -34,6 +35,10 @@ Vue.use(VueRouter)
 	{
 		path: "/contact",
 		component: contact
+	},
+	{
+		path:'/result',
+		component:result
 	}
 ]
 

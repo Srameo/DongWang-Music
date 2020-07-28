@@ -27,7 +27,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><router-link to="/index">主页</router-link></li>
+                                    <li><router-link to="/main">主页</router-link></li>
                                     <li><a href="recommend.html">我的收藏</a></li>
                                     <li><a href="albums-store.html">歌曲</a></li>
                                     <li><a href="event.html">排行榜</a></li>
@@ -69,9 +69,9 @@
         </div>
     </div>
     <div>
-        <!-- <transition name="el-fade-in-linear"> -->
+        <transition name="el-fade-in-linear">
 			<router-view></router-view>
-		<!-- </transition> -->
+		</transition>
     </div>
    
     <!-- ##### Header Area End -->  
@@ -124,21 +124,17 @@ export default {
 			this.opacity = Math.abs(Math.round(scrollTop)) / 250;
 			this.style = {background: `rgba(0, 0, 0,${this.opacity})`}
         },
-		toResult () {
-			// 判断输入内容是否为空
-			if (!this.inputValue.trim()) {
-				return this.$message('warning', '请输入内容')
-			}
-			// 携带参数跳转路由
-			this.$router.push({
-				name: 'searchResult',
-				params: {
-					search: this.inputValue
-				}
-			})
-			// 清空搜索框内容
-			this.inputValue = ''
-		},
+        // 
+        toResult() {
+            // 非空判断
+            if (this.inputValue == '') {
+            // 提示用户
+            this.$message.warning('请输入内容')
+            }else{
+            // 去搜索页 携带数据
+            this.$router.push('/result?q='+this.inputValue)
+            }
+        },
 		back () { // 后退
 			this.$router.go(-1)
 		},
@@ -152,5 +148,11 @@ export default {
 }
 </script>
 <style >
-
+.header-area {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  top: 20px;
+  left: 0;
+  z-index: 1000; }
 </style>
