@@ -11,7 +11,8 @@
 
                         <!-- Nav brand -->
                         <div class="col-2 ">
-                            <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                            <router-link to="/index" class="nav-brand"><img src="../assets/core-img/logo.png" alt="">
+                            </router-link>
                         <!-- <a href="index.html" class="nav-brand"><img src="img/core-img/timg.jpg" alt=""></a> -->
                         </div>
 
@@ -77,6 +78,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        <transition name="el-fade-in-linear">
+			<router-view></router-view>
+		</transition>
     </div>
    
     <!-- ##### Header Area End ##### -->

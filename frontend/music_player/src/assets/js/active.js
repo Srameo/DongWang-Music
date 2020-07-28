@@ -1,6 +1,6 @@
-(function (jQuery) {
+import {jQuery} from './jquery/jquery-2.2.4.min'
+(function hello() {
     'use strict';
-    var $=jQuery
     var browserWindow = $(window);
 
     // :: 1.0 Preloader Active Code

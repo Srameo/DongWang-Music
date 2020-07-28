@@ -7,6 +7,7 @@
 </template>
 <script>
 import top from './top'
+// import main from './main'
 
 export default {
 	data () {
@@ -17,7 +18,7 @@ export default {
 	},
 	components: {
 		'index-top': top,
-		// 'index-main': Main
+		// 'index-main': main
 	}
 }
 </script>
