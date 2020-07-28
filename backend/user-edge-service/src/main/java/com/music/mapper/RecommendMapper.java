@@ -8,6 +8,16 @@ import java.util.List;
 
 @Component
 public interface RecommendMapper {
+
+    @Select("SELECT count(id) FROM users")
+    Integer getUserNum();
+
+    @Select("SELECT count(id) FROM music")
+    Integer getMusicNum();
+
+    @Select("SELECT count(id) FROM style")
+    Integer getTagNum();
+
     @Select("SELECT id FROM users ORDER BY id")
     List<Integer> getNewUserId();
 

@@ -43,8 +43,8 @@ class RecommendServiceHandler(Iface):
         self.musicInputPath = os.path.join(rootPath, "input" + os.path.sep + "data" + os.path.sep + "music_tag_list.dat")
         self.newMusicIDPath = os.path.join(rootPath, "input" + os.path.sep + "data" + os.path.sep + "new_music_id.dat")
         self.newUserIDPath = os.path.join(rootPath, "input" + os.path.sep + "data" + os.path.sep + "new_user_id.dat")
-        self.userOutputPath = os.path.join(rootPath, "output" + os.path.sep + "ratings")
-        self.musicOutputPath = os.path.join(rootPath, "output" + os.path.sep + "ratings")
+        self.userOutputPath = os.path.join(rootPath, "output" + os.path.sep + "ratings" + os.path.sep + "users")
+        self.musicOutputPath = os.path.join(rootPath, "output" + os.path.sep + "ratings" + os.path.sep + "musics")
 
     def _predictAll(self, flag="user"):
         row, column = self.sim.shape
@@ -53,10 +53,11 @@ class RecommendServiceHandler(Iface):
         else:
             path = self.musicOutputPath
         try:
-            predict = Predict(self.x, self.sim)
+            predict = Predict(self.x.todense(), self.sim.todense())
             i = 0
             while i < row:
-                numpy.savetxt(os.path.join(path, "%d.txt" % i), predict.predict(i))
+                numpy.savetxt(os.path.join(path, "%d.txt" % i), p = predict.predict(i))
+                i += 1
             return True
         except Exception as _:
             print(_)
@@ -68,34 +69,34 @@ class RecommendServiceHandler(Iface):
     def getMusicRecommendDetail(self, mid):
         pass
 
-    def recommendMusic(self):
+    def recommendMusic(self, mnum, tnum):
         if not os.path.exists(self.musicInputPath):
             raise InputPathNotExistsException
         # 获取各个歌曲的稀疏矩阵
-        data = sparseData(loadData(self.userInputPath))
+        data = sparseData(loadData(self.musicInputPath), row=mnum, column=tnum)
         # 以第一次的数据计算出之间的相关度
         sim = calculateSim(data)
         # 通过第一次计算的数据填充矩阵
         self.x = addData(data, sim)
         # 根据填充之后的矩阵的相似度
         self.sim = calculateSim(self.x)
-        if self._predictAll():
+        if self._predictAll(flag="music"):
             os.remove(os.path.dirname(self.musicInputPath))
             return True
         return False
 
-    def recommendUser(self):
+    def recommendUser(self, unum, mnum):
         if not os.path.exists(self.userInputPath):
             raise InputPathNotExistsException
         # 获取各个用户的稀疏矩阵
-        data = sparseData(loadData(self.userInputPath))
+        data = sparseData(loadData(self.userInputPath), row=unum, column=mnum)
         # 以第一次的数据计算出之间的相关度
         sim = calculateSim(data)
         # 通过第一次计算的数据填充矩阵
         self.x = addData(data, sim)
         # 根据填充之后的矩阵的相似度
         self.sim = calculateSim(self.x)
-        if self._predictAll():
+        if self._predictAll(flag="user"):
             os.remove(os.path.dirname(self.userInputPath))
             return True
         return False
@@ -125,4 +126,4 @@ def main_thread():
 
 if __name__ == '__main__':
     r = RecommendServiceHandler()
-    r.recommendUser()
+    r.recommendMusic(18668, 71)

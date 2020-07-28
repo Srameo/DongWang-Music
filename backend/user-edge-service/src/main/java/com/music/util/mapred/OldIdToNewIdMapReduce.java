@@ -52,7 +52,6 @@ public class OldIdToNewIdMapReduce {
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String line = value.toString();
-            line = line.replaceAll("[\u0000]", "");
             String[] args = line.split("\t");
             switch (flag) {
                 case MUSIC_ID:
@@ -127,7 +126,6 @@ public class OldIdToNewIdMapReduce {
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String line = value.toString();
-            line = line.replaceAll("[\u0000]", "");
             String[] args = line.split("\t");
             switch (flag) {
                 case USER_ID:

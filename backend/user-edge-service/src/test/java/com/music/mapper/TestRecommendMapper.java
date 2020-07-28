@@ -11,6 +11,13 @@ public class TestRecommendMapper {
     RecommendMapper recommendMapper;
 
     @Test
+    void testGetNum() {
+        System.out.println(recommendMapper.getMusicNum());
+        System.out.println(recommendMapper.getUserNum());
+        System.out.println(recommendMapper.getTagNum());
+    }
+
+    @Test
     void testRecommendMapper() {
         recommendMapper.set();
         System.out.println(recommendMapper.getHistoryList());

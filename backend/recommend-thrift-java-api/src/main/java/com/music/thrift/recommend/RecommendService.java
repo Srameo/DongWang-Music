@@ -12,9 +12,9 @@ public class RecommendService {
 
   public interface Iface {
 
-    public boolean recommendUser() throws org.apache.thrift.TException;
+    public boolean recommendUser(long unum, long mnum) throws org.apache.thrift.TException;
 
-    public boolean recommendMusic() throws org.apache.thrift.TException;
+    public boolean recommendMusic(long mnum, long tnum) throws org.apache.thrift.TException;
 
     public java.util.List<java.lang.Long> getUserRecommendDetail(long uid) throws org.apache.thrift.TException;
 
@@ -24,9 +24,9 @@ public class RecommendService {
 
   public interface AsyncIface {
 
-    public void recommendUser(org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException;
+    public void recommendUser(long unum, long mnum, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException;
 
-    public void recommendMusic(org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException;
+    public void recommendMusic(long mnum, long tnum, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException;
 
     public void getUserRecommendDetail(long uid, org.apache.thrift.async.AsyncMethodCallback<java.util.List<java.lang.Long>> resultHandler) throws org.apache.thrift.TException;
 
@@ -54,15 +54,17 @@ public class RecommendService {
       super(iprot, oprot);
     }
 
-    public boolean recommendUser() throws org.apache.thrift.TException
+    public boolean recommendUser(long unum, long mnum) throws org.apache.thrift.TException
     {
-      send_recommendUser();
+      send_recommendUser(unum, mnum);
       return recv_recommendUser();
     }
 
-    public void send_recommendUser() throws org.apache.thrift.TException
+    public void send_recommendUser(long unum, long mnum) throws org.apache.thrift.TException
     {
       recommendUser_args args = new recommendUser_args();
+      args.setUnum(unum);
+      args.setMnum(mnum);
       sendBase("recommendUser", args);
     }
 
@@ -76,15 +78,17 @@ public class RecommendService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "recommendUser failed: unknown result");
     }
 
-    public boolean recommendMusic() throws org.apache.thrift.TException
+    public boolean recommendMusic(long mnum, long tnum) throws org.apache.thrift.TException
     {
-      send_recommendMusic();
+      send_recommendMusic(mnum, tnum);
       return recv_recommendMusic();
     }
 
-    public void send_recommendMusic() throws org.apache.thrift.TException
+    public void send_recommendMusic(long mnum, long tnum) throws org.apache.thrift.TException
     {
       recommendMusic_args args = new recommendMusic_args();
+      args.setMnum(mnum);
+      args.setTnum(tnum);
       sendBase("recommendMusic", args);
     }
 
@@ -162,21 +166,27 @@ public class RecommendService {
       super(protocolFactory, clientManager, transport);
     }
 
-    public void recommendUser(org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException {
+    public void recommendUser(long unum, long mnum, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      recommendUser_call method_call = new recommendUser_call(resultHandler, this, ___protocolFactory, ___transport);
+      recommendUser_call method_call = new recommendUser_call(unum, mnum, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
     public static class recommendUser_call extends org.apache.thrift.async.TAsyncMethodCall<java.lang.Boolean> {
-      public recommendUser_call(org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      private long unum;
+      private long mnum;
+      public recommendUser_call(long unum, long mnum, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
+        this.unum = unum;
+        this.mnum = mnum;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("recommendUser", org.apache.thrift.protocol.TMessageType.CALL, 0));
         recommendUser_args args = new recommendUser_args();
+        args.setUnum(unum);
+        args.setMnum(mnum);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -191,21 +201,27 @@ public class RecommendService {
       }
     }
 
-    public void recommendMusic(org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException {
+    public void recommendMusic(long mnum, long tnum, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      recommendMusic_call method_call = new recommendMusic_call(resultHandler, this, ___protocolFactory, ___transport);
+      recommendMusic_call method_call = new recommendMusic_call(mnum, tnum, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
     public static class recommendMusic_call extends org.apache.thrift.async.TAsyncMethodCall<java.lang.Boolean> {
-      public recommendMusic_call(org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      private long mnum;
+      private long tnum;
+      public recommendMusic_call(long mnum, long tnum, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
+        this.mnum = mnum;
+        this.tnum = tnum;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("recommendMusic", org.apache.thrift.protocol.TMessageType.CALL, 0));
         recommendMusic_args args = new recommendMusic_args();
+        args.setMnum(mnum);
+        args.setTnum(tnum);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -324,7 +340,7 @@ public class RecommendService {
 
       public recommendUser_result getResult(I iface, recommendUser_args args) throws org.apache.thrift.TException {
         recommendUser_result result = new recommendUser_result();
-        result.success = iface.recommendUser();
+        result.success = iface.recommendUser(args.unum, args.mnum);
         result.setSuccessIsSet(true);
         return result;
       }
@@ -350,7 +366,7 @@ public class RecommendService {
 
       public recommendMusic_result getResult(I iface, recommendMusic_args args) throws org.apache.thrift.TException {
         recommendMusic_result result = new recommendMusic_result();
-        result.success = iface.recommendMusic();
+        result.success = iface.recommendMusic(args.mnum, args.tnum);
         result.setSuccessIsSet(true);
         return result;
       }
@@ -484,7 +500,7 @@ public class RecommendService {
       }
 
       public void start(I iface, recommendUser_args args, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException {
-        iface.recommendUser(resultHandler);
+        iface.recommendUser(args.unum, args.mnum,resultHandler);
       }
     }
 
@@ -546,7 +562,7 @@ public class RecommendService {
       }
 
       public void start(I iface, recommendMusic_args args, org.apache.thrift.async.AsyncMethodCallback<java.lang.Boolean> resultHandler) throws org.apache.thrift.TException {
-        iface.recommendMusic(resultHandler);
+        iface.recommendMusic(args.mnum, args.tnum,resultHandler);
       }
     }
 
@@ -677,14 +693,19 @@ public class RecommendService {
   public static class recommendUser_args implements org.apache.thrift.TBase<recommendUser_args, recommendUser_args._Fields>, java.io.Serializable, Cloneable, Comparable<recommendUser_args>   {
     private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("recommendUser_args");
 
+    private static final org.apache.thrift.protocol.TField UNUM_FIELD_DESC = new org.apache.thrift.protocol.TField("unum", org.apache.thrift.protocol.TType.I64, (short)1);
+    private static final org.apache.thrift.protocol.TField MNUM_FIELD_DESC = new org.apache.thrift.protocol.TField("mnum", org.apache.thrift.protocol.TType.I64, (short)2);
 
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new recommendUser_argsStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new recommendUser_argsTupleSchemeFactory();
 
+    public long unum; // required
+    public long mnum; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-;
+      UNUM((short)1, "unum"),
+      MNUM((short)2, "mnum");
 
       private static final java.util.Map<java.lang.String, _Fields> byName = new java.util.HashMap<java.lang.String, _Fields>();
 
@@ -700,6 +721,10 @@ public class RecommendService {
       @org.apache.thrift.annotation.Nullable
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
+          case 1: // UNUM
+            return UNUM;
+          case 2: // MNUM
+            return MNUM;
           default:
             return null;
         }
@@ -739,9 +764,18 @@ public class RecommendService {
         return _fieldName;
       }
     }
+
+    // isset id assignments
+    private static final int __UNUM_ISSET_ID = 0;
+    private static final int __MNUM_ISSET_ID = 1;
+    private byte __isset_bitfield = 0;
     public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.UNUM, new org.apache.thrift.meta_data.FieldMetaData("unum", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
+      tmpMap.put(_Fields.MNUM, new org.apache.thrift.meta_data.FieldMetaData("mnum", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
       metaDataMap = java.util.Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(recommendUser_args.class, metaDataMap);
     }
@@ -749,10 +783,24 @@ public class RecommendService {
     public recommendUser_args() {
     }
 
+    public recommendUser_args(
+      long unum,
+      long mnum)
+    {
+      this();
+      this.unum = unum;
+      setUnumIsSet(true);
+      this.mnum = mnum;
+      setMnumIsSet(true);
+    }
+
     /**
      * Performs a deep copy on <i>other</i>.
      */
     public recommendUser_args(recommendUser_args other) {
+      __isset_bitfield = other.__isset_bitfield;
+      this.unum = other.unum;
+      this.mnum = other.mnum;
     }
 
     public recommendUser_args deepCopy() {
@@ -761,16 +809,88 @@ public class RecommendService {
 
     @Override
     public void clear() {
+      setUnumIsSet(false);
+      this.unum = 0;
+      setMnumIsSet(false);
+      this.mnum = 0;
+    }
+
+    public long getUnum() {
+      return this.unum;
+    }
+
+    public recommendUser_args setUnum(long unum) {
+      this.unum = unum;
+      setUnumIsSet(true);
+      return this;
+    }
+
+    public void unsetUnum() {
+      __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __UNUM_ISSET_ID);
+    }
+
+    /** Returns true if field unum is set (has been assigned a value) and false otherwise */
+    public boolean isSetUnum() {
+      return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __UNUM_ISSET_ID);
+    }
+
+    public void setUnumIsSet(boolean value) {
+      __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __UNUM_ISSET_ID, value);
+    }
+
+    public long getMnum() {
+      return this.mnum;
+    }
+
+    public recommendUser_args setMnum(long mnum) {
+      this.mnum = mnum;
+      setMnumIsSet(true);
+      return this;
+    }
+
+    public void unsetMnum() {
+      __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __MNUM_ISSET_ID);
+    }
+
+    /** Returns true if field mnum is set (has been assigned a value) and false otherwise */
+    public boolean isSetMnum() {
+      return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __MNUM_ISSET_ID);
+    }
+
+    public void setMnumIsSet(boolean value) {
+      __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __MNUM_ISSET_ID, value);
     }
 
     public void setFieldValue(_Fields field, @org.apache.thrift.annotation.Nullable java.lang.Object value) {
       switch (field) {
+      case UNUM:
+        if (value == null) {
+          unsetUnum();
+        } else {
+          setUnum((java.lang.Long)value);
+        }
+        break;
+
+      case MNUM:
+        if (value == null) {
+          unsetMnum();
+        } else {
+          setMnum((java.lang.Long)value);
+        }
+        break;
+
       }
     }
 
     @org.apache.thrift.annotation.Nullable
     public java.lang.Object getFieldValue(_Fields field) {
       switch (field) {
+      case UNUM:
+        return getUnum();
+
+      case MNUM:
+        return getMnum();
+
       }
       throw new java.lang.IllegalStateException();
     }
@@ -782,6 +902,10 @@ public class RecommendService {
       }
 
       switch (field) {
+      case UNUM:
+        return isSetUnum();
+      case MNUM:
+        return isSetMnum();
       }
       throw new java.lang.IllegalStateException();
     }
@@ -801,12 +925,34 @@ public class RecommendService {
       if (this == that)
         return true;
 
+      boolean this_present_unum = true;
+      boolean that_present_unum = true;
+      if (this_present_unum || that_present_unum) {
+        if (!(this_present_unum && that_present_unum))
+          return false;
+        if (this.unum != that.unum)
+          return false;
+      }
+
+      boolean this_present_mnum = true;
+      boolean that_present_mnum = true;
+      if (this_present_mnum || that_present_mnum) {
+        if (!(this_present_mnum && that_present_mnum))
+          return false;
+        if (this.mnum != that.mnum)
+          return false;
+      }
+
       return true;
     }
 
     @Override
     public int hashCode() {
       int hashCode = 1;
+
+      hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(unum);
+
+      hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(mnum);
 
       return hashCode;
     }
@@ -819,6 +965,26 @@ public class RecommendService {
 
       int lastComparison = 0;
 
+      lastComparison = java.lang.Boolean.valueOf(isSetUnum()).compareTo(other.isSetUnum());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetUnum()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.unum, other.unum);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = java.lang.Boolean.valueOf(isSetMnum()).compareTo(other.isSetMnum());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetMnum()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.mnum, other.mnum);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
       return 0;
     }
 
@@ -840,6 +1006,13 @@ public class RecommendService {
       java.lang.StringBuilder sb = new java.lang.StringBuilder("recommendUser_args(");
       boolean first = true;
 
+      sb.append("unum:");
+      sb.append(this.unum);
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("mnum:");
+      sb.append(this.mnum);
+      first = false;
       sb.append(")");
       return sb.toString();
     }
@@ -859,6 +1032,8 @@ public class RecommendService {
 
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, java.lang.ClassNotFoundException {
       try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
       } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
@@ -883,6 +1058,22 @@ public class RecommendService {
             break;
           }
           switch (schemeField.id) {
+            case 1: // UNUM
+              if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+                struct.unum = iprot.readI64();
+                struct.setUnumIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 2: // MNUM
+              if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+                struct.mnum = iprot.readI64();
+                struct.setMnumIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
             default:
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
           }
@@ -898,6 +1089,12 @@ public class RecommendService {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
+        oprot.writeFieldBegin(UNUM_FIELD_DESC);
+        oprot.writeI64(struct.unum);
+        oprot.writeFieldEnd();
+        oprot.writeFieldBegin(MNUM_FIELD_DESC);
+        oprot.writeI64(struct.mnum);
+        oprot.writeFieldEnd();
         oprot.writeFieldStop();
         oprot.writeStructEnd();
       }
@@ -915,11 +1112,34 @@ public class RecommendService {
       @Override
       public void write(org.apache.thrift.protocol.TProtocol prot, recommendUser_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
+        java.util.BitSet optionals = new java.util.BitSet();
+        if (struct.isSetUnum()) {
+          optionals.set(0);
+        }
+        if (struct.isSetMnum()) {
+          optionals.set(1);
+        }
+        oprot.writeBitSet(optionals, 2);
+        if (struct.isSetUnum()) {
+          oprot.writeI64(struct.unum);
+        }
+        if (struct.isSetMnum()) {
+          oprot.writeI64(struct.mnum);
+        }
       }
 
       @Override
       public void read(org.apache.thrift.protocol.TProtocol prot, recommendUser_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
+        java.util.BitSet incoming = iprot.readBitSet(2);
+        if (incoming.get(0)) {
+          struct.unum = iprot.readI64();
+          struct.setUnumIsSet(true);
+        }
+        if (incoming.get(1)) {
+          struct.mnum = iprot.readI64();
+          struct.setMnumIsSet(true);
+        }
       }
     }
 
@@ -1295,14 +1515,19 @@ public class RecommendService {
   public static class recommendMusic_args implements org.apache.thrift.TBase<recommendMusic_args, recommendMusic_args._Fields>, java.io.Serializable, Cloneable, Comparable<recommendMusic_args>   {
     private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("recommendMusic_args");
 
+    private static final org.apache.thrift.protocol.TField MNUM_FIELD_DESC = new org.apache.thrift.protocol.TField("mnum", org.apache.thrift.protocol.TType.I64, (short)1);
+    private static final org.apache.thrift.protocol.TField TNUM_FIELD_DESC = new org.apache.thrift.protocol.TField("tnum", org.apache.thrift.protocol.TType.I64, (short)2);
 
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new recommendMusic_argsStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new recommendMusic_argsTupleSchemeFactory();
 
+    public long mnum; // required
+    public long tnum; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-;
+      MNUM((short)1, "mnum"),
+      TNUM((short)2, "tnum");
 
       private static final java.util.Map<java.lang.String, _Fields> byName = new java.util.HashMap<java.lang.String, _Fields>();
 
@@ -1318,6 +1543,10 @@ public class RecommendService {
       @org.apache.thrift.annotation.Nullable
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
+          case 1: // MNUM
+            return MNUM;
+          case 2: // TNUM
+            return TNUM;
           default:
             return null;
         }
@@ -1357,9 +1586,18 @@ public class RecommendService {
         return _fieldName;
       }
     }
+
+    // isset id assignments
+    private static final int __MNUM_ISSET_ID = 0;
+    private static final int __TNUM_ISSET_ID = 1;
+    private byte __isset_bitfield = 0;
     public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.MNUM, new org.apache.thrift.meta_data.FieldMetaData("mnum", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
+      tmpMap.put(_Fields.TNUM, new org.apache.thrift.meta_data.FieldMetaData("tnum", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
       metaDataMap = java.util.Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(recommendMusic_args.class, metaDataMap);
     }
@@ -1367,10 +1605,24 @@ public class RecommendService {
     public recommendMusic_args() {
     }
 
+    public recommendMusic_args(
+      long mnum,
+      long tnum)
+    {
+      this();
+      this.mnum = mnum;
+      setMnumIsSet(true);
+      this.tnum = tnum;
+      setTnumIsSet(true);
+    }
+
     /**
      * Performs a deep copy on <i>other</i>.
      */
     public recommendMusic_args(recommendMusic_args other) {
+      __isset_bitfield = other.__isset_bitfield;
+      this.mnum = other.mnum;
+      this.tnum = other.tnum;
     }
 
     public recommendMusic_args deepCopy() {
@@ -1379,16 +1631,88 @@ public class RecommendService {
 
     @Override
     public void clear() {
+      setMnumIsSet(false);
+      this.mnum = 0;
+      setTnumIsSet(false);
+      this.tnum = 0;
+    }
+
+    public long getMnum() {
+      return this.mnum;
+    }
+
+    public recommendMusic_args setMnum(long mnum) {
+      this.mnum = mnum;
+      setMnumIsSet(true);
+      return this;
+    }
+
+    public void unsetMnum() {
+      __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __MNUM_ISSET_ID);
+    }
+
+    /** Returns true if field mnum is set (has been assigned a value) and false otherwise */
+    public boolean isSetMnum() {
+      return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __MNUM_ISSET_ID);
+    }
+
+    public void setMnumIsSet(boolean value) {
+      __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __MNUM_ISSET_ID, value);
+    }
+
+    public long getTnum() {
+      return this.tnum;
+    }
+
+    public recommendMusic_args setTnum(long tnum) {
+      this.tnum = tnum;
+      setTnumIsSet(true);
+      return this;
+    }
+
+    public void unsetTnum() {
+      __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __TNUM_ISSET_ID);
+    }
+
+    /** Returns true if field tnum is set (has been assigned a value) and false otherwise */
+    public boolean isSetTnum() {
+      return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __TNUM_ISSET_ID);
+    }
+
+    public void setTnumIsSet(boolean value) {
+      __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __TNUM_ISSET_ID, value);
     }
 
     public void setFieldValue(_Fields field, @org.apache.thrift.annotation.Nullable java.lang.Object value) {
       switch (field) {
+      case MNUM:
+        if (value == null) {
+          unsetMnum();
+        } else {
+          setMnum((java.lang.Long)value);
+        }
+        break;
+
+      case TNUM:
+        if (value == null) {
+          unsetTnum();
+        } else {
+          setTnum((java.lang.Long)value);
+        }
+        break;
+
       }
     }
 
     @org.apache.thrift.annotation.Nullable
     public java.lang.Object getFieldValue(_Fields field) {
       switch (field) {
+      case MNUM:
+        return getMnum();
+
+      case TNUM:
+        return getTnum();
+
       }
       throw new java.lang.IllegalStateException();
     }
@@ -1400,6 +1724,10 @@ public class RecommendService {
       }
 
       switch (field) {
+      case MNUM:
+        return isSetMnum();
+      case TNUM:
+        return isSetTnum();
       }
       throw new java.lang.IllegalStateException();
     }
@@ -1419,12 +1747,34 @@ public class RecommendService {
       if (this == that)
         return true;
 
+      boolean this_present_mnum = true;
+      boolean that_present_mnum = true;
+      if (this_present_mnum || that_present_mnum) {
+        if (!(this_present_mnum && that_present_mnum))
+          return false;
+        if (this.mnum != that.mnum)
+          return false;
+      }
+
+      boolean this_present_tnum = true;
+      boolean that_present_tnum = true;
+      if (this_present_tnum || that_present_tnum) {
+        if (!(this_present_tnum && that_present_tnum))
+          return false;
+        if (this.tnum != that.tnum)
+          return false;
+      }
+
       return true;
     }
 
     @Override
     public int hashCode() {
       int hashCode = 1;
+
+      hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(mnum);
+
+      hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(tnum);
 
       return hashCode;
     }
@@ -1437,6 +1787,26 @@ public class RecommendService {
 
       int lastComparison = 0;
 
+      lastComparison = java.lang.Boolean.valueOf(isSetMnum()).compareTo(other.isSetMnum());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetMnum()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.mnum, other.mnum);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = java.lang.Boolean.valueOf(isSetTnum()).compareTo(other.isSetTnum());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetTnum()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.tnum, other.tnum);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
       return 0;
     }
 
@@ -1458,6 +1828,13 @@ public class RecommendService {
       java.lang.StringBuilder sb = new java.lang.StringBuilder("recommendMusic_args(");
       boolean first = true;
 
+      sb.append("mnum:");
+      sb.append(this.mnum);
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("tnum:");
+      sb.append(this.tnum);
+      first = false;
       sb.append(")");
       return sb.toString();
     }
@@ -1477,6 +1854,8 @@ public class RecommendService {
 
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, java.lang.ClassNotFoundException {
       try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
       } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
@@ -1501,6 +1880,22 @@ public class RecommendService {
             break;
           }
           switch (schemeField.id) {
+            case 1: // MNUM
+              if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+                struct.mnum = iprot.readI64();
+                struct.setMnumIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 2: // TNUM
+              if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+                struct.tnum = iprot.readI64();
+                struct.setTnumIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
             default:
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
           }
@@ -1516,6 +1911,12 @@ public class RecommendService {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
+        oprot.writeFieldBegin(MNUM_FIELD_DESC);
+        oprot.writeI64(struct.mnum);
+        oprot.writeFieldEnd();
+        oprot.writeFieldBegin(TNUM_FIELD_DESC);
+        oprot.writeI64(struct.tnum);
+        oprot.writeFieldEnd();
         oprot.writeFieldStop();
         oprot.writeStructEnd();
       }
@@ -1533,11 +1934,34 @@ public class RecommendService {
       @Override
       public void write(org.apache.thrift.protocol.TProtocol prot, recommendMusic_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
+        java.util.BitSet optionals = new java.util.BitSet();
+        if (struct.isSetMnum()) {
+          optionals.set(0);
+        }
+        if (struct.isSetTnum()) {
+          optionals.set(1);
+        }
+        oprot.writeBitSet(optionals, 2);
+        if (struct.isSetMnum()) {
+          oprot.writeI64(struct.mnum);
+        }
+        if (struct.isSetTnum()) {
+          oprot.writeI64(struct.tnum);
+        }
       }
 
       @Override
       public void read(org.apache.thrift.protocol.TProtocol prot, recommendMusic_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
+        java.util.BitSet incoming = iprot.readBitSet(2);
+        if (incoming.get(0)) {
+          struct.mnum = iprot.readI64();
+          struct.setMnumIsSet(true);
+        }
+        if (incoming.get(1)) {
+          struct.tnum = iprot.readI64();
+          struct.setTnumIsSet(true);
+        }
       }
     }
 

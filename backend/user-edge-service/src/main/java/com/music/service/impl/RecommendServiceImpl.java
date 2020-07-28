@@ -29,14 +29,16 @@ public class RecommendServiceImpl implements RecommendService {
 
     @Override
     public boolean saveUserSparseMatrix() throws IOException {
-        DataOutputStream udos = null;
-        File ulist = new File(getDataPath(), userListName);
-        if (!ulist.exists()) {
-            ulist.createNewFile();
-        }
+//        DataOutputStream udos = null;
+        FileWriter udos = null;
+//        File ulist = new File(getDataPath(), userListName);
+//        if (!ulist.exists()) {
+//            ulist.createNewFile();
+//        }
         try {
-            udos = new DataOutputStream(
-                    new BufferedOutputStream(new FileOutputStream(ulist)));
+//            udos = new DataOutputStream(
+//                    new BufferedOutputStream(new FileOutputStream(ulist)));
+            udos = new FileWriter(new File(getDataPath(), userListName), false);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
@@ -44,7 +46,7 @@ public class RecommendServiceImpl implements RecommendService {
         recommendMapper.set();
         List<SparseMatrixElement> userList = recommendMapper.getHistoryList();
         for (SparseMatrixElement u : userList) {
-            udos.writeChars(u.toString() + "\n");
+            udos.write(u.toString() + "\n");
         }
         udos.close();
         return true;
@@ -52,14 +54,16 @@ public class RecommendServiceImpl implements RecommendService {
 
     @Override
     public boolean saveMusicSparseMatrix() throws IOException {
-        DataOutputStream mdos = null;
-        File mlist = new File(getDataPath(), musicListName);
-        if (!mlist.exists()) {
-            mlist.createNewFile();
-        }
+//        DataOutputStream mdos = null;
+        FileWriter mdos = null;
+//        File mlist = new File(getDataPath(), musicListName);
+//        if (!mlist.exists()) {
+//            mlist.createNewFile();
+//        }
         try {
-            mdos = new DataOutputStream(
-                    new BufferedOutputStream(new FileOutputStream(mlist)));
+//            mdos = new DataOutputStream(
+//                    new BufferedOutputStream(new FileOutputStream(mlist)));
+            mdos = new FileWriter(new File(getDataPath(), musicListName), false);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
@@ -67,7 +71,7 @@ public class RecommendServiceImpl implements RecommendService {
         recommendMapper.set();
         List<SparseMatrixElement> musicList = recommendMapper.getMusicStyleList();
         for (SparseMatrixElement m : musicList) {
-            mdos.writeChars(m.toString() + "\n");
+            mdos.write(m.toString() + "\n");
         }
         mdos.close();
         return true;
@@ -75,22 +79,24 @@ public class RecommendServiceImpl implements RecommendService {
 
     @Override
     public boolean saveNewUserId() throws IOException {
-        DataOutputStream udos = null;
-        File nid = new File(getDataPath(), userIdName);
-        if (!nid.exists()) {
-            nid.createNewFile();
-        }
+//        DataOutputStream udos = null;
+        FileWriter udos = null;
+//        File nid = new File(getDataPath(), userIdName);
+//        if (!nid.exists()) {
+//            nid.createNewFile();
+//        }
         try {
-            udos = new DataOutputStream(
-                    new BufferedOutputStream(new FileOutputStream(nid)));
+//            udos = new DataOutputStream(
+//                    new BufferedOutputStream(new FileOutputStream(nid)));
+            udos = new FileWriter(new File(getDataPath(), userIdName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
         }
         List<Integer> newUserId = recommendMapper.getNewUserId();
-        int i = 0;
+        Integer i = 0;
         for (Integer uid : newUserId) {
-            udos.writeChars(String.valueOf(i) + "\t" + String.valueOf(uid) +"\n");
+            udos.write((i.toString() + "\t" + uid.toString() +"\n"));
             i += 1;
         }
         udos.close();
@@ -99,22 +105,24 @@ public class RecommendServiceImpl implements RecommendService {
 
     @Override
     public boolean saveNewMusicId() throws IOException {
-        DataOutputStream mdos = null;
-        File nid = new File(getDataPath(), musicIdName);
-        if (!nid.exists()) {
-            nid.createNewFile();
-        }
+//        DataOutputStream mdos = null;
+        FileWriter mdos = null;
+//        File nid = new File(getDataPath(), musicIdName);
+//        if (!nid.exists()) {
+//            nid.createNewFile();
+//        }
         try {
-            mdos = new DataOutputStream(
-                    new BufferedOutputStream(new FileOutputStream(nid)));
+//            mdos = new DataOutputStream(
+//                    new BufferedOutputStream(new FileOutputStream(nid)));
+            mdos = new FileWriter(new File(getDataPath(), musicIdName), false);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
         }
         List<Integer> newMusicId = recommendMapper.getNewMusicId();
-        int i = 0;
+        Integer i = 0;
         for (Integer mid : newMusicId) {
-            mdos.writeChars(String.valueOf(i) + "\t" + String.valueOf(mid) +"\n");
+            mdos.write((i.toString() + "\t" + mid.toString() +"\n"));
             i += 1;
         }
         mdos.close();

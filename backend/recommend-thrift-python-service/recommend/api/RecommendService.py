@@ -19,10 +19,22 @@ all_structs = []
 
 
 class Iface(object):
-    def recommendUser(self):
+    def recommendUser(self, unum, mnum):
+        """
+        Parameters:
+         - unum
+         - mnum
+
+        """
         pass
 
-    def recommendMusic(self):
+    def recommendMusic(self, mnum, tnum):
+        """
+        Parameters:
+         - mnum
+         - tnum
+
+        """
         pass
 
     def getUserRecommendDetail(self, uid):
@@ -49,13 +61,21 @@ class Client(Iface):
             self._oprot = oprot
         self._seqid = 0
 
-    def recommendUser(self):
-        self.send_recommendUser()
+    def recommendUser(self, unum, mnum):
+        """
+        Parameters:
+         - unum
+         - mnum
+
+        """
+        self.send_recommendUser(unum, mnum)
         return self.recv_recommendUser()
 
-    def send_recommendUser(self):
+    def send_recommendUser(self, unum, mnum):
         self._oprot.writeMessageBegin('recommendUser', TMessageType.CALL, self._seqid)
         args = recommendUser_args()
+        args.unum = unum
+        args.mnum = mnum
         args.write(self._oprot)
         self._oprot.writeMessageEnd()
         self._oprot.trans.flush()
@@ -75,13 +95,21 @@ class Client(Iface):
             return result.success
         raise TApplicationException(TApplicationException.MISSING_RESULT, "recommendUser failed: unknown result")
 
-    def recommendMusic(self):
-        self.send_recommendMusic()
+    def recommendMusic(self, mnum, tnum):
+        """
+        Parameters:
+         - mnum
+         - tnum
+
+        """
+        self.send_recommendMusic(mnum, tnum)
         return self.recv_recommendMusic()
 
-    def send_recommendMusic(self):
+    def send_recommendMusic(self, mnum, tnum):
         self._oprot.writeMessageBegin('recommendMusic', TMessageType.CALL, self._seqid)
         args = recommendMusic_args()
+        args.mnum = mnum
+        args.tnum = tnum
         args.write(self._oprot)
         self._oprot.writeMessageEnd()
         self._oprot.trans.flush()
@@ -202,7 +230,7 @@ class Processor(Iface, TProcessor):
         iprot.readMessageEnd()
         result = recommendUser_result()
         try:
-            result.success = self._handler.recommendUser()
+            result.success = self._handler.recommendUser(args.unum, args.mnum)
             msg_type = TMessageType.REPLY
         except TTransport.TTransportException:
             raise
@@ -225,7 +253,7 @@ class Processor(Iface, TProcessor):
         iprot.readMessageEnd()
         result = recommendMusic_result()
         try:
-            result.success = self._handler.recommendMusic()
+            result.success = self._handler.recommendMusic(args.mnum, args.tnum)
             msg_type = TMessageType.REPLY
         except TTransport.TTransportException:
             raise
@@ -292,7 +320,17 @@ class Processor(Iface, TProcessor):
 
 
 class recommendUser_args(object):
+    """
+    Attributes:
+     - unum
+     - mnum
 
+    """
+
+
+    def __init__(self, unum=None, mnum=None,):
+        self.unum = unum
+        self.mnum = mnum
 
     def read(self, iprot):
         if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
@@ -303,6 +341,16 @@ class recommendUser_args(object):
             (fname, ftype, fid) = iprot.readFieldBegin()
             if ftype == TType.STOP:
                 break
+            if fid == 1:
+                if ftype == TType.I64:
+                    self.unum = iprot.readI64()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 2:
+                if ftype == TType.I64:
+                    self.mnum = iprot.readI64()
+                else:
+                    iprot.skip(ftype)
             else:
                 iprot.skip(ftype)
             iprot.readFieldEnd()
@@ -313,6 +361,14 @@ class recommendUser_args(object):
             oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
             return
         oprot.writeStructBegin('recommendUser_args')
+        if self.unum is not None:
+            oprot.writeFieldBegin('unum', TType.I64, 1)
+            oprot.writeI64(self.unum)
+            oprot.writeFieldEnd()
+        if self.mnum is not None:
+            oprot.writeFieldBegin('mnum', TType.I64, 2)
+            oprot.writeI64(self.mnum)
+            oprot.writeFieldEnd()
         oprot.writeFieldStop()
         oprot.writeStructEnd()
 
@@ -331,6 +387,9 @@ class recommendUser_args(object):
         return not (self == other)
 all_structs.append(recommendUser_args)
 recommendUser_args.thrift_spec = (
+    None,  # 0
+    (1, TType.I64, 'unum', None, None, ),  # 1
+    (2, TType.I64, 'mnum', None, None, ),  # 2
 )
 
 
@@ -396,7 +455,17 @@ recommendUser_result.thrift_spec = (
 
 
 class recommendMusic_args(object):
+    """
+    Attributes:
+     - mnum
+     - tnum
 
+    """
+
+
+    def __init__(self, mnum=None, tnum=None,):
+        self.mnum = mnum
+        self.tnum = tnum
 
     def read(self, iprot):
         if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
@@ -407,6 +476,16 @@ class recommendMusic_args(object):
             (fname, ftype, fid) = iprot.readFieldBegin()
             if ftype == TType.STOP:
                 break
+            if fid == 1:
+                if ftype == TType.I64:
+                    self.mnum = iprot.readI64()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 2:
+                if ftype == TType.I64:
+                    self.tnum = iprot.readI64()
+                else:
+                    iprot.skip(ftype)
             else:
                 iprot.skip(ftype)
             iprot.readFieldEnd()
@@ -417,6 +496,14 @@ class recommendMusic_args(object):
             oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
             return
         oprot.writeStructBegin('recommendMusic_args')
+        if self.mnum is not None:
+            oprot.writeFieldBegin('mnum', TType.I64, 1)
+            oprot.writeI64(self.mnum)
+            oprot.writeFieldEnd()
+        if self.tnum is not None:
+            oprot.writeFieldBegin('tnum', TType.I64, 2)
+            oprot.writeI64(self.tnum)
+            oprot.writeFieldEnd()
         oprot.writeFieldStop()
         oprot.writeStructEnd()
 
@@ -435,6 +522,9 @@ class recommendMusic_args(object):
         return not (self == other)
 all_structs.append(recommendMusic_args)
 recommendMusic_args.thrift_spec = (
+    None,  # 0
+    (1, TType.I64, 'mnum', None, None, ),  # 1
+    (2, TType.I64, 'tnum', None, None, ),  # 2
 )
 
 
