@@ -7,7 +7,7 @@
                     <el-image :src="img"></el-image>
                     <span>{{name}}</span>
                     <div v-for="singer in singers" :key="singer.id">
-                        <span>
+                        <span style="'{float: left}'">
                             {{singer.name}}
                         </span>
                     </div>
@@ -19,15 +19,20 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-2">
-                    <!-- 进行评论 -->
-                    <div class="form-group">
-                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="你的评论"></textarea>
+                    <div v-for="music in recommendMusics" :key="music.id">
+                        <recommend-music :id="music.id" :singers="music.singers" :name="music.name"></recommend-music>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div v-for="music in recommendMusics" :key="music.id">
-                    <recommend-music :id="music.id" :singers="music.singers" :name="music.name"></recommend-music>
+            <div class="contact-form-area row">
+                <!-- 进行评论 -->
+                <div class="col-12">
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="我的评论"></textarea>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <button class="btn oneMusic-btn mt-30" type="submit">Send <i class="fa fa-angle-double-right"></i></button>
                 </div>
             </div>
         </div>

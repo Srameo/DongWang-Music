@@ -2,7 +2,7 @@
     <section class="breadcumb-area bg-img bg-overlay">
         <div class="bradcumbContent">
             <p>{{id}}</p>
-            <h2>{{musicname}}</h2>
+            <h3>{{musicname}}</h3>
         </div>
     </section>
 </template>

@@ -1,9 +1,12 @@
 package com.music.controller;
 
 import com.music.domain.CommentInfo;
+import com.music.domain.SongInfo;
 import com.music.domain.StarInfo;
+import com.music.mapper.SearchMapper;
 import com.music.service.MusicService;
 import com.music.util.date.GetDate;
+import com.music.util.response.MusicResponse;
 import com.music.util.response.Response;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +22,20 @@ public class MusicController {
 
     @Resource
     private MusicService musicService;
+
+    @Resource
+    private SearchMapper searchMapper;
+
+    @RequestMapping(value = "/get", method = RequestMethod.POST)
+    @ResponseBody
+    public Response getMusic(@RequestParam("id") int id) {
+        SongInfo songInfo = searchMapper.getMusicInfoById(id);
+        if (songInfo != null) {
+            songInfo.setSingers(searchMapper.getSingerInfoBySongId(id));
+            songInfo.setTags(searchMapper.getStylesByMusicId(id));
+        }
+        return new MusicResponse(songInfo);
+    }
 
     @RequestMapping(value = "/star", method = RequestMethod.POST)
     @ResponseBody
