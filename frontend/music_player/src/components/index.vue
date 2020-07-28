@@ -1,7 +1,7 @@
 <template>
 	<!-- 页面顶部组件 -->
 	<div id="index" >
-      <div class="header-area"> <!--   页面标题  -->
+      <div class="header-area" :style="this.style"> <!--   页面标题  -->
         <!-- Navbar Area -->
         <div class="oneMusic-main-menu">
             <div class="classy-nav-container breakpoint-off">
@@ -41,7 +41,7 @@
                                     <li><a href="recommend.html">我的收藏</a></li>
                                     <li><a href="albums-store.html">歌曲</a></li>
                                     <li><a href="event.html">排行榜</a></li>
-                                    <li><a href="contact.html">联系我们</a></li>
+                                    <li><router-link to="/contact">联系我们</router-link></li>
                                 </ul>
 
                                 <!-- Login/Register & Cart Button -->
@@ -58,7 +58,7 @@
                                     </div >
                                     <!-- Login/Register -->
                                     <div class="login-register-btn mr-50 ">
-                                        <router-link to="/login" id="loginBtn">Login </router-link>                                          
+                                        <router-link to="/login" id="loginBtn">Login </router-link>
                                         <router-link to="/register" id="registerBtn">Register</router-link>
                                     </div>
 
@@ -124,10 +124,23 @@ export default {
     name:'index',
 	data () {
 		return {
-			inputValue: ''
+            inputValue: '',
+            opacity: 0,
+            style: {background: `rgba(0, 0, 0,100)`},
 		}
-	},
+    },
+    mounted() {
+        window.addEventListener("scroll", this.windowScroll);
+    },
+    destroyed() {
+        window.removeEventListener("scroll", this.windowScroll); //销毁滚动事件
+    },
 	methods: {
+        windowScroll: function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+			this.opacity = Math.abs(Math.round(scrollTop)) / 250;
+			this.style = {background: `rgba(0, 0, 0,${this.opacity})`}
+        },
         // 
         toResult() {
             // 非空判断
