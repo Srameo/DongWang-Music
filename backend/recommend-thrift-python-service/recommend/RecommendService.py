@@ -1,6 +1,8 @@
 import os
 
 import numpy
+import pandas
+import sparse
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 from thrift.transport import TSocket, TTransport
@@ -34,6 +36,11 @@ class RecommendServiceHandler(Iface):
     x = None
     sim = None
 
+    newUserIdReaded = False
+    newMusicIdReaded = False
+    newUserId = None
+    newMusicId = None
+
     def __init__(self):
         # 获取项目输入文件
         curPath = os.path.abspath(os.path.dirname(__file__))
@@ -48,38 +55,84 @@ class RecommendServiceHandler(Iface):
 
     def _predictAll(self, flag="user"):
         row, column = self.sim.shape
+        i = 0
         if flag == "user":
             path = self.userOutputPath
+            try:
+                predict = Predict(self.x.todense(), self.sim.todense())
+                while i < row:
+                    numpy.savetxt(os.path.join(path, "%d.txt" % i), predict.predict(i).astype(numpy.int))
+                    i += 1
+                return True
+            except Exception as _:
+                print(_)
+            return False
         else:
             path = self.musicOutputPath
-        try:
-            predict = Predict(self.x.todense(), self.sim.todense())
-            i = 0
+            sim = self.sim.argsort()[:, ::30].astype(numpy.int)
             while i < row:
-                numpy.savetxt(os.path.join(path, "%d.txt" % i), p = predict.predict(i))
+                numpy.savetxt(os.path.join(path, "%d.txt" % i), sim[i, :])
                 i += 1
-            return True
-        except Exception as _:
-            print(_)
-            return False
+
+    def getNewUserId(self, uid):
+        if not self.newUserIdReaded:
+            data = pandas.read_csv(self.newUserIDPath, sep="\t", header=None, usecols=[1])
+            self.newUserId = numpy.matrix(data).transpose()
+            self.newUserIdReaded = True
+        ans_list = []
+        for id in uid:
+            try:
+                ans_list.append(self.newUserId.tolist()[0].index(id))
+            except ValueError as _:
+                print(_)
+                ans_list.append(-1)
+        return ans_list
+
+    def getNewMusicId(self, mid):
+        if not self.newMusicIdReaded:
+            data = pandas.read_csv(self.newMusicIDPath, sep="\t", header=None, usecols=[1])
+            self.newMusicId = numpy.matrix(data).transpose()
+            self.newMusicIdReaded = True
+        ans_list = []
+        for id in mid:
+            try:
+                ans_list.append(self.newMusicId[0].tolist().index(id))
+            except ValueError as _:
+                print(_)
+                ans_list.append(-1)
+        return ans_list
 
     def getUserRecommendDetail(self, uid):
-        pass
+        id = self.getNewUserId([uid])[0]
+        recommend_list = numpy.loadtxt(os.path.join(self.userOutputPath, "%d.txt" % id)).astype(numpy.int).tolist()
+        if not self.newMusicIdReaded:
+            data = pandas.read_csv(self.newMusicIDPath, sep="\t", header=None, usecols=[1])
+            self.newMusicId = numpy.matrix(data).transpose()
+            self.newMusicIdReaded = True
+        return self.newMusicId[:, recommend_list].tolist()[0]
 
     def getMusicRecommendDetail(self, mid):
-        pass
+        id = self.getNewMusicId([mid])[0]
+        recommend_list = numpy.loadtxt(os.path.join(self.musicOutputPath, "%d.txt" % id)).astype(numpy.int).tolist()
+        if not self.newMusicIdReaded:
+            data = pandas.read_csv(self.newMusicIDPath, sep="\t", header=None, usecols=[1])
+            self.newMusicId = numpy.matrix(data).transpose()
+            self.newMusicIdReaded = True
+        return self.newMusicId[:, recommend_list].tolist()[0]
 
     def recommendMusic(self, mnum, tnum):
         if not os.path.exists(self.musicInputPath):
             raise InputPathNotExistsException
+        self.newMusicIdReaded = False
         # 获取各个歌曲的稀疏矩阵
         data = sparseData(loadData(self.musicInputPath), row=mnum, column=tnum)
         # 以第一次的数据计算出之间的相关度
-        sim = calculateSim(data)
-        # 通过第一次计算的数据填充矩阵
-        self.x = addData(data, sim)
-        # 根据填充之后的矩阵的相似度
-        self.sim = calculateSim(self.x)
+        self.sim = calculateSim(data)
+        sparse.save_npz("/Users/jinxin/Desktop/project/my/DongWang-Music/backend/output/npz/sim.npz", self.sim)
+        # # 通过第一次计算的数据填充矩阵
+        # self.x = addData(data, sim)
+        # # 根据填充之后的矩阵的相似度
+        # self.sim = calculateSim(self.x)
         if self._predictAll(flag="music"):
             os.remove(os.path.dirname(self.musicInputPath))
             return True
@@ -88,6 +141,7 @@ class RecommendServiceHandler(Iface):
     def recommendUser(self, unum, mnum):
         if not os.path.exists(self.userInputPath):
             raise InputPathNotExistsException
+        self.newUserIdReaded = False
         # 获取各个用户的稀疏矩阵
         data = sparseData(loadData(self.userInputPath), row=unum, column=mnum)
         # 以第一次的数据计算出之间的相关度
@@ -123,7 +177,7 @@ def main_thread():
     thriftServer.serve()
     print("Python Thrift Server stop ...")
 
-
 if __name__ == '__main__':
     r = RecommendServiceHandler()
-    r.recommendMusic(18668, 71)
+    r.recommendMusic(18665, 71)
+    print(r.getMusicRecommendDetail(60008))
