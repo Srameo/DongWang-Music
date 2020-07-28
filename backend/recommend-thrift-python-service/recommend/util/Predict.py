@@ -25,5 +25,5 @@ class Predict:
             p = mu + sorted_sim * delta / sorted_sim.sum()
         else:
             p = numpy.zeros((1, self.x.shape[1]))
-        return p
+        return p.argsort()[:, ::-1][:, 0:30]
 

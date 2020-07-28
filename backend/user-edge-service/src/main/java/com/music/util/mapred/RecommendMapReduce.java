@@ -9,6 +9,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
@@ -18,6 +19,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+class MapReduceArgsException extends IOException {
+    public MapReduceArgsException(String message) {
+        super(message);
+    }
+
+    public MapReduceArgsException() {
+        super("MapReduce 数据不全！");
+    }
+}
 
 public class RecommendMapReduce {
 
@@ -41,11 +52,24 @@ public class RecommendMapReduce {
     public static class RecommendDataFormatMapper
             extends Mapper<LongWritable, Text, IntWritable, Text> {
 
-        private IntWritable row = new IntWritable();
-        private Text text = new Text();
+        private final IntWritable row = new IntWritable();
+        private final Text text = new Text();
+        private int flag = 0;
+
+        @Override
+        protected void setup(Context context) throws IOException, InterruptedException {
+            FileSplit inputSplit = (FileSplit) context.getInputSplit();
+            String dataSourceFilename = inputSplit.getPath().getName();
+            if (dataSourceFilename.startsWith("part")) {
+                flag = 1;
+            }
+        }
 
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+            if (flag == 0) {
+                return;
+            }
             String line = value.toString();
             String[] args = line.split("\t");
             row.set(Integer.parseInt(args[0]));
@@ -96,7 +120,7 @@ public class RecommendMapReduce {
         String[] hadoopArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
         if (hadoopArgs.length < 2) {
             System.err.println("Args is Error, Usage LoadData <inpath> [<inpath> ...] <outpath>");
-            System.exit(2);
+            throw new MapReduceArgsException();
         }
         for (int i = 0; i < hadoopArgs.length - 1; i++) {
             Path path = new Path(hadoopArgs[i]);
@@ -133,7 +157,7 @@ public class RecommendMapReduce {
         return job;
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException, MapReduceArgsException {
         Job job = getJob(args);
 
         // 8. 提交 MR job

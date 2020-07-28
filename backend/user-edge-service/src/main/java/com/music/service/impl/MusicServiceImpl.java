@@ -9,12 +9,18 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class MusicServiceImpl implements MusicService {
 
     @Resource
     private MusicMapper musicMapper;
+
+    @Override
+    public List<String> getAllTags() {
+        return musicMapper.getAllTags();
+    }
 
     @Override
     public void starMusic(StarInfo starInfo) {

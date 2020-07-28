@@ -57,6 +57,12 @@ public interface SearchMapper {
             ")")
     List<SongInfo> searchBySingerId(@Param("id") int id);
 
+    @Select("SELECT id, name, gender, location FROM " +
+            "   singers WHERE id in (" +
+            "       SELECT sid AS id FROM singer_music WHERE mid=#{id}" +
+            "   )")
+    List<SingerInfo> getSingerInfoBySongId(@Param("id") int id);
+
     /**
      * 通过标签id获取歌曲信息
      */

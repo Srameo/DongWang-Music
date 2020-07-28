@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/music")
@@ -28,6 +29,12 @@ public class MusicController {
         StarInfo starInfo = new StarInfo(uid, mid, currentDate);
         musicService.starMusic(starInfo);
         return Response.SUCCESS;
+    }
+
+    @RequestMapping(value = "/tags", method = RequestMethod.GET)
+    @ResponseBody
+    public List<String> getAllTags() {
+        return musicService.getAllTags();
     }
 
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
