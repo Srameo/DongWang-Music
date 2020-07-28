@@ -121,7 +121,7 @@ export default {
 	methods: {
         windowScroll: function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-			this.opacity = Math.abs(Math.round(scrollTop)) / 250;
+			this.opacity = Math.abs(Math.round(scrollTop)) / 400;
 			this.style = {background: `rgba(0, 0, 0,${this.opacity})`}
         },
         // 
