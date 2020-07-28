@@ -20,7 +20,7 @@
                                         <h6 data-animation="fadeInUp" data-delay="300ms">better than me!</h6>
                                         <!-- <h6 data-animation="fadeInUp" data-delay="100ms">Latest album</h6>
                                         <h2 data-animation="fadeInUp" data-delay="300ms">Beyond Time </h2> -->
-                                        <router-link to="/login"  data-animation="fadeInUp" data-delay="500ms" class="btn oneMusic-btn mt-50">让我懂你</router-link> <i class="fa fa-angle-double-right"></i>
+                                        <router-link to="/login"  data-animation="fadeInUp" data-delay="500ms" class="btn oneMusic-btn mt-50">让我懂你<i class="el-icon-s-promotion"></i></router-link>
                                     </div>
                                 </div>
                             </div>
@@ -41,8 +41,8 @@
                                         <h2  data-animation="fadeInUp" data-delay="100ms">没人比我更懂音乐<span>没人比我更懂音乐</span></h2>
                                         <h2 data-animation="fadeInUp" data-delay="300ms">Music<span>Music</span></h2>
                                         <h6 data-animation="fadeInUp" data-delay="300ms">better than me!</h6>
-                                        <a data-animation="fadeInUp" data-delay="500ms" href="#" class="btn oneMusic-btn mt-50">登录体验更多 <i class="fa fa-angle-double-right"></i></a>
-                                    </div>
+                                        <router-link to="/login"  data-animation="fadeInUp" data-delay="500ms" class="btn oneMusic-btn mt-50">让我懂你<i class="el-icon-s-promotion"></i></router-link>
+                                     </div>
                                 </div>
                             </div>
                         </div>
