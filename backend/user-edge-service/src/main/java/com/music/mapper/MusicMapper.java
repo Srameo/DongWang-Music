@@ -6,9 +6,11 @@ import com.music.domain.StarInfo;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 @Component
 public interface MusicMapper {
@@ -32,6 +34,9 @@ public interface MusicMapper {
     @Insert("insert into comment(uid,mid,content,comment_time) " +
             "values(#{c.uid},#{c.mid},#{c.content},#{c.commentTime})")
     void commentMusic(@Param("c") CommentInfo commentInfo);
+
+    @Select("SELECT detail FROM style")
+    List<String> getAllTags();
 
     /**
      * 删除评论

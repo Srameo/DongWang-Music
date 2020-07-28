@@ -8,8 +8,11 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
+import java.util.List;
 
 public interface MusicService {
+
+    List<String> getAllTags();
 
     /**
      * 收藏歌曲
