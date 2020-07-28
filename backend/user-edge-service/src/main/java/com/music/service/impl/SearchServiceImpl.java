@@ -1,5 +1,6 @@
 package com.music.service.impl;
 
+import com.music.domain.SingerInfo;
 import com.music.domain.SongInfo;
 import com.music.mapper.SearchMapper;
 import com.music.service.SearchService;
@@ -32,15 +33,21 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public List<SongInfo> search(String str) {
         Integer styleId = searchMapper.getStyleIdByStyleName(str);
+        List<SongInfo> songInfos = null;
         if (styleId == null) {
             Integer singerId = searchMapper.getSingerIdByName(str);
             if (singerId == null) {
-                return searchByKey(str);
+                songInfos = searchByKey(str);
             } else {
-                return searchBySinger(singerId);
+                songInfos = searchBySinger(singerId);
             }
         } else {
-            return searchByTag(styleId);
+            songInfos = searchByTag(styleId);
         }
+        for (SongInfo songInfo : songInfos) {
+            List<SingerInfo> singerInfos = searchMapper.getSingerInfoBySongId(songInfo.getId());
+            songInfo.setSingers(singerInfos);
+        }
+        return songInfos;
     }
 }

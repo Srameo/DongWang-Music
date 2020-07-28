@@ -17,6 +17,8 @@ public class Response implements Serializable {
     public static final Response VERIFY_CODE_INVALID = new Response("1004", "verifyCode invalid");
     // 1005，用户名已存在
     public static final Response USERNAME_EXIST = new Response("1005", "username already exists");
+    // 1006. 推荐时发生错误
+    public static final Response RECOMMEND_ERROR = new Response("1006", "recommend error");
     // 0, 成功
     public static final Response SUCCESS = new Response();
 

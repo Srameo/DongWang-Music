@@ -89,7 +89,7 @@ public class UserController {
             return Response.exception(e);
         }
 
-        return null;
+        return Response.SUCCESS;
 
     }
 

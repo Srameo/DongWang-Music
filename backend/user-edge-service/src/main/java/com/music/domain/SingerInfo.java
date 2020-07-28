@@ -9,6 +9,16 @@ public class SingerInfo {
     public SingerInfo() {
     }
 
+    @Override
+    public String toString() {
+        return "SingerInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", location='" + location + '\'' +
+                '}';
+    }
+
     public SingerInfo(int id, String name, int gender, String location) {
         this.id = id;
         this.name = name;
