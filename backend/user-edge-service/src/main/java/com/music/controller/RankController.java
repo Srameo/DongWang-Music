@@ -5,16 +5,14 @@ import com.music.service.RankService;
 import com.music.util.response.Response;
 import com.music.util.response.SearchResponse;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Component
 @RequestMapping("/rank")
+@CrossOrigin
 public class RankController {
     @Resource
     RankService rankService;
