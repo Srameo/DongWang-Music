@@ -1,22 +1,16 @@
 <template>
     <section class="breadcumb-area bg-img bg-overlay">
         <div class="bradcumbContent">
-            <p>See what’s new</p>
-            <h2>Contact</h2>
+            <p>{{id}}</p>
+            <h2>{{musicname}}</h2>
         </div>
     </section>
 </template>
 
 <script>
-import bgImg from '../../assets/bg-img/breadcumb.jpg'
-
 export default {
-    name: 'top',
-    data() {
-        return {
-            img: bgImg
-        }
-    }
+    props: [musicname, id]
+    
 }
 </script>
 
@@ -36,5 +30,4 @@ export default {
     width: 100%;
     height: 100%;
     content: ""; }
-
 </style>
