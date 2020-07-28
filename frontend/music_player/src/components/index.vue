@@ -69,9 +69,9 @@
         </div>
     </div>
     <div>
-        <!-- <transition name="el-fade-in-linear"> -->
+        <transition name="el-fade-in-linear">
 			<router-view></router-view>
-		<!-- </transition> -->
+		</transition>
     </div>
    
     <!-- ##### Header Area End -->  

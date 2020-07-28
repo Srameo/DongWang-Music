@@ -20,7 +20,7 @@
                                         <h6 data-animation="fadeInUp" data-delay="300ms">better than me!</h6>
                                         <!-- <h6 data-animation="fadeInUp" data-delay="100ms">Latest album</h6>
                                         <h2 data-animation="fadeInUp" data-delay="300ms">Beyond Time </h2> -->
-                                        <a data-animation="fadeInUp" data-delay="500ms" href="login.html" class="btn oneMusic-btn mt-50">登录体验更多 <i class="fa fa-angle-double-right"></i></a>
+                                        <router-link to="/login"  data-animation="fadeInUp" data-delay="500ms" class="btn oneMusic-btn mt-50">让我懂你</router-link> <i class="fa fa-angle-double-right"></i>
                                     </div>
                                 </div>
                             </div>
