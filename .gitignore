@@ -42,3 +42,6 @@ recommand-python/output/
 recommand-python/input/
 mapred/input/
 mapred/output/
+
+backend/input/
+backend/output/
