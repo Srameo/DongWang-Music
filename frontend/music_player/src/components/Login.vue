@@ -57,10 +57,11 @@
 					// console.log(valid);
 					if(!valid) return;
 					const result = await this.$http.post("/user/login");
+					console.log(result);
 				})
 			},
 			redirectToRegister(){
-				this.$route.push
+				this.$router.push({path:"/register"});
 			}
 		}
 	}
