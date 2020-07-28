@@ -15,10 +15,10 @@ import java.util.List;
 @Service
 public class RecommendServiceImpl implements RecommendService {
 
-    private static final String userIdName = "new_user_id";
-    private static final String musicIdName = "new_music_id";
-    private static final String userListName = "user_music_list";
-    private static final String musicListName = "music_tag_list";
+    private static final String userIdName = "new_user_id.dat";
+    private static final String musicIdName = "new_music_id.dat";
+    private static final String userListName = "user_music_list.dat";
+    private static final String musicListName = "music_tag_list.dat";
 
     @Resource
     RecommendMapper recommendMapper;
@@ -90,7 +90,7 @@ public class RecommendServiceImpl implements RecommendService {
         List<Integer> newUserId = recommendMapper.getNewUserId();
         int i = 0;
         for (Integer uid : newUserId) {
-            udos.writeChars(i + "\t" + uid +"\n");
+            udos.writeChars(String.valueOf(i) + "\t" + String.valueOf(uid) +"\n");
             i += 1;
         }
         udos.close();
@@ -114,7 +114,7 @@ public class RecommendServiceImpl implements RecommendService {
         List<Integer> newMusicId = recommendMapper.getNewMusicId();
         int i = 0;
         for (Integer mid : newMusicId) {
-            mdos.writeChars(i + "\t" + mid +"\n");
+            mdos.writeChars(String.valueOf(i) + "\t" + String.valueOf(mid) +"\n");
             i += 1;
         }
         mdos.close();

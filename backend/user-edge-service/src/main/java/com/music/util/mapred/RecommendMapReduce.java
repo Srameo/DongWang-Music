@@ -95,7 +95,7 @@ public class RecommendMapReduce {
         }
     }
 
-    public static Job getJob(String[] args) throws IOException, MapReduceArgsException {
+    public static Job getJob(String[] args) throws IOException {
         // 0. 初始化 mr 的状态
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "My Data Format ver1.0");    // 生成一个 mr 的job

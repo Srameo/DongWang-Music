@@ -2,25 +2,25 @@ package com.music.domain;
 
 public class SparseMatrixElement {
 
-    int r;
-    int c;
-    int num = 1;
+    Integer r;
+    Integer c;
+    Integer num = 1;
 
-    public SparseMatrixElement(int r, int c) {
+    public SparseMatrixElement(Integer r, Integer c) {
         this.r = r;
         this.c = c;
     }
 
     @Override
     public String toString() {
-        return r + "\t" + c + "\t" + num;
+        return String.valueOf(r) + "\t" + String.valueOf(c) + "\t" + String.valueOf(num);
     }
 
     public int getR() {
         return r;
     }
 
-    public void setR(int r) {
+    public void setR(Integer r) {
         this.r = r;
     }
 
@@ -28,7 +28,7 @@ public class SparseMatrixElement {
         return c;
     }
 
-    public void setC(int c) {
+    public void setC(Integer c) {
         this.c = c;
     }
 
@@ -36,11 +36,11 @@ public class SparseMatrixElement {
         return num;
     }
 
-    public void setNum(int num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 
-    public SparseMatrixElement(int r, int c, int num) {
+    public SparseMatrixElement(Integer r, Integer c, Integer num) {
         this.r = r;
         this.c = c;
         this.num = num;
