@@ -1,3 +1,4 @@
+// import {jQuery} from './jquery/jquery-2.2.4.min'
 (function (jQuery) {
     'use strict';
     var $=jQuery
