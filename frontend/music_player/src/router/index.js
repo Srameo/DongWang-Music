@@ -12,7 +12,9 @@ Vue.use(VueRouter)
 	{
 		path:'/',
 		redirect: '/main',
-	},{
+		component:index
+	},
+	{
 		path:'/main',
 		component:main
 	},
