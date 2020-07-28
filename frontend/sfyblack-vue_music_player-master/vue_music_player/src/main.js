@@ -10,9 +10,9 @@ import './assets/font/iconfont.css'
 // 导入axios相关配置
 import './plugins/axios.js'
 // 导入自己写的点击波纹轮子 轮子地址 https://gitee.com/sfyblack/vue-waves.git
-import vWaves from 'vue-waves'
+// import vWaves from 'vue-waves'
 
-Vue.use(vWaves)
+// Vue.use(vWaves)
 Vue.config.productionTip = false
 
 new Vue({
