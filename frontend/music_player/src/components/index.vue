@@ -13,9 +13,19 @@
                         <div class="col-2 ">
                             <router-link to="/index" class="nav-brand"><img src="../assets/core-img/logo.png" alt="">
                             </router-link>
-                        <!-- <a href="index.html" class="nav-brand"><img src="img/core-img/timg.jpg" alt=""></a> -->
+                         </div> 
+                        <!-- 后退前进刷新 -->
+                        <div class="col-1 ">
+                            <el-tooltip content="后退一步" :enterable="false" placement="bottom" effect="light">
+                                <i @click="back()" class="el-icon-arrow-left"></i>
+                            </el-tooltip>
+                            <el-tooltip content="前进一步" :enterable="false" placement="bottom" effect="light">
+                                <i @click="go()" class="el-icon-arrow-right"></i>
+                            </el-tooltip>
+                            <el-tooltip content="刷新页面" :enterable="false" placement="bottom" effect="light">
+                                <i @click="reload()" class="el-icon-refresh-right"></i>
+                            </el-tooltip>
                         </div>
-
                         <!-- Menu -->
                         <div class="classy-menu col-12">
 
@@ -66,40 +76,47 @@
                     </nav>
                 </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div>
-        <transition name="el-fade-in-linear">
-			<router-view></router-view>
-		</transition>
-    </div>
+        <div>
+            <transition name="el-fade-in-linear">
+                <router-view></router-view>
+            </transition>
+        </div>
    
-    <!-- ##### Header Area End -->  
-    <!-- ##### Footer Area Start ##### -->
-    <div class="footer-area">
-        <div class="container">
-            <div class="row d-flex flex-wrap align-items-center">
-                <div class="col-12 col-md-6">
-                    <router-link to="/main"><img src="../assets/core-img/logo.png" alt=""></router-link>
-                    <p class="copywrite-text"><router-link to="/contact">Copyright &copy;2020 All rights reserved | 中软小组007 </router-link>
-                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                </p>
-                </div>
+        <!-- ##### Header Area End -->  
+        <!-- player -->
+        <!-- 播放标签 -->
+        <div class="player">
+            <!-- autoplay 自动播放 -->
+            <audio :src='musicUrl' controls autoplay></audio>
+        </div>
+        <!-- player end -->
+        <!-- ##### Footer Area Start ##### -->
+        <div class="footer-area">
+            <div class="container">
+                <div class="row d-flex flex-wrap align-items-center">
+                    <div class="col-12 col-md-6">
+                        <router-link to="/main"><img src="../assets/core-img/logo.png" alt=""></router-link>
+                        <p class="copywrite-text"><router-link to="/contact">Copyright &copy;2020 All rights reserved | 中软小组007 </router-link>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    </p>
+                    </div>
 
-                <div class="col-12 col-md-6">
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="albums-store.html">Albums</a></li>
-                            <li><a href="event.html">Billboard</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
+                    <div class="col-12 col-md-6">
+                        <div class="footer-nav">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="albums-store.html">Albums</a></li>
+                                <li><a href="event.html">Billboard</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- ##### Footer Area Start ##### -->
+        <!-- ##### Footer Area Start ##### -->
 	</div>
 </template>
 <script>
