@@ -3,7 +3,7 @@
 		<div class="login-box">
 			<!-- 表单logo -->
 			<div class="login-header">
-				<img src="../assets/logo.png" />
+				<img src="../assets/core-img/logo.png" />
 			</div>
 			<!-- 表单输入区域 -->
 			<div class="login-body">
