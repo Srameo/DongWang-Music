@@ -30,7 +30,7 @@
                                     <li><router-link to="/main">主页</router-link></li>
                                     <li><a href="recommend.html">我的收藏</a></li>
                                     <li><a href="albums-store.html">歌曲</a></li>
-                                    <li><a href="event.html">排行榜</a></li>
+                                    <li><a @click="toMusicPlayer">排行榜</a></li>
                                     <li><router-link to="/contact">联系我们</router-link></li>
                                 </ul>
 
@@ -123,6 +123,9 @@ export default {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 			this.opacity = Math.abs(Math.round(scrollTop)) / 400;
 			this.style = {background: `rgba(0, 0, 0,${this.opacity})`}
+        },
+        toMusicPlayer: function() {
+            this.$router.push('/music')
         },
         // 
         toResult() {

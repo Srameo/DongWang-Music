@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    props: [musicname, id]
+    props: ['musicname', 'id']
     
 }
 </script>
