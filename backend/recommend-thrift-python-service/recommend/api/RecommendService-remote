@@ -24,7 +24,10 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
     print('Usage: ' + sys.argv[0] + ' [-h host[:port]] [-u url] [-f[ramed]] [-s[sl]] [-novalidate] [-ca_certs certs] [-keyfile keyfile] [-certfile certfile] function [arg1 [arg2...]]')
     print('')
     print('Functions:')
-    print('  bool recommend()')
+    print('  bool recommendUser()')
+    print('  bool recommendMusic()')
+    print('   getUserRecommendDetail(i64 uid)')
+    print('   getMusicRecommendDetail(i64 mid)')
     print('')
     sys.exit(0)
 
@@ -104,11 +107,29 @@ protocol = TBinaryProtocol(transport)
 client = RecommendService.Client(protocol)
 transport.open()
 
-if cmd == 'recommend':
+if cmd == 'recommendUser':
     if len(args) != 0:
-        print('recommend requires 0 args')
+        print('recommendUser requires 0 args')
         sys.exit(1)
-    pp.pprint(client.recommend())
+    pp.pprint(client.recommendUser())
+
+elif cmd == 'recommendMusic':
+    if len(args) != 0:
+        print('recommendMusic requires 0 args')
+        sys.exit(1)
+    pp.pprint(client.recommendMusic())
+
+elif cmd == 'getUserRecommendDetail':
+    if len(args) != 1:
+        print('getUserRecommendDetail requires 1 args')
+        sys.exit(1)
+    pp.pprint(client.getUserRecommendDetail(eval(args[0]),))
+
+elif cmd == 'getMusicRecommendDetail':
+    if len(args) != 1:
+        print('getMusicRecommendDetail requires 1 args')
+        sys.exit(1)
+    pp.pprint(client.getMusicRecommendDetail(eval(args[0]),))
 
 else:
     print('Unrecognized method %s' % cmd)

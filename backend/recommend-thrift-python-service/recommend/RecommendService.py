@@ -1,5 +1,6 @@
 import os
 
+import numpy
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 from thrift.transport import TSocket, TTransport
@@ -24,7 +25,12 @@ class InputPathNotExistsException:
 
 class RecommendServiceHandler(Iface):
 
-    inputPath = None
+    userInputPath = None
+    musicInputPath = None
+    newUserIDPath = None
+    newMusicIDPath = None
+    userOutputPath = None
+    musicOutputPath = None
     x = None
     sim = None
 
@@ -33,32 +39,66 @@ class RecommendServiceHandler(Iface):
         curPath = os.path.abspath(os.path.dirname(__file__))
         project_name = "backend"
         rootPath = curPath[0:curPath.find(project_name)+len(project_name)]
-        self.inputPath = os.path.join(rootPath, "input/rating")
+        self.userInputPath = os.path.join(rootPath, "output" + os.path.sep + "temp" + os.path.sep + "part-r-00000")
+        self.musicInputPath = os.path.join(rootPath, "input" + os.path.sep + "data" + os.path.sep + "music_tag_list.dat")
+        self.newMusicIDPath = os.path.join(rootPath, "input" + os.path.sep + "data" + os.path.sep + "new_music_id.dat")
+        self.newUserIDPath = os.path.join(rootPath, "input" + os.path.sep + "data" + os.path.sep + "new_user_id.dat")
+        self.userOutputPath = os.path.join(rootPath, "output" + os.path.sep + "ratings")
+        self.musicOutputPath = os.path.join(rootPath, "output" + os.path.sep + "ratings")
 
-    def _predictAll(self):
+    def _predictAll(self, flag="user"):
         row, column = self.sim.shape
+        if flag == "user":
+            path = self.userOutputPath
+        else:
+            path = self.musicOutputPath
         try:
             predict = Predict(self.x, self.sim)
             i = 0
             while i < row:
-                predict.predict(i)
+                numpy.savetxt(os.path.join(path, "%d.txt" % i), predict.predict(i))
             return True
         except Exception as _:
             print(_)
             return False
 
-    def recommend(self):
-        if not os.path.exists(self.inputPath):
+    def getUserRecommendDetail(self, uid):
+        pass
+
+    def getMusicRecommendDetail(self, mid):
+        pass
+
+    def recommendMusic(self):
+        if not os.path.exists(self.musicInputPath):
             raise InputPathNotExistsException
-        # 获取各个用户的稀疏矩阵
-        data = sparseData(loadData(self.inputPath))
+        # 获取各个歌曲的稀疏矩阵
+        data = sparseData(loadData(self.userInputPath))
         # 以第一次的数据计算出之间的相关度
         sim = calculateSim(data)
         # 通过第一次计算的数据填充矩阵
         self.x = addData(data, sim)
         # 根据填充之后的矩阵的相似度
         self.sim = calculateSim(self.x)
-        return self._predictAll()
+        if self._predictAll():
+            os.remove(os.path.dirname(self.musicInputPath))
+            return True
+        return False
+
+    def recommendUser(self):
+        if not os.path.exists(self.userInputPath):
+            raise InputPathNotExistsException
+        # 获取各个用户的稀疏矩阵
+        data = sparseData(loadData(self.userInputPath))
+        # 以第一次的数据计算出之间的相关度
+        sim = calculateSim(data)
+        # 通过第一次计算的数据填充矩阵
+        self.x = addData(data, sim)
+        # 根据填充之后的矩阵的相似度
+        self.sim = calculateSim(self.x)
+        if self._predictAll():
+            os.remove(os.path.dirname(self.userInputPath))
+            return True
+        return False
 
 def main_thread():
     # 1. 创建 Thrift Server 的 ServeSocket
@@ -84,4 +124,5 @@ def main_thread():
 
 
 if __name__ == '__main__':
-    main_thread()
+    r = RecommendServiceHandler()
+    r.recommendUser()
