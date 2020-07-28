@@ -29,4 +29,16 @@ hs_err_pid*
 # python
 __pycache__/
 
+.DS_Store
 
+venv/
+
+*.iml
+
+*.m~
+*.mat
+
+recommand-python/output/
+recommand-python/input/
+mapred/input/
+mapred/output/
