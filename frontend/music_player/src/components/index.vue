@@ -32,17 +32,6 @@
                                     <li><a href="albums-store.html">歌曲</a></li>
                                     <li><a href="event.html">排行榜</a></li>
                                     <li><a href="contact.html">联系我们</a></li>
-                                    <li><a href="#">其他</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">主页</a></li>
-                                            <li><a href="event.html">我的收藏</a></li>
-                                            <li><a href="albums-store.html">歌曲</a></li>
-                                            <li><a href="event.html">排行榜</a></li>
-                                            <li><a href="contact.html">联系我们</a></li>
-                                            <li><a href="elements.html">数据（可用）</a></li>
-                                            <li><a href="login.html">登录</a></li>
-                                        </ul>
-                                    </li>
                                 </ul>
 
                                 <!-- Login/Register & Cart Button -->
@@ -59,8 +48,8 @@
                                     </div >
                                     <!-- Login/Register -->
                                     <div class="login-register-btn mr-50 ">
-                                        <a href="login.html" id="loginBtn">Login </a>                                             
-                                        <a href="register.html" id="registerBtn">Register</a>
+                                        <router-link to="/login" id="loginBtn">Login </router-link>                                          
+                                        <router-link to="/register" id="registerBtn">Register</router-link>
                                     </div>
 
                                     <!-- Cart Button   考虑模态框-->
@@ -85,8 +74,32 @@
 		<!-- </transition> -->
     </div>
    
-    <!-- ##### Header Area End ##### -->
+    <!-- ##### Header Area End -->  
+    <!-- ##### Footer Area Start ##### -->
+    <div class="footer-area">
+        <div class="container">
+            <div class="row d-flex flex-wrap align-items-center">
+                <div class="col-12 col-md-6">
+                    <router-link to="/main"><img src="../assets/core-img/logo.png" alt=""></router-link>
+                    <p class="copywrite-text"><router-link to="/contact">Copyright &copy;2020 All rights reserved | 中软小组007 </router-link>
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                </p>
+                </div>
 
+                <div class="col-12 col-md-6">
+                    <div class="footer-nav">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="albums-store.html">Albums</a></li>
+                            <li><a href="event.html">Billboard</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Footer Area Start ##### -->
 	</div>
 </template>
 <script>

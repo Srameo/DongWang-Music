@@ -24,7 +24,7 @@ Vue.use(VueRouter)
 	},
 	{
 		path:"/index",
-		component:index
+		component:main
 	},
 	{
 		path: "/register",
