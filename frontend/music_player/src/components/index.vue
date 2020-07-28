@@ -17,13 +17,13 @@
                         <!-- 后退前进刷新 -->
                         <div class="col-1 ">
                             <el-tooltip content="后退一步" :enterable="false" placement="bottom" effect="light">
-                                <i @click="back()" class="el-icon-arrow-left"></i>
+                                <i @click="back()" class="el-icon-arrow-left" style="color:Gold;"></i>
                             </el-tooltip>
                             <el-tooltip content="前进一步" :enterable="false" placement="bottom" effect="light">
-                                <i @click="go()" class="el-icon-arrow-right"></i>
+                                <i @click="go()" class="el-icon-arrow-right" style="color:lightgreen;"></i>
                             </el-tooltip>
                             <el-tooltip content="刷新页面" :enterable="false" placement="bottom" effect="light">
-                                <i @click="reload()" class="el-icon-refresh-right"></i>
+                                <i @click="reload()" class="el-icon-refresh-right" style="color:white;"></i>
                             </el-tooltip>
                         </div>
                         <!-- Menu -->
