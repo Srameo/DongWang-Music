@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
-
+// import './assets/styles/global.stylus'
 Vue.config.productionTip = false
 
 new Vue({
