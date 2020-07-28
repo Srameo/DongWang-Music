@@ -23,4 +23,9 @@ public class TestRecommendService {
         recommendService.saveUserSparseMatrix();
     }
 
+    @Test
+    void TestRecommendDataFormat() throws InterruptedException, IOException, ClassNotFoundException {
+        recommendService.recommendDataFormat();
+    }
+
 }

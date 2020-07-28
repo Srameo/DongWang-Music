@@ -1,6 +1,5 @@
 package com.music.service;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public interface RecommendService {
@@ -8,5 +7,5 @@ public interface RecommendService {
     boolean saveMusicSparseMatrix() throws IOException;
     boolean saveNewUserId() throws IOException;
     boolean saveNewMusicId() throws IOException;
-    boolean recommend() throws IOException, ClassNotFoundException, InterruptedException;
+    boolean recommendDataFormat() throws IOException, ClassNotFoundException, InterruptedException;
 }

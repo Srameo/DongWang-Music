@@ -3,6 +3,7 @@ package com.music.service.impl;
 import com.music.domain.SparseMatrixElement;
 import com.music.mapper.RecommendMapper;
 import com.music.service.RecommendService;
+import com.music.util.mapred.OldIdToNewIdMapReduce;
 import com.music.util.mapred.RecommendMapReduce;
 import com.music.util.path.RootPath;
 import org.apache.hadoop.mapreduce.Job;
@@ -130,19 +131,51 @@ public class RecommendServiceImpl implements RecommendService {
     }
 
     @Override
-    public boolean recommend() throws IOException, ClassNotFoundException, InterruptedException {
-        String[] args = new String[] {
-                "input/"
-        };
-        Job job = RecommendMapReduce.getJob(args);
+    public boolean recommendDataFormat() throws IOException, ClassNotFoundException, InterruptedException {
+        // 将数据库的数据存储到本地
+        this.saveNewUserId();
+        this.saveNewMusicId();
+        this.saveUserSparseMatrix();
+        this.saveMusicSparseMatrix();
+        System.out.println("save data finished!");
+
+        Job job = OldIdToNewIdMapReduce.getMusicIdFormatJob(new String[] {
+                RootPath.getRootPath() + "/input/data",
+                RootPath.getRootPath() + "/output/data"
+        });
         boolean complete = job.waitForCompletion(true);
         boolean successful = job.isSuccessful();
-        if (complete && successful) {
-            System.out.println("MapReduce成功！");
-            return true;
-        } else {
+        if (!complete || !successful) {
             System.err.println("MapReduce失败！");
             return false;
         }
+        System.out.println("Music ID format finished!");
+
+        job = OldIdToNewIdMapReduce.getUserIdFormatJob(new String[] {
+                RootPath.getRootPath() + "/input/data",
+                RootPath.getRootPath() + "/output/data",
+                RootPath.getRootPath() + "/output/formatted"
+        });
+        complete = job.waitForCompletion(true);
+        successful = job.isSuccessful();
+        if (!complete || !successful) {
+            System.err.println("MapReduce失败！");
+            return false;
+        }
+        System.out.println("User ID format finished!");
+
+        job = RecommendMapReduce.getJob(new String[] {
+                RootPath.getRootPath() + "/output/formatted",
+                RootPath.getRootPath() + "/output/temp"
+        });
+        complete = job.waitForCompletion(true);
+        successful = job.isSuccessful();
+        if (!complete || !successful) {
+            System.err.println("MapReduce失败！");
+            return false;
+        }
+        System.out.println("评分 ok！");
+        System.out.println("MapReduce 成功！");
+        return false;
     }
 }

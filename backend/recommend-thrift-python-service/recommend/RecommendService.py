@@ -2,9 +2,8 @@ import os
 
 import numpy
 import pandas
-import sparse
 from thrift.protocol import TBinaryProtocol
-from thrift.server import TServer
+from thrift.server import TServer, TNonblockingServer
 from thrift.transport import TSocket, TTransport
 
 from recommend.api import RecommendService
@@ -63,15 +62,17 @@ class RecommendServiceHandler(Iface):
                 while i < row:
                     numpy.savetxt(os.path.join(path, "%d.txt" % i), predict.predict(i).astype(numpy.int))
                     i += 1
+                    print("save txt {:.6%}".format(i))
                 return True
             except Exception as _:
                 print(_)
             return False
         else:
             path = self.musicOutputPath
-            sim = self.sim.argsort()[:, ::30].astype(numpy.int)
+            sim = self.sim.todense().argsort()[:, ::-1].astype(numpy.int)[:, 0:30]
             while i < row:
                 numpy.savetxt(os.path.join(path, "%d.txt" % i), sim[i, :])
+                print("save txt {:.6%}".format(i/row))
                 i += 1
 
     def getNewUserId(self, uid):
@@ -96,7 +97,7 @@ class RecommendServiceHandler(Iface):
         ans_list = []
         for id in mid:
             try:
-                ans_list.append(self.newMusicId[0].tolist().index(id))
+                ans_list.append(self.newMusicId[0].tolist()[0].index(id))
             except ValueError as _:
                 print(_)
                 ans_list.append(-1)
@@ -104,6 +105,8 @@ class RecommendServiceHandler(Iface):
 
     def getUserRecommendDetail(self, uid):
         id = self.getNewUserId([uid])[0]
+        if id == -1:
+            return []
         recommend_list = numpy.loadtxt(os.path.join(self.userOutputPath, "%d.txt" % id)).astype(numpy.int).tolist()
         if not self.newMusicIdReaded:
             data = pandas.read_csv(self.newMusicIDPath, sep="\t", header=None, usecols=[1])
@@ -113,6 +116,8 @@ class RecommendServiceHandler(Iface):
 
     def getMusicRecommendDetail(self, mid):
         id = self.getNewMusicId([mid])[0]
+        if id == -1:
+            return []
         recommend_list = numpy.loadtxt(os.path.join(self.musicOutputPath, "%d.txt" % id)).astype(numpy.int).tolist()
         if not self.newMusicIdReaded:
             data = pandas.read_csv(self.newMusicIDPath, sep="\t", header=None, usecols=[1])
@@ -128,7 +133,9 @@ class RecommendServiceHandler(Iface):
         data = sparseData(loadData(self.musicInputPath), row=mnum, column=tnum)
         # 以第一次的数据计算出之间的相关度
         self.sim = calculateSim(data)
-        sparse.save_npz("/Users/jinxin/Desktop/project/my/DongWang-Music/backend/output/npz/sim.npz", self.sim)
+        # self.sim = sparse.load_npz("/Users/jinxin/Desktop/project/my/DongWang-Music/backend/output/npz/sim.npz")
+        # 速度太慢。。。放弃
+        # sparse.save_npz("/Users/jinxin/Desktop/project/my/DongWang-Music/backend/output/npz/sim.npz", self.sim)
         # # 通过第一次计算的数据填充矩阵
         # self.x = addData(data, sim)
         # # 根据填充之后的矩阵的相似度
@@ -168,16 +175,18 @@ def main_thread():
     # from message.api import MessageService
     processor = RecommendService.Processor(handler)
     # 5. 创建 Thrift Server, 指明如何处理，监听什么端口，传输方式，传输协议
-    thriftServer = TServer.TSimpleServer(processor,
-                                         serverSocket,
-                                         transportFactory,
-                                         protocolFactory)
+    # thriftServer = TServer.TSimpleServer(processor,
+    #                                      serverSocket,
+    #                                      transportFactory,
+    #                                      protocolFactory)
+    thriftServer = TNonblockingServer.TNonblockingServer(processor,
+                                                         serverSocket,
+                                                         protocolFactory,
+                                                         protocolFactory)
     # 6. 启动 Thrift Server, 等待客户端的访问
     print("Python Thrift Server start ...")
     thriftServer.serve()
     print("Python Thrift Server stop ...")
 
 if __name__ == '__main__':
-    r = RecommendServiceHandler()
-    r.recommendMusic(18665, 71)
-    print(r.getMusicRecommendDetail(60008))
+    main_thread()
