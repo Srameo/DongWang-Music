@@ -47,6 +47,7 @@ public class SearchServiceImpl implements SearchService {
         for (SongInfo songInfo : songInfos) {
             List<SingerInfo> singerInfos = searchMapper.getSingerInfoBySongId(songInfo.getId());
             songInfo.setSingers(singerInfos);
+            songInfo.setTags(searchMapper.getStylesByMusicId(songInfo.getId()));
         }
         return songInfos;
     }

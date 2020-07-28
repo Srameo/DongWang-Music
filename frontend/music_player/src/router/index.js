@@ -1,11 +1,12 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Login from "../components/Login.vue"
-import index from '../components/index.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Login from "../components/Login.vue";
+import index from '../components/index.vue';
 import main from '../components/main.vue';
-import register from '../components/register.vue'
-import contact from '../components/contact.vue'
+import register from '../components/register.vue';
+import contact from '../components/contact.vue';
 import result from '../components/result.vue';
+import musicPlayer from '../components/MusicPlayer.vue';
 // import main from '../components/main.vue'
 
 Vue.use(VueRouter)
@@ -39,6 +40,10 @@ Vue.use(VueRouter)
 	{
 		path:'/result',
 		component:result
+	},
+	{
+		path: "/music",
+		component: musicPlayer
 	}
 ]
 

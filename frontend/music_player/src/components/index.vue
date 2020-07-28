@@ -34,15 +34,15 @@
                                     <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                                 </div>
 
-                                <!-- Nav Start -->
-                                <div class="classynav">
-                                    <ul>
-                                        <li><router-link to="/main">主页</router-link></li>
-                                        <li><a href="recommend.html">我的收藏</a></li>
-                                        <li><a href="albums-store.html">歌曲</a></li>
-                                        <li><a href="event.html">排行榜</a></li>
-                                        <li><router-link to="/contact">联系我们</router-link></li>
-                                    </ul>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><router-link to="/main">主页</router-link></li>
+                                    <li><a href="recommend.html">我的收藏</a></li>
+                                    <li><a href="albums-store.html">歌曲</a></li>
+                                    <li><a @click="toMusicPlayer">排行榜</a></li>
+                                    <li><router-link to="/contact">联系我们</router-link></li>
+                                </ul>
 
                                     <!-- Login/Register & Cart Button -->
                                     <div class="login-register-cart-button d-flex align-items-center">
@@ -152,6 +152,9 @@ export default {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 			this.opacity = Math.abs(Math.round(scrollTop)) / 400;
 			this.style = {background: `rgba(0, 0, 0,${this.opacity})`}
+        },
+        toMusicPlayer: function() {
+            this.$router.push('/music')
         },
         // 
         toResult() {

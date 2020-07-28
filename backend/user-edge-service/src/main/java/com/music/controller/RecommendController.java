@@ -7,10 +7,7 @@ import com.music.util.response.RecommendResponse;
 import com.music.util.response.Response;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;
@@ -18,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/recommend")
+@CrossOrigin
 public class RecommendController {
 
     @Resource
