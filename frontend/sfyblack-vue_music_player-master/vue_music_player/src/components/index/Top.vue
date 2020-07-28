@@ -1,6 +1,6 @@
 <template>
 	<!-- 页面顶部组件 -->
-	<div id="top" v-waves>
+	<div id="top" >
 		<div class="lamp">
 			<span class="red"></span>
 			<span class="yellow"></span>
