@@ -16,12 +16,10 @@
 
 <script>
 export default {
-    // props: [singers, name, id],
+    props: ['singers', 'name', 'id'],
     data() {
         return {
             img: require('../../assets/bg-img/breadcumb.jpg'),
-            singers: [],
-            name: ""
         }
     }
 }

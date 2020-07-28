@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="col-12 text-center">
-                    <button class="btn oneMusic-btn mt-30" type="submit">Send <i class="fa fa-angle-double-right"></i></button>
+                    <button class="btn oneMusic-btn mt-30" type="submit">Send<i class="fa fa-angle-double-right"></i></button>
                 </div>
             </div>
         </div>
@@ -42,23 +42,58 @@
 <script>
 import RecommendMusic from './recommend-music'
 import Comment from './comment'
+import axios from 'axios'
 
 export default {
-    props: ['id'],
+    props: ['id', 'singers', 'nme'],
     components: {
         RecommendMusic,
         Comment
     },
     data() {
         return {
-            name: "憨憨",
-            singers:[{id: 1, name: "憨憨"}, {id: 2, name: "智障"}],
+            // name: "憨憨",
+            // singers:[{id: 1, name: "憨憨"}, {id: 2, name: "智障"}],
             cmts: ["111", "222", "333", "444"],
             recommendMusics: [],
             img: require('../../assets/bg-img/breadcumb.jpg'),
-            name: "",
+            // name: "",
         }
-    }
+    },
+	methods:{
+		
+		async getMusicInfo(id) {
+			axios({
+				url: 'http://127.0.0.1:8882/music/get',
+				method: 'post',
+				params: {
+					id: id
+				}
+			}).then(res => {
+				this.recommendMusics.push(res.data.songInfo)
+			}).catch(err => {
+				console.log(err);
+			})
+		}
+	},
+	mounted() {
+		axios({
+			url: 'http://127.0.0.1:8882/recommend/music',
+			method: 'post',
+			params: {
+				id: this.id
+			}
+		}).then(res => {
+			console.log(res.data);
+			this.recommendMusics = new Array()
+			for (let i = 0; i < res.data.ids.length; i++) {
+				this.getMusicInfo(res.data.ids[i])
+			}
+			console.log(this.recommendMusics)
+		}).catch(err => {
+			console.log(err);
+		})
+	}
 }
 </script>
 
