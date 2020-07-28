@@ -9,6 +9,7 @@ Vue.use(VueRouter)
 	{
 		path: "/",
 		component:index
+		// redirect: "/login"
 	},
 	{
 		path: "/login",

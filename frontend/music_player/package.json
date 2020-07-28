@@ -9,7 +9,12 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+<<<<<<< HEAD
     "element-ui": "^2.13.2",
+=======
+    "element-ui": "^2.4.5",
+    "stylus": "^0.54.8",
+>>>>>>> 9572d80e677ccd9072e83f074b32f3fc59ee7fe5
     "stylus-loader": "^3.0.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"

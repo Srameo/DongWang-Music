@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
 // import './assets/styles/global.stylus'
+import "./assets/css/style.css"
 Vue.config.productionTip = false
 
 new Vue({
