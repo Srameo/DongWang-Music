@@ -1,0 +1,39 @@
+<template>
+    <section class="breadcumb-area bg-img bg-overlay">
+        <div class="bradcumbContent">
+            <h2>album</h2>
+        </div>
+    </section>
+</template>
+
+<script>
+import bgImg from '../../assets/core-img/favicon.ico'
+
+export default {
+    name: 'top',
+    data() {
+        return {
+            img: bgImg
+        }
+    }
+}
+</script>
+
+<style scoped>
+.bg-overlay {
+  position: relative;
+  z-index: 2;
+  background-position: center center;
+  background-image: url(../../assets/bg-img/breadcumb.jpg);
+  background-size: cover; }
+  .bg-overlay::after {
+    background-color: rgba(0, 0, 0, 0.65);
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: ""; }
+
+</style>
