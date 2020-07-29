@@ -55,6 +55,10 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="player">
+			<audio :src='musicUrl' controls autoplay></audio>
+		</div>
 	</section>
 </template>
 
@@ -79,16 +83,33 @@
 				activeName: "first",
 				// name: "",
 				cmt: "",
-				uid: null
+				uid: null,
+				musicUrl: ""
 			};
 		},
 		methods: {
-			toCloud() {
-				window.open("https://music.163.com/#/song?id=" + this.id)
-				// 播放次数
+			// 播放歌曲
+			playMusic() {
 				let params = new URLSearchParams();
 				params.append("id", this.id)
 				this.$http.post("/music/play", params)
+				axios({
+					url: 'https://autumnfish.cn/song/url',
+					method: 'get',
+					params: {
+						id: this.id
+					}
+				}).then(res => {
+					// console.log(res)
+					let url = res.data.data[0].url
+					// console.log(this.$parent)
+					// 直接获取父组件，可以修改任意的值
+					this.musicUrl = url;
+				})
+			},
+			toCloud() {
+				window.open("https://music.163.com/#/song?id=" + this.id)
+				// 播放次数
 			},
 			async getMusicInfo(id) {
 				axios({
@@ -136,6 +157,7 @@
 			}
 		},
 		created() {
+			this.playMusic()
 			let token = window.sessionStorage.getItem('userToken')
 			if (token) {
 				console.log(token)
