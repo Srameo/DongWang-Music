@@ -1482,7 +1482,7 @@ img {
       flex: 0 0 35px;
       max-width: 35px;
       width: 35px;
-      height: 35px;
+      height: 25px;
       border: 1px solid #000;
       text-align: center; }
       .contact-content .single-contact-info .icon span {
@@ -1494,7 +1494,7 @@ img {
 .contact-form-area .form-control {
   position: relative;
   z-index: 2;
-  height: 45px;
+  height: 20px;
   width: 100%;
   font-size: 14px;
   margin-top: 15px;
@@ -1511,7 +1511,7 @@ img {
     box-shadow: none;
     border-bottom: 1px solid #000000; }
 .contact-form-area textarea.form-control {
-  height: 160px; }
+  height: 130px; }
 
 .has-bg-img {
   position: relative;
