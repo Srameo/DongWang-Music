@@ -23,6 +23,11 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
+    public void addNum(int id) {
+        musicMapper.addNum(id);
+    }
+
+    @Override
     public void starMusic(StarInfo starInfo) {
         musicMapper.starMusic(starInfo);
     }

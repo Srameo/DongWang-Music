@@ -38,7 +38,7 @@
                         v-for="(item, index) in list"
                         :key="index"
                       >
-                        <div class="first-part d-flex align-items-center">
+                        <div class="first-part d-flex align-items-center" @click="toMusicPlayer(item.id)">
                           <div class="content-">
                             <h6>{{ item.name }}</h6>
                             <p>{{ item.singers[0].name }}</p>
@@ -79,7 +79,7 @@
                         v-for="(item, index) in list"
                         :key="index"
                       >
-                        <div class="first-part d-flex align-items-center">
+                        <div class="first-part d-flex align-items-center" @click="toMusicPlayer(item.id)">
                           <div class="content-">
                             <h6>{{ item.name }}</h6>
                             <p>{{ item.singers[0].name }}</p>
@@ -161,6 +161,9 @@ export default {
       });
   },
   methods: {
+	  toMusicPlayer(id) {
+		  this.$router.push("/music?id=" + id)
+	  },
     // 点击导航栏时更改tag标签
     handleClick(tab, event) {
       console.log(tab, event);

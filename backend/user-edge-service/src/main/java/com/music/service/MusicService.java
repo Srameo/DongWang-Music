@@ -14,6 +14,8 @@ public interface MusicService {
 
     List<String> getAllTags();
 
+    void addNum(int id);
+
     /**
      * 收藏歌曲
      */

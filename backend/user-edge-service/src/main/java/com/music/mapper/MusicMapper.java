@@ -3,10 +3,7 @@ package com.music.mapper;
 import com.music.domain.CommentInfo;
 import com.music.domain.HistoryInfo;
 import com.music.domain.StarInfo;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -40,6 +37,9 @@ public interface MusicMapper {
 
     @Select("SELECT uid, mid, content, comment_time AS commentTime FROM comment WHERE mid=#{mid}")
     List<CommentInfo> getCommentsByMusicId(@Param("mid") int id);
+
+    @Update("UPDATE music SET num=num+1 WHERE id=#{id}")
+    void addNum(@Param("id") int id);
 
     /**
      * 删除评论

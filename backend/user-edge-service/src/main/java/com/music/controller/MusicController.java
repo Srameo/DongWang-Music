@@ -80,4 +80,11 @@ public class MusicController {
         return Response.SUCCESS;
     }
 
+    @RequestMapping(value = "/play", method = RequestMethod.POST)
+    @ResponseBody
+    public Response play(@RequestParam("id") int id) {
+        musicService.addNum(id);
+        return Response.SUCCESS;
+    }
+
 }
