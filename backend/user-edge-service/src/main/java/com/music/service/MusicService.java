@@ -29,6 +29,8 @@ public interface MusicService {
      */
     void commentMusic(CommentInfo commentInfo);
 
+    List<CommentInfo> getCommentsByMusicId(int id);
+
     /**
      * 删除评论
      */

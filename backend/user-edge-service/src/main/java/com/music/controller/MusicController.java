@@ -6,6 +6,7 @@ import com.music.domain.StarInfo;
 import com.music.mapper.SearchMapper;
 import com.music.service.MusicService;
 import com.music.util.date.GetDate;
+import com.music.util.response.CommentsResponse;
 import com.music.util.response.MusicResponse;
 import com.music.util.response.Response;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,13 @@ public class MusicController {
             songInfo.setTags(searchMapper.getStylesByMusicId(id));
         }
         return new MusicResponse(songInfo);
+    }
+
+    @RequestMapping(value = "/get/comments", method = RequestMethod.POST)
+    @ResponseBody
+    public Response getMusicComments(@RequestParam("id") int id) {
+        List<CommentInfo> commentInfos = musicService.getCommentsByMusicId(id);
+        return new CommentsResponse(commentInfos);
     }
 
     @RequestMapping(value = "/star", method = RequestMethod.POST)

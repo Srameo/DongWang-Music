@@ -1,5 +1,6 @@
 package com.music.util.response;
 
+import com.music.domain.CommentInfo;
 import com.music.domain.SongInfo;
 
 public class MusicResponse extends Response {

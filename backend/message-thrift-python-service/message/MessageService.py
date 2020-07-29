@@ -4,7 +4,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 # 导入 thrift 所需模块
-from thrift.server import TServer
+from thrift.server import TNonblockingServer
 from thrift.transport import TSocket, TTransport
 from thrift.protocol import TBinaryProtocol
 
@@ -61,10 +61,14 @@ if __name__ == "__main__":
     # from message.api import MessageService
     processor = MessageService.Processor(handler)
     # 5. 创建 Thrift Server, 指明如何处理，监听什么端口，传输方式，传输协议
-    thriftServer = TServer.TSimpleServer(processor,
-                                         serverSocket,
-                                         transportFactory,
-                                         protocolFactory)
+    # thriftServer = TServer.TSimpleServer(processor,
+    #                                      serverSocket,
+    #                                      transportFactory,
+    #                                      protocolFactory)
+    thriftServer = TNonblockingServer.TNonblockingServer(processor,
+                                                         serverSocket,
+                                                         protocolFactory,
+                                                         protocolFactory)
     # 6. 启动 Thrift Server, 等待客户端的访问
     print("Python Thrift Server start ...")
     thriftServer.serve()
