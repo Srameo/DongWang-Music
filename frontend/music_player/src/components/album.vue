@@ -8,7 +8,7 @@
                       <h2>推荐歌单</h2>
                   </div>
                   <div class="al-float-left">
-                      <img src="./assets/core-img/time.jpg">
+                      <img src="">
                   </div>
                   <div class="al-float-right">
                       <h4>歌单名</h4>
@@ -38,6 +38,7 @@
                                 </div>
                                 
                     </div>
+            </el-tab-pane></el-tabs>
               </div>
           </div>
       </div>

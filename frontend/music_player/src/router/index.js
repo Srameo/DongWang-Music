@@ -17,7 +17,7 @@ import result from '../components/result.vue';
 import rank from '../components/rank.vue';
 import musicPlayer from '../components/MusicPlayer.vue';
 import mvs from '../components/mvs.vue';
-// import album from '../components/album.vue'
+import album from '../components/album.vue'
 
 Vue.use(VueRouter)
 
@@ -63,10 +63,10 @@ Vue.use(VueRouter)
 		path:'/mvs',
 		component: mvs
 	},
-	// {
-	// 	path:'/album',
-	// 	component:album
-	// }
+	{
+		path:'/album',
+		component:album
+	}
 ]
 
 const router = new VueRouter({
