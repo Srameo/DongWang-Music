@@ -67,15 +67,15 @@
                                         </div >
                                         <!-- Login/Register -->
                                         <div class="login-register-btn mr-50 ">
-                                            <router-link to="/login" id="loginBtn" v-if="notLogin">Login </router-link>
-                                            <router-link to="/register" id="registerBtn" v-if="notLogin">Register</router-link>
+                                            <router-link to="/login" id="loginBtn" v-if="notLogin">登录 </router-link>
+                                            <router-link to="/register" id="registerBtn" v-if="notLogin">注册</router-link>
                                             <el-button type="text" v-else @click="logout">Quit</el-button>
                                         </div>
 
                                         <!-- Cart Button   考虑模态框-->
-                                        <div class="cart-btn">
+                                        <!-- <div class="cart-btn">
                                             <a class="chuanpu-picture" href="../assets/core-img/timg.jpg"><p><span class="icon-favorites "></span></p></a>
-                                        </div>
+                                        </div> -->
                                         <!-- <href="//music.163.com/outchain/player?type=2&id=36990266&auto=1&height=66"><p><span class="icon-favorites "></span></p></a> --> 
 
                                     </div>

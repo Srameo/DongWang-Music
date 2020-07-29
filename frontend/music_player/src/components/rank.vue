@@ -8,11 +8,17 @@
 -->
 <template>
   <div>
-    <div class="breadcumb-area bg-img bg-overlay nav-background">
-              <div class="bradcumbContent">
-            <h2>排行榜</h2>
-        </div>
-    </div>
+     <section class="breadcumb-area bg-img bg-overlay">
+      <div class="bradcumbContent">
+        <span class="sub-title">没人比我更懂</span>
+        <h2>   
+              <div>
+                <el-avatar src="http://p1.music.126.net/0m-U9koTLThkE45gCOsFKw==/109951163695436549.jpg"></el-avatar>
+              </div>
+            排行榜
+          </h2>
+      </div>
+    </section>
     <div class="album-catagory section-padding-100-0">
       <div class="container">
         <div class="row">
