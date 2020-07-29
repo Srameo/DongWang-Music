@@ -435,7 +435,9 @@
       registerConfirm(){
         this.$refs.registerFormRef.validate(async valid =>{
 					// console.log(valid);
-					if(!valid) return;
+          if(!valid) return;
+          // let params = new URLSearchParams();
+          // params.append('email', this.registerForm.email);       //你要传给后台的参数值 key/value
 					const result = await this.$http.post("/user/register");
 					console.log(result);
 				})
@@ -443,7 +445,9 @@
 
       async sendVerifyCode(){
         this.notSendVerifyCode = false;
-        const {data: res} = await this.$http.post("/user/sendVerifyCode");
+        // console.log(this.registerForm.email)
+        let _this = this;
+        const {data: res} = await this.$http.post("/user/sendVerifyCode", {email:_this.registerForm.email});
         console.log(res);
       }
 
