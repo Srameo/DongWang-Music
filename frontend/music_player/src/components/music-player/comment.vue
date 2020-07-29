@@ -1,16 +1,16 @@
 <template>
-    <span >{{txt}}</span>
+	<span>{{txt}}</span>
 </template>
 
 <script>
-export default {
-    props:['txt'],
-    data() {
-        return {
+	export default {
+		props: ['txt'],
+		data() {
+			return {
 
-        }
-    }
-}
+			}
+		}
+	}
 </script>
 
 <style scoped>

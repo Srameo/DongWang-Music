@@ -49,7 +49,7 @@
                 <div class="col-12 col-lg-4" >
                     <div class="map-area mb-100"> 
                         <iframe width="230" 
-                        height="340" 
+                        height="0" 
                         frameborder="0"
                         scrolling="no"
                         marginheight="0"
@@ -58,11 +58,52 @@
                         </iframe>
                     </div> 
                 </div>
-                <div class="col-12 col-lg-1" ></div>
+                <div class="col-12 col-lg-1"></div>
                 <div class="col-12 col-lg-3" >
-                    <div >
-                        <el-image :src="require('../../assets/core-gif/IMG_5858.gif')"></el-image>
-                    </div>
+                    <el-card class="box-card">
+                        <div class="text item">
+                            <section class="contact-area section-padding-2-50">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <!-- Contact Form Area -->
+                                            <div class="contact-form-area">
+                                                <!-- <div>联系我们</div> -->
+                                                <form action="#" method="post">
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="name" placeholder="Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <input type="email" class="form-control" id="email" placeholder="E-mail">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <textarea name="message" class="form-control" id="message" cols="30" rows="3" placeholder="Message"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 text-center">
+                                                            <button class="btn oneMusic-btn " type="submit">Send <i class="fa fa-angle-double-right"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </el-card>
+                    
                 </div>
             </div>
         </div>
@@ -76,5 +117,18 @@ export default {
 </script>
 
 <style scoped>
+.contact-area{
+    height:500px;
+}
+  .text {
+    font-size: 14px;
+  }
 
+  .item {
+    padding: 18px 0;
+  }
+
+  .box-card {
+    width: 480px;
+  }
 </style>

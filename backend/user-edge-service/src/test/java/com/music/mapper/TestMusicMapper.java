@@ -42,4 +42,8 @@ public class TestMusicMapper {
         musicMapper.cancelCommentMusic(1, 1, date);
     }
 
+    @Test
+    public void testGetAllStars() {
+        System.out.println(musicMapper.getAllStars(5));
+    }
 }

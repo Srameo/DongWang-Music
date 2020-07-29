@@ -2,6 +2,7 @@ package com.music.mapper;
 
 import com.music.domain.CommentInfo;
 import com.music.domain.HistoryInfo;
+import com.music.domain.SongInfo;
 import com.music.domain.StarInfo;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,11 @@ public interface MusicMapper {
      */
     @Delete("delete from stars where uid = #{u} and mid = #{m}")
     void cancelStarMusic(@Param("u") int uid, @Param("m") int mid);
+
+    @Select("SELECT id, name, num FROM music WHERE id in (" +
+            "   SELECT mid AS id FROM stars WHERE uid=#{id}" +
+            ")")
+    List<SongInfo> getAllStars(@Param("id") int id);
 
     /**
      * 评论歌曲
