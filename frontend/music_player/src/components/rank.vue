@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-28 16:07:31
- * @LastEditTime: 2020-07-29 00:36:11
+ * @LastEditTime: 2020-07-29 13:02:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \music_player\src\components\rank.vue
@@ -65,7 +65,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   data() {
     return {
@@ -73,33 +72,28 @@ export default {
       ranks: [],
       // 榜单数据
       list: [],
+      // 歌曲类别
+      tag:[],
     };
   },
   created() {
-    // 获取全部排行榜
-    axios({
-      url: "https://autumnfish.cn/top/playlist/",
-      method: "get",
-      params: {
-        limit: 10,
-      },
-    }).then((res) => {
+    // 获取全部歌曲标签名
+    this.$http.get('/music/tags').then(res=>{
       console.log(res)
-    });
-
+    })
     // 获取某个排行榜内容
-    axios({
-      url: "https://autumnfish.cn/top/playlist/",
-      method: "get",
-      params: {
-        limit: 10,
-        offset: 0,
-        cat: "全部",
-      },
-    }).then((res) => {
-      console.log(res);
-      this.list = res.data.playlists;
-    });
+    // axios({
+    //   url: "https://autumnfish.cn/top/playlist/",
+    //   method: "get",
+    //   params: {
+    //     limit: 10,
+    //     offset: 0,
+    //     cat: "全部",
+    //   },
+    // }).then((res) => {
+    //   console.log(res);
+    //   this.list = res.data.playlists;
+    // });
   },
   methods: {
     handleClick(tab, event) {
