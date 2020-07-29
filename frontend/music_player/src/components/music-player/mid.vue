@@ -8,16 +8,17 @@
 					<span>{{ nme }}</span>
 					<div class="all-info">
 						<div class="singer-info" v-for="singer in singers" :key="singer.id">
-							<!-- <i class="el-icon-user"></i> -->
+							<i class="el-icon-user icon" style="font-size:25px"></i>
 							<span class="singer-name">
 								{{ singer.name }}
 							</span>
 						</div>
 						<ul class="song-info">
-							<li>
-								<div>标签: <span v-for="(tag, index) in tags">{{tag }} </span></div>
+							<li class="info-content">
+								<div><i class="el-icon-house icon"></i>标签: <span v-for="(tag, index) in tags">{{tag}} </span></div>
 							</li>
-							<li>播放量：{{num}}</li>
+							<li class="info-content"><i class="el-icon-s-data icon"></i><span>播放量：{{num}}</span></li>
+              <li class="info-content"><el-button type="warning" icon="el-icon-star-off" circle></el-button>收藏</li>
 						</ul>
 					</div>
 				</div>
@@ -35,7 +36,10 @@
 						<!-- 所有评论 -->
 						<div class="comment-item" v-for="(c, index) in cmts" :key="index">
 							<comment :txt="c.content"></comment>
-							<span>{{ c.commentTime }}</span>
+              <div class="comment-time">
+                		<span>{{ c.commentTime }}</span>
+              </div>
+					
 						</div>
 					</el-tab-pane>
 				</el-tabs>
@@ -44,7 +48,7 @@
 				<!-- 进行评论 -->
 				<div class="col-12">
 					<div class="form-group">
-						<h2>评论</h2>
+						<h3>评论</h3>
 						<textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="我的评论" v-model="cmt"></textarea>
 					</div>
 				</div>
@@ -91,13 +95,9 @@
 				this.$http.post("/music/play", params)
 			},
 			async getMusicInfo(id) {
-				axios({
-						url: "http://127.0.0.1:8882/music/get",
-						method: "post",
-						params: {
-							id: id,
-						},
-					})
+        let params = new URLSearchParams();
+        params.append("id", id)
+        this.$http.post("/music/get", params)
 					.then((res) => {
 						let data = res.data.songInfo;
 						data.singer_name = data.singers[0].name
@@ -133,7 +133,7 @@
 							console.log(err);
 						})
 				})
-			}
+			},
 		},
 		created() {
 			let token = window.sessionStorage.getItem('userToken')
@@ -217,11 +217,12 @@
 	}
 
 	.song-info {
+    font-size: 20px;
 		margin-top: 20px;
 	}
 
 	.singer-name {
-		font-size: 16px;
+		font-size: 25px;
 	}
 
 	.comment-item {
@@ -232,12 +233,13 @@
 		border-bottom-style: solid;
 		border-color: #ededed;
 	}
-
-	.form-control {
-		position: relative;
-		overflow: hidden;
-		height: 102px;
-		border: solid 1px #ececec;
-		background-color: #f5f5f5;
-	}
+.btn{
+ border: 1px solid #000;
+}
+.icon{
+  float: left;
+    width: 20px;
+    height: 20px;
+    margin: 5px 7px 0 0;
+}
 </style>

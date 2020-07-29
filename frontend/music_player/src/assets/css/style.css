@@ -327,7 +327,7 @@ img {
 
 /* :: 3.8.0 oneMusic Button */
 .oneMusic-btn {
-  background-color: aqua;
+  background-color: rgb(255, 255, 255);
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
   position: relative;
@@ -1497,10 +1497,10 @@ img {
   height: 45px;
   width: 100%;
   font-size: 14px;
+  margin-top: 15px;
   margin-bottom: 15px;
-  border: none;
-  border-radius: 0;
-  padding: 15px 0;
+  border-radius: 10px;
+  padding: 10px 0;
   font-style: italic;
   color: #b3b3b3;
   border: solid 1px #ececec;
