@@ -31,7 +31,7 @@
                                 <!-- 歌名 -->
                                 <span>{{ item.name }}</span>
                                 <!-- mv的图标 -->
-                                <span v-if="item.mvid != 0" class="iconfont icon-mv"></span>
+                                <span v-if="item.mvid != 0" class="iconfont icon-mv "><i class="el-icon-video-play"></i></span>
                             </div>
                             <!-- 二级标题 -->
                             <span v-if="item.alias.length != 0">{{ item.alias[0] }}</span>
@@ -58,7 +58,7 @@
                         <span class="num">{{ item.playCount }}</span>
                     </div>
                     <img :src="item.coverImgUrl" alt="" />
-                    <span class="iconfont icon-play"></span>
+                    <span class="iconfont icon-play"><i class ="el-icon-caret-right"></i></span>
                     </div>
                     <p class="name">{{ item.name }}</p>
                 </div>
@@ -70,7 +70,7 @@
                     <div class="img-wrap">
                     <!-- 封面 -->
                     <img :src="item.cover" alt="" />
-                    <span class="iconfont icon-play"></span>
+                    <span class="iconfont icon-play"><i class ="el-icon-caret-right"></i></span>
                     <div class="num-wrap">
                         <div class="iconfont icon-play"></div>
                         <!-- 播放次数 -->
@@ -96,13 +96,10 @@
 <script>
   // 导入 aixos
   import axios from 'axios'
-  import top from './contact/top'
+//   import top from './contact/top'
   import bgImg from '../assets/bg-img/bg-3.jpg'
   export default {
     name: 'result',
-    components:{
-        top,
-    },
     data() {
       return {
         img: bgImg,
@@ -132,7 +129,7 @@
         }
       }).then(res => {
         console.log(res)
-        
+
         this.songList = res.data.result.songs
         // 计算歌曲时间
         for (let i = 0; i < this.songList.length; i++) {
@@ -153,7 +150,7 @@
       this.InitializeData()
 	  this.getDataByKeywordsAsync({
 			V: this,
-			keywords: this.search
+			// keywords: this.search
 		})
     },
     // 侦听器
@@ -177,7 +174,7 @@
             break
           case 'mv':
             type = 1004
-            limit = 10
+            limit =8
             break
 
           default:
@@ -253,6 +250,7 @@
               }
             }
           }
+          this.$router.go(0)
         })
       }
     },
@@ -287,6 +285,132 @@
 </script>
 
 <style>
+.el-tabs__active-bar {
+  background-color: #c3473a;
+}
+
+.el-tabs__item:hover,
+.el-tabs__item.is-active {
+  color: #c3473a;
+}
+
+.el-table th > .cell {
+  font-weight: normal;
+  color: black;
+}
+
+.el-pagination {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #dd6d60;
+}
+
+.el-table {
+  border-bottom: none;
+  border-collapse: collapse;
+}
+
+.el-table.playlit-table th:nth-child(2) {
+  width: 130px;
+}
+
+.el-table.playlit-table th:nth-child(3) {
+  width: 300px;
+}
+
+.el-table.playlit-table th:nth-child(4) {
+  width: 200px;
+}
+
+.el-table tbody {
+  border-bottom: none;
+}
+
+.el-table td {
+  border-bottom: none;
+}
+
+.el-table td:first-child {
+  padding-left: 10px;
+}
+
+.el-table th {
+  font-weight: normal;
+}
+
+.el-table th:first-child {
+  width: 50px;
+}
+
+.el-table th:nth-child(2) {
+  width: 300px;
+}
+
+.el-table th:nth-child(3) {
+  width: 200px;
+}
+
+.el-table .song-wrap > span {
+  margin-top: 20px;
+  display: inline-block;
+  color: #bebebe;
+}
+
+.el-table .song-wrap .icon-mv {
+  padding-left: 5px;
+  color: #dd6d60;
+}
+
+.el-table .img-wrap {
+  position: relative;
+  width: 70px;
+  height: 70px;
+}
+
+.el-table .img-wrap img {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+}
+
+.el-table .img-wrap .icon-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  color: #dd6d60;
+  font-size: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.el-table .img-wrap .icon-play::before {
+  transform: translateX(1px);
+}
+
+.el-table tr:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+.el-table tr:hover {
+  background-color: #f5f7fa;
+}
+
+.discovery-container .el-carousel__container {
+  height: 230px;
+}
+ .icon-mv {
+  padding-left: 5px;
+  color: #dd6d60;
+}
 .hello {
     margin: 120px
 }
