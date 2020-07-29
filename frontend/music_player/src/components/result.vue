@@ -132,6 +132,7 @@
         }
       }).then(res => {
         console.log(res)
+        
         this.songList = res.data.result.songs
         // 计算歌曲时间
         for (let i = 0; i < this.songList.length; i++) {
@@ -176,7 +177,7 @@
             break
           case 'mv':
             type = 1004
-            limit = 8
+            limit = 10
             break
 
           default:
