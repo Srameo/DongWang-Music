@@ -1,7 +1,9 @@
 <template>
     <section class="breadcumb-area bg-img bg-overlay">
         <div class="bradcumbContent">
-            <p>中软小组007</p>
+            <p>中软小组</p>
+            <el-avatar src="http://p2.music.126.net/P6onbFsTVrhKa4m1pu0eSg==/2938994581268613.jpg"></el-avatar>
+            
             <h2>Contact</h2>
         </div>
     </section>
