@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-07-28 15:54:09
+ * @LastEditTime: 2020-07-29 12:21:21
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \music_player\src\router\index.js
+ */ 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Login from "../components/Login.vue";
