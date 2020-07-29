@@ -51,7 +51,7 @@
 											<router-link to="/album">我的收藏</router-link>
 										</li>
 										<li>
-											<router-link to="/mvs">歌曲</router-link>
+											<router-link to="/mvs">歌曲MV</router-link>
 										</li>
 										<li>
 											<router-link to="/rank">排行榜</router-link>
@@ -133,7 +133,7 @@
 									<router-link to="/main">主页</router-link>
 								</li>
 								<li>
-									<router-link to="/mvs">歌曲</router-link>
+									<router-link to="/mvs">歌曲MV</router-link>
 								</li>
 								<li>
 									<router-link to="/rank">排行榜</router-link>
@@ -234,10 +234,31 @@
 </script>
 <style>
 	
-	#scrollUp {  background-color: #000000;
+	#scrollUp {
+  background-color: #000000;
   right: 50px;
   position: fixed;
-  z-index: 1000;  border-radius: 0;  bottom: 50px;  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);  color: grey;  font-size: 24px;  height: 40px;  line-height: 40px;  right: 50px;  text-align: center;  width: 40px;  -webkit-transition-duration: 500ms;  transition-duration: 500ms;  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.15); }  @media only screen and (max-width: 767px) {    #scrollUp {      right: 30px;      bottom: 30px; } }  #scrollUp:hover {    background-color: #fff;  }
+  z-index: 1000;
+  border-radius: 0;
+  bottom: 50px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+  color: grey;
+  font-size: 24px;
+  height: 40px;
+  line-height: 40px;
+  right: 50px;
+  text-align: center;
+  width: 40px;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.15); }
+  @media only screen and (max-width: 767px) {
+    #scrollUp {
+      right: 30px;
+      bottom: 30px; } }
+  #scrollUp:hover {
+    background-color: #fff;
+  }
   
 	.header-area {
 		position: absolute;
