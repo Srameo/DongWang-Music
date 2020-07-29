@@ -162,10 +162,12 @@ export default {
             if (this.inputValue == '') {
             // 提示用户
             this.$message.warning('请输入内容')
-            }else{
+            }else if(this.$route.path != '/result?q='+this.inputValue){
             // 去搜索页 携带数据
             this.$router.push('/result?q='+this.inputValue)
-            } 
+            }  else {
+				// this.$route.
+			}
         },
 		back () { // 后退
 			this.$router.go(-1)
