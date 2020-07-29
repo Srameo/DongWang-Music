@@ -53,7 +53,7 @@ Vue.use(VueRouter)
 	},
 	{
 		path:'/rank',
-		component:rank,
+		component:rank
 	},
 	{
 		path: "/music",

@@ -435,16 +435,59 @@
       registerConfirm(){
         this.$refs.registerFormRef.validate(async valid =>{
 					// console.log(valid);
-					if(!valid) return;
-					const result = await this.$http.post("/user/register");
-					console.log(result);
+          if(!valid) return;
+          let params = new URLSearchParams();
+          params.append('username', this.registerForm.username);
+          params.append('password', this.registerForm.password);
+          params.append('email', this.registerForm.email);
+          params.append('age', this.registerForm.age);
+          params.append('gender', this.registerForm.gender);
+          params.append('style', this.registerForm.style);
+          params.append('verifyCode', this.registerForm.verifyCode);
+					const {data:res} = await this.$http.post("/user/register", params);
+          // console.log(res);
+          if(res.code == 0){
+            this.$alert('恭喜您注册成功', '注册状态', {
+              confirmButtonText: '确定',
+              callback: action => {
+                this.$router.push({path:"/"});
+              }
+            });
+          }
+          else{
+            // 注册失败
+            console.log("注册失败");
+            this.$message.error(res.message);
+            this.notSendVerifyCode = true;
+          }
 				})
       },
 
-      async sendVerifyCode(){
+      sendVerifyCode(){
         this.notSendVerifyCode = false;
-        const {data: res} = await this.$http.post("/user/sendVerifyCode");
-        console.log(res);
+        // console.log(this.registerForm.email)
+        let params = new URLSearchParams();
+        params.append('email', this.registerForm.email);
+        let _this = this
+        this.$http.post("/user/sendVerifyCode", params).then(res => {
+          console.log(res);
+          if(res.data.code == 0){
+            // 发送成功
+            // console.log(1);
+            this.$message({
+              message: "验证码已发送",
+              type: "success"
+            });
+          }
+          else{
+            // 发送失败
+            this.$message.error("验证码发送失败！");
+            this.notSendVerifyCode = true;
+          }
+        }).catch(err => {
+          console.error(err);
+        })
+
       }
 
 		}

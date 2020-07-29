@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface UserMapper {
-    @Select("select id,username,password,email,age,gender,location from users where username = #{username}")
+    @Select("select id,username,password,email,age,gender from users where username = #{username}")
     UserInfo getUserByName(@Param("username") String username);
 
-    @Insert("insert into users(username,password,email,age,gender,location) " +
-            "values(#{u.username},#{u.password},#{u.email},#{u.age},#{u.gender},#{u.location})")
+    @Insert("insert into users(username,password,email,age,gender) " +
+            "values(#{u.username},#{u.password},#{u.email},#{u.age},#{u.gender})")
     void registerUser(@Param("u") UserInfo userInfo);
 
     @Insert("insert into user_style(uid,sid) values(#{u.uid},#{u.sid})")

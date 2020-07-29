@@ -27,7 +27,6 @@ public class TestUserMapper {
         userInfo.setEmail("zhangsan@email.com");
         userInfo.setAge(20);
         userInfo.setGender(0);
-        userInfo.setLocation("tianjin");
         userMapper.registerUser(userInfo);
     }
 
