@@ -1,12 +1,14 @@
 <template>
     <div class="container">
         <div class="row">
-            <el-image class="col-12 col-lg-4" :src="img"></el-image>
-            <div class="col-12 col-lg-4">
-                <div class="row">
-                    {{name}}
+			<div class="col-12 col-lg-6">
+				<!-- <el-image :src="img"></el-image> -->
+                <div>
+                    <h4>{{name}}</h4>
                 </div>
-                <div class="row">
+			</div>
+            <div class="col-12 col-lg-6">
+                <div>
                     <span v-for="singer in singers" :key="singer.id">{{singer.name}}</span>
                 </div>
             </div>

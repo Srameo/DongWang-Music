@@ -5,20 +5,21 @@
                 <div class="col-12 col-lg-4">
                     <!-- 歌曲信息界面 -->
                     <el-image :src="img"></el-image>
-                    <span>{{name}}</span>
+                    <span>{{nme}}</span>
                     <div v-for="singer in singers" :key="singer.id">
                         <span style="'{float: left}'">
                             {{singer.name}}
                         </span>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
                     <!-- 所有评论 -->
                     <div v-for="(c, index) in cmts" :key="index">
                         <comment :txt="c"></comment>
                     </div>
                 </div>
-                <div class="col-12 col-lg-2">
+                <div class="col-12 col-lg-4">
+					<!-- 推荐音乐 -->
                     <div v-for="music in recommendMusics" :key="music.id">
                         <recommend-music :id="music.id" :singers="music.singers" :name="music.name"></recommend-music>
                     </div>
@@ -64,7 +65,7 @@ export default {
 		
 		async getMusicInfo(id) {
 			axios({
-				url: 'http://127.0.0.1:8882/music/get',
+				url: 'http://192.168.1.5:8882/music/get',
 				method: 'post',
 				params: {
 					id: id
@@ -78,7 +79,7 @@ export default {
 	},
 	mounted() {
 		axios({
-			url: 'http://127.0.0.1:8882/recommend/music',
+			url: 'http://192.168.1.5:8882/recommend/music',
 			method: 'post',
 			params: {
 				id: this.id
