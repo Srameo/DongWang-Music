@@ -10,6 +10,7 @@ import com.music.util.date.GetDate;
 import com.music.util.response.CommentsResponse;
 import com.music.util.response.MusicResponse;
 import com.music.util.response.Response;
+import com.music.util.response.SearchResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,13 @@ public class MusicController {
 
     @Resource
     private SearchMapper searchMapper;
+
+    @RequestMapping(value = "/getstars", method = RequestMethod.POST)
+    @ResponseBody
+    public Response getAllStars(@RequestParam("id") int id) {
+        List<SongInfo> songInfos = musicService.getAllStars(id);
+        return new SearchResponse(songInfos);
+    }
 
     @RequestMapping(value = "/get", method = RequestMethod.POST)
     @ResponseBody

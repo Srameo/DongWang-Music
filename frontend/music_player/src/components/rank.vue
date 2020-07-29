@@ -8,15 +8,14 @@
 -->
 <template>
   <div>
-     <section class="breadcumb-area bg-img bg-overlay1">
+    <section class="breadcumb-area bg-img bg-overlay1">
       <div class="bradcumbContent">
         <span class="sub-title">没人比我更懂</span>
-        <h2>   
-              <div>
-                <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-              </div>
-            排行榜
-          </h2>
+        <h2>
+          <div>
+            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+          </div>排行榜
+        </h2>
       </div>
     </section>
     <div class="album-catagory section-padding-100-0">
@@ -40,12 +39,15 @@
 
                       <!-- Single Top Item -->
                       <div
-                        class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp "
+                        class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp"
                         data-wow-delay="100ms"
                         v-for="(item, index) in list"
                         :key="index"
                       >
-                        <div class="first-part d-flex align-items-center" @click="toMusicPlayer(item.id)">
+                        <div
+                          class="first-part d-flex align-items-center"
+                          @click="toMusicPlayer(item.id)"
+                        >
                           <div class="content-">
                             <h6>{{ item.name }}</h6>
                             <p>{{ item.singers[0].name }}</p>
@@ -81,12 +83,15 @@
 
                       <!-- Single Top Item -->
                       <div
-                        class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp "
+                        class="single-top-item d-flex align-items-center justify-content-between wow fadeInUp"
                         data-wow-delay="100ms"
                         v-for="(item, index) in list"
                         :key="index"
                       >
-                        <div class="first-part d-flex align-items-center" @click="toMusicPlayer(item.id)">
+                        <div
+                          class="first-part d-flex align-items-center"
+                          @click="toMusicPlayer(item.id)"
+                        >
                           <div class="content-">
                             <h6>{{ item.name }}</h6>
                             <p>{{ item.singers[0].name }}</p>
@@ -168,9 +173,9 @@ export default {
       });
   },
   methods: {
-	  toMusicPlayer(id) {
-		  this.$router.push("/music?id=" + id)
-	  },
+    toMusicPlayer(id) {
+      this.$router.push("/music?id=" + id);
+    },
     // 点击导航栏时更改tag标签
     handleClick(tab, event) {
       console.log(tab, event);
@@ -186,7 +191,8 @@ export default {
   z-index: 2;
   background-position: center center;
   background-image: url("../assets/bg-img/breadcumb2.jpg");
-  background-size: cover; }
+  background-size: cover;
+}
 .nav-background {
   background-image: url("../assets/bg-img/blog2.jpg");
 }

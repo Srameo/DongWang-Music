@@ -2,6 +2,7 @@ package com.music.service;
 
 import com.music.domain.CommentInfo;
 import com.music.domain.HistoryInfo;
+import com.music.domain.SongInfo;
 import com.music.domain.StarInfo;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -15,6 +16,8 @@ public interface MusicService {
     List<String> getAllTags();
 
     void addNum(int id);
+
+    List<SongInfo> getAllStars(int id);
 
     /**
      * 收藏歌曲
