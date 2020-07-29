@@ -11,12 +11,8 @@ import com.music.util.randoncode.RC;
 import com.music.util.response.LoginResponse;
 import com.music.util.response.Response;
 import com.music.util.token.Token;
-import org.apache.commons.lang.StringUtils;
 import org.apache.thrift.TException;
-import org.apache.thrift.TServiceClient;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -36,11 +32,6 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(){
-        return "login";
-    }
-
     /**
      * 登录功能
      * @param username
@@ -50,6 +41,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public Response login(@RequestParam("username") String username, @RequestParam("password") String password){
+        System.out.println("开始登陆。。。");
         UserInfo userInfo = userService.getUserByName(username);
         if (userInfo == null){
             return Response.USERNAME_PASSWORD_INVALID;
@@ -59,9 +51,10 @@ public class UserController {
         }
 
         String token = Token.genToken();
+        System.out.println(token);
         redisClient.set(token, userInfo, 3000);
 
-        return new LoginResponse(token);
+        return new LoginResponse(token, "0");
     }
 
     /**
@@ -72,7 +65,7 @@ public class UserController {
     @RequestMapping(value = "/sendVerifyCode", method = RequestMethod.POST)
     @ResponseBody
     public Response sendVerifyCode(@RequestParam("email") String email){
-
+        System.out.println("开始发送验证码。。。");
         String message = "VerifyCode is : ";
         String code = RC.randomCode("0123456789", 6);
         MessageService.Iface messageService = serviceProvider.getMessageService();
@@ -107,6 +100,7 @@ public class UserController {
                              @RequestParam("style") List<Integer> style,
                              @RequestParam("verifyCode") String verifyCode){
 
+        System.out.println("开始注册。。。");
         UserInfo userInfoGot = userService.getUserByName(username);
         if (userInfoGot != null){
             return Response.USERNAME_EXIST;

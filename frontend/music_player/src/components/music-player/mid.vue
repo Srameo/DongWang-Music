@@ -15,7 +15,7 @@
                 <div class="col-12 col-lg-4">
                     <!-- 所有评论 -->
                     <div v-for="(c, index) in cmts" :key="index">
-                        <comment :txt="c"></comment>
+                        <comment :txt="c.content"></comment>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4">
@@ -78,6 +78,18 @@ export default {
 		}
 	},
 	mounted() {
+		axios({
+			url: 'http://192.168.1.5:8882/music/get/comments',
+			method: 'post',
+			params: {
+				id: this.id
+			}
+		}).then(res => {
+			console.log(res.data);
+			this.cmts = res.data.commentInfos
+		}).catch(err => {
+			console.log(err);
+		}),
 		axios({
 			url: 'http://192.168.1.5:8882/recommend/music',
 			method: 'post',

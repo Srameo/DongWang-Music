@@ -56,8 +56,26 @@
 				this.$refs.loginFormRef.validate(async valid =>{
 					// console.log(valid);
 					if(!valid) return;
-					const result = await this.$http.post("/user/login");
-					console.log(result);
+					let params = new URLSearchParams();
+					params.append('username', this.loginForm.username);
+					params.append('password', this.loginForm.password);
+					const {data:res} = await this.$http.post("/user/login", params);
+					console.log(res);
+					if(res.code == 0){
+						console.log(1);
+						this.$alert('恭喜您登录成功', '登录状态', {
+              confirmButtonText: '确定',
+              callback: action => {
+								this.$router.push({path:"/"});
+								window.sessionStorage.setItem("userToken", res.token);
+              }
+            });
+					}
+					else{
+						// 登陆失败
+						console.log("登录失败");
+            this.$message.error(res.message);
+					}
 				})
 			},
 			redirectToRegister(){
