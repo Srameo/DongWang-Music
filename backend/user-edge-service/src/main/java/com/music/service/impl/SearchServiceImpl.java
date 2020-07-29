@@ -7,6 +7,7 @@ import com.music.service.SearchService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,13 +34,16 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public List<SongInfo> search(String str) {
         Integer styleId = searchMapper.getStyleIdByStyleName(str);
-        List<SongInfo> songInfos = null;
+        List<SongInfo> songInfos = new ArrayList<>();
         if (styleId == null) {
-            Integer singerId = searchMapper.getSingerIdByName(str);
+            List<Integer> singerId = searchMapper.getSingerIdByName(str);
             if (singerId == null) {
                 songInfos = searchByKey(str);
             } else {
-                songInfos = searchBySinger(singerId);
+                for (Integer id : singerId) {
+                    songInfos.addAll(searchBySinger(id));
+                }
+                songInfos.addAll(searchByKey(str));
             }
         } else {
             songInfos = searchByTag(styleId);

@@ -45,7 +45,7 @@ public class TestMusicService {
 
     @Test
     public void recordTest(){
-        HistoryInfo historyInfo = new HistoryInfo(1, 1, new Date());
+        HistoryInfo historyInfo = new HistoryInfo(1, 60008, new Date());
         musicService.record(historyInfo);
     }
 

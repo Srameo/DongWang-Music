@@ -38,9 +38,9 @@
                             <div class="classynav">
                                 <ul>
                                     <li><router-link to="/main">主页</router-link></li>
-                                    <li><a href="recommend.html">我的收藏</a></li>
+                                    <li><a href="/album">我的收藏</a></li>
                                     <li><a href="albums-store.html">歌曲</a></li>
-                                    <li><a @click="toMusicPlayer">排行榜</a></li>
+                                    <li><router-link to="/rank">排行榜</router-link></li>
                                     <li><router-link to="/contact">联系我们</router-link></li>
                                 </ul>
 
@@ -67,9 +67,14 @@
                                         </div >
                                         <!-- Login/Register -->
                                         <div class="login-register-btn mr-50 ">
+<<<<<<< HEAD
                                             <router-link to="/login" id="loginBtn" v-if="notLogin">Login </router-link>
                                             <router-link to="/register" id="registerBtn" v-if="notLogin">Register</router-link>
                                             <el-button type="text" v-else @click="logout">Quit</el-button>
+=======
+                                            <router-link to="/login" id="loginBtn">Login/</router-link>
+                                            <router-link to="/register" id="registerBtn">/Register</router-link>
+>>>>>>> 60b9d63276b67c19dd9bcd9c089d3134417bc3f8
                                         </div>
 
                                         <!-- Cart Button   考虑模态框-->
@@ -90,7 +95,11 @@
       </div>
       <div>
             <transition name="el-fade-in-linear">
+<<<<<<< HEAD
                 <router-view></router-view>           
+=======
+                <router-view ref='router-v'></router-view>
+>>>>>>> 60b9d63276b67c19dd9bcd9c089d3134417bc3f8
             </transition>
       </div>
    
@@ -170,12 +179,11 @@ export default {
             if (this.inputValue == '') {
             // 提示用户
             this.$message.warning('请输入内容')
-            }else if(this.$route.path != '/result?q='+this.inputValue){
+            }else{
             // 去搜索页 携带数据
             this.$router.push('/result?q='+this.inputValue)
-            }  else {
-				// this.$route.
-			}
+			this.$refs['router-v'].refresh(); 
+            }
         },
         checkLogin(){
             if(window.sessionStorage.getItem("userToken")!=null){

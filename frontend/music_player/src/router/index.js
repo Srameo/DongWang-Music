@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-28 15:54:09
- * @LastEditTime: 2020-07-29 12:21:21
+ * @LastEditTime: 2020-07-29 13:04:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \music_player\src\router\index.js
@@ -15,9 +15,8 @@ import register from '../components/register.vue';
 import contact from '../components/contact.vue';
 import result from '../components/result.vue';
 import rank from '../components/rank.vue';
-
 import musicPlayer from '../components/MusicPlayer.vue';
-// import main from '../components/main.vue'
+import album from '../components/album.vue'
 
 Vue.use(VueRouter)
 
@@ -58,6 +57,10 @@ Vue.use(VueRouter)
 	{
 		path: "/music",
 		component: musicPlayer
+	},
+	{
+		path:'/album',
+		component:album
 	}
 ]
 
