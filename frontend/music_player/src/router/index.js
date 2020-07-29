@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-07-28 15:54:09
+ * @LastEditTime: 2020-07-29 12:21:21
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \music_player\src\router\index.js
+ */ 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Login from "../components/Login.vue";
@@ -6,6 +14,8 @@ import main from '../components/main.vue';
 import register from '../components/register.vue';
 import contact from '../components/contact.vue';
 import result from '../components/result.vue';
+import rank from '../components/rank.vue';
+
 import musicPlayer from '../components/MusicPlayer.vue';
 // import main from '../components/main.vue'
 
@@ -42,8 +52,13 @@ Vue.use(VueRouter)
 		component:result
 	},
 	{
+<<<<<<< HEAD
+		path:'/rank',
+		component:rank
+=======
 		path: "/music",
 		component: musicPlayer
+>>>>>>> 3fb80ea7a6adaf8d6f443a18b06ac785cd9ff279
 	}
 ]
 
