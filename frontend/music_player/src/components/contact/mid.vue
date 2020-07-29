@@ -49,7 +49,7 @@
                 <!-- 中间东西 -->
                 <div class="col-12 col-lg-8" >
                     <!-- ##### 这是谷歌对应地址的地图 ！打算修改成意见册 待定##### -->
-                    <el-image :src="require('../../assets/core-gif/IMG_5858.gif')"></el-image>
+                    <el-image :src="require('../../assets/core-gif/IMG_5858.gif')" :style="'{width: 100%}'"></el-image>
                 </div>
 
             </div>

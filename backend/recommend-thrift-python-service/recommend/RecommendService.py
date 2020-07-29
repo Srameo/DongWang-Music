@@ -107,7 +107,11 @@ class RecommendServiceHandler(Iface):
         id = self.getNewUserId([uid])[0]
         if id == -1:
             return []
-        recommend_list = numpy.loadtxt(os.path.join(self.userOutputPath, "%d.txt" % id)).astype(numpy.int).tolist()
+        try:
+            recommend_list = numpy.loadtxt(os.path.join(self.userOutputPath, "%d.txt" % id)).astype(numpy.int).tolist()
+        except OSError as e:
+            print(e)
+            return []
         if not self.newMusicIdReaded:
             data = pandas.read_csv(self.newMusicIDPath, sep="\t", header=None, usecols=[1])
             self.newMusicId = numpy.matrix(data).transpose()
@@ -118,7 +122,11 @@ class RecommendServiceHandler(Iface):
         id = self.getNewMusicId([mid])[0]
         if id == -1:
             return []
-        recommend_list = numpy.loadtxt(os.path.join(self.musicOutputPath, "%d.txt" % id)).astype(numpy.int).tolist()
+        try:
+            recommend_list = numpy.loadtxt(os.path.join(self.musicOutputPath, "%d.txt" % id)).astype(numpy.int).tolist()
+        except OSError as e:
+            print(e)
+            return []
         if not self.newMusicIdReaded:
             data = pandas.read_csv(self.newMusicIDPath, sep="\t", header=None, usecols=[1])
             self.newMusicId = numpy.matrix(data).transpose()
