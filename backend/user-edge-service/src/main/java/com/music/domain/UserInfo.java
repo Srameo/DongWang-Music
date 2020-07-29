@@ -9,7 +9,6 @@ public class UserInfo implements Serializable {
     private String email;
     private int age;
     private int gender;
-    private String location;
 
     @Override
     public String toString() {
@@ -20,20 +19,18 @@ public class UserInfo implements Serializable {
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
-                ", location='" + location + '\'' +
                 '}';
     }
 
     public UserInfo() {
     }
 
-    public UserInfo(String username, String password, String email, int age, int gender, String location) {
+    public UserInfo(String username, String password, String email, int age, int gender) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.age = age;
         this.gender = gender;
-        this.location = location;
     }
 
     public int getId() {
@@ -84,11 +81,4 @@ public class UserInfo implements Serializable {
         this.gender = gender;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 }

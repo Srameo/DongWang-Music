@@ -104,7 +104,6 @@ public class UserController {
                              @RequestParam("email") String email,
                              @RequestParam("age") int age,
                              @RequestParam("gender") int gender,
-                             @RequestParam("location") String location,
                              @RequestParam("style") List<Integer> style,
                              @RequestParam("verifyCode") String verifyCode){
 
@@ -124,7 +123,6 @@ public class UserController {
         userInfo.setEmail(email);
         userInfo.setAge(age);
         userInfo.setGender(gender);
-        userInfo.setLocation(location);
 
         userService.registerUser(userInfo);
 
