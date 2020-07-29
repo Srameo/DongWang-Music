@@ -23,7 +23,7 @@
               :label="item.name"
             >
               {{ item.name }}
-                      <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" 
+                    <div class="single-new-item d-flex align-items-center justify-content-between wow fadeInUp" 
                       data-wow-delay="300ms" >
                                 <div class="first-part d-flex align-items-center">
                                     <div class="thumbnail">
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                                 
-                </div>
+                    </div>
               </div>
           </div>
       </div>
