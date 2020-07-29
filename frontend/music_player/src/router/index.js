@@ -18,6 +18,7 @@ import rank from '../components/rank.vue';
 import musicPlayer from '../components/MusicPlayer.vue';
 import mvs from '../components/mvs.vue';
 import album from '../components/album.vue'
+import mv from '../components/mv.vue'
 
 Vue.use(VueRouter)
 
@@ -66,6 +67,10 @@ Vue.use(VueRouter)
 	{
 		path:'/album',
 		component:album
+	},
+	{
+		path:'/mv',
+		component:mv
 	}
 ]
 

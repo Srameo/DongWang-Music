@@ -47,7 +47,7 @@
                       <router-link to="/album">我的收藏</router-link>
                     </li>
                     <li>
-                      <router-link to="/mvs">歌曲</router-link>
+                      <router-link to="/mvs">歌曲MV</router-link>
                     </li>
                     <li>
                       <router-link to="/rank">排行榜</router-link>
