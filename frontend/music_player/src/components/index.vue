@@ -128,7 +128,7 @@
             </div>
       </div>
         <!-- ##### Footer Area Start ##### -->
-        <!-- 滚动条 -->
+        <!-- 滚动条返回顶部 -->
         <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
 	</div>
 </template>
