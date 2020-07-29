@@ -97,7 +97,7 @@
   // 导入 aixos
   import axios from 'axios'
 //   import top from './contact/top'
-  import bgImg from '../assets/bg-img/bg-3.jpg'
+  // import bgImg from '../assets/bg-img/bg-3.jpg'
   export default {
     name: 'result',
     data() {
@@ -265,6 +265,21 @@
 </script>
 
 <style>
+.bg-overlay {
+  position: relative;
+  z-index: 2;
+  background-position: center center;
+  background-image: url(../assets/bg-img/breadcumb.jpg);
+  background-size: cover; }
+  .bg-overlay::after {
+    background-color: rgba(0, 0, 0, 0.65);
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: ""; }
 .el-tabs__active-bar {
   background-color: #c3473a;
 }
