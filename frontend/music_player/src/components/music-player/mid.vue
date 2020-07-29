@@ -88,6 +88,18 @@
 			};
 		},
 		methods: {
+			getPic() {
+				axios({
+					url:"http://musicapi.leanapp.cn/song/detail",
+					method: 'get',
+					params: {
+						ids: this.id
+					}
+				}).then(res => {
+					console.log(res.data)
+					this.img = res.data.songs[0].al.picUrl
+				})
+			},
 			// 播放歌曲
 			playMusic() {
 				let params = new URLSearchParams();
@@ -157,6 +169,7 @@
 			}
 		},
 		created() {
+			this.getPic()
 			this.playMusic()
 			let token = window.sessionStorage.getItem('userToken')
 			if (token) {
