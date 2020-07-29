@@ -67,14 +67,9 @@
                                         </div >
                                         <!-- Login/Register -->
                                         <div class="login-register-btn mr-50 ">
-<<<<<<< HEAD
                                             <router-link to="/login" id="loginBtn" v-if="notLogin">Login </router-link>
                                             <router-link to="/register" id="registerBtn" v-if="notLogin">Register</router-link>
                                             <el-button type="text" v-else @click="logout">Quit</el-button>
-=======
-                                            <router-link to="/login" id="loginBtn">Login/</router-link>
-                                            <router-link to="/register" id="registerBtn">/Register</router-link>
->>>>>>> 60b9d63276b67c19dd9bcd9c089d3134417bc3f8
                                         </div>
 
                                         <!-- Cart Button   考虑模态框-->
