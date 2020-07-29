@@ -52,13 +52,12 @@ Vue.use(VueRouter)
 		component:result
 	},
 	{
-<<<<<<< HEAD
 		path:'/rank',
-		component:rank
-=======
+		component:rank,
+	},
+	{
 		path: "/music",
 		component: musicPlayer
->>>>>>> 3fb80ea7a6adaf8d6f443a18b06ac785cd9ff279
 	}
 ]
 
