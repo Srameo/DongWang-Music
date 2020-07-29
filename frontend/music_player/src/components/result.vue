@@ -152,13 +152,11 @@
 			  default:
 			    break
 			}
-			if(type === 1) {axios({
-				  url: 'http://127.0.0.1:8882/search',
-				  method: 'post',
-				  params: {
-				    key: this.$route.query.q,
-				  }
-				}).then(res => {
+			if(type === 1) {
+				let params = new URLSearchParams();
+				params.append('key', this.$route.query.q)
+				this.$http.post('/search', params
+				).then(res => {
 				  console.log(res)
 				
 				  this.songList = res.data.data
