@@ -1,6 +1,6 @@
 <template>
   <div class="register-container">
-    <img src="../assets/core-img/login_background.jpg" class="background-image">
+    <img src="../assets/bg-img/bg-3.jpg" class="background-image">
 		<div class="register-box">
 			<!-- 表单logo -->
 			<div class="register-header">
@@ -8,7 +8,7 @@
 			</div>
 			<!-- 表单输入区域 -->
 			<div class="register-body">
-				<h3>用户注册</h3>
+				<!-- <h3>用户注册</h3> -->
         <el-form ref="registerFormRef" :model="registerForm" :rules="registerRules" label-width="0" class="register-form">
 				  <!-- 用户名 -->
 					<el-form-item class="input-area" prop="username">
