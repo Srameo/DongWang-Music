@@ -5,9 +5,11 @@ package com.music.util.response;
 public class LoginResponse extends Response {
     //定义登录成功用户的token
     private String token;
+    private String code;
 
-    public LoginResponse(String token) {
+    public LoginResponse(String token, String code) {
         this.token = token;
+        this.code = code;
     }
 
     public String getToken() {
