@@ -36,11 +36,13 @@ public class SearchServiceImpl implements SearchService {
         Integer styleId = searchMapper.getStyleIdByStyleName(str);
         List<SongInfo> songInfos = new ArrayList<>();
         if (styleId == null) {
-            Integer singerId = searchMapper.getSingerIdByName(str);
+            List<Integer> singerId = searchMapper.getSingerIdByName(str);
             if (singerId == null) {
                 songInfos = searchByKey(str);
             } else {
-                songInfos = searchBySinger(singerId);
+                for (Integer id : singerId) {
+                    songInfos.addAll(searchBySinger(id));
+                }
                 songInfos.addAll(searchByKey(str));
             }
         } else {

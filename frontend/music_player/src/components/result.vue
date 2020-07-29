@@ -38,7 +38,7 @@
                             </div>
                         </td>
                         <td>{{ item.singers[0].name }}</td>
-                        <td><!-- <span v-for="tag in item.tags" :key="tag">{{ tag }}</span> -->{{item.tags[0]}}</td>
+                        <td><span v-for="tag in item.tags" :key="tag">{{ tag }} </span></td>
                         <td>{{ item.num }}</td>
                     </tr>
                 </tbody>
@@ -117,8 +117,7 @@
     },
     // 生命周期钩子 回调函数
     created() {
-
-      this.refresh()
+		this.refresh()
     },
     // 侦听器
     watch: {
@@ -147,6 +146,10 @@
           default:
             break
         }
+		if(type === 1) {
+			this.refresh()
+			return
+		}
 
         axios({
           url: 'https://autumnfish.cn/search',
@@ -159,28 +162,8 @@
           }
         }).then(res => {
           console.log(res)
-          // 获取歌曲
-          if (type == 1) {
-            // 歌曲
-            this.songList = res.data.result.songs
-            // 计算歌曲时间
-            for (let i = 0; i < this.songList.length; i++) {
-              let min = parseInt(this.songList[i].duration / 1000 / 60)
-              let sec = parseInt((this.songList[i].duration / 1000) % 60)
-              if (min < 10) {
-                min = '0' + min
-              }
-              if (sec < 10) {
-                sec = '0' + sec
-              }
-              // console.log(min + '|' + sec)
-              this.songList[i].duration = min + ':' + sec
-            }
-            // 保存总数
-            this.count = res.data.result.songCount
-          }
-          // 获取 歌单
-          else if (type == 1000) {
+		  console.log(type)
+          if (type == 1000) {
             // 歌单的逻辑
             this.playlists = res.data.result.playlists
             // 总数
@@ -217,7 +200,6 @@
               }
             }
           }
-          this.$router.go(0)
         })
       }
     },
@@ -225,7 +207,7 @@
     methods: {
 		refresh() {
 			axios({
-			  url: 'http://192.168.1.5:8882/search',
+			  url: 'http://127.0.0.1:8882/search',
 			  method: 'post',
 			  params: {
 			    key: this.$route.query.q,

@@ -75,5 +75,5 @@ public interface SearchMapper {
      * 查找是否有名为name的歌手，并返回id
      */
     @Select("SELECT id FROM singers WHERE name like '%${name}%'")
-    Integer getSingerIdByName(@Param("name") String name);
+    List<Integer> getSingerIdByName(@Param("name") String name);
 }
