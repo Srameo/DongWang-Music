@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import bgImg from '../../assets/core-img/favicon.ico'
+// import bgImg from '../../assets/core-img/favicon.ico'
 
 export default {
     name: 'top',
