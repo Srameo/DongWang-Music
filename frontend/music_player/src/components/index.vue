@@ -165,7 +165,7 @@ export default {
             }else{
             // 去搜索页 携带数据
             this.$router.push('/result?q='+this.inputValue)
-			this.$refs['router-v'].refresh();
+			// this.$refs['router-v'].refresh(); 除了这个还有啥方法么
             }
         },
 		back () { // 后退
