@@ -38,6 +38,11 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
+    public List<CommentInfo> getCommentsByMusicId(int id) {
+        return musicMapper.getCommentsByMusicId(id);
+    }
+
+    @Override
     public void cancelCommentMusic(int uid, int mid, Date commentTime) {
         musicMapper.cancelCommentMusic(uid, mid, commentTime);
     }

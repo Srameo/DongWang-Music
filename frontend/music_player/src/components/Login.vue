@@ -71,6 +71,7 @@
 	.login-container{
 		width: 100%;
 		height: 100%;
+		position: relative;
 	}
 	.background-image{
 		width: 100%;
@@ -78,11 +79,11 @@
 	}
 	.login-box{
 		width: 50%;
-		height: 50%;
+		height: 40%;
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		transform: translate(-50%, -70%);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;

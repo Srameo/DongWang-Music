@@ -45,3 +45,5 @@ mapred/output/
 
 backend/input/
 backend/output/
+
+node_modules/
