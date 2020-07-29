@@ -79,7 +79,7 @@
                         v-for="(item, index) in list"
                         :key="index"
                       >
-                        <div class="first-part d-flex align-items-center">
+                        <div class="first-part d-flex align-items-center" @click="toMusicPlayer(item.id)">
                           <div class="content-">
                             <h6>{{ item.name }}</h6>
                             <p>{{ item.singers[0].name }}</p>
