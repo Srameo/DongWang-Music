@@ -122,122 +122,121 @@
     // 侦听器
     watch: {
       activeIndex() {
-        // songs 歌曲
-        // lists 歌单
-        // mv    mv
-        let type = 1
-
-        // 获取个数
-        let limit = 10
-        switch (this.activeIndex) {
-          case 'songs':
-            type = 1
-            limit = 10
-            break
-          case 'lists':
-            type = 1000
-            limit = 10
-            break
-          case 'mv':
-            type = 1004
-            limit =8
-            break
-
-          default:
-            break
-        }
-		if(type === 1) {
-			this.refresh()
-			return
-		}
-
-        axios({
-          url: 'https://autumnfish.cn/search',
-          method: 'get',
-          params: {
-            keywords: this.$route.query.q,
-            type, // type:type,
-            // 获取的数据量
-            limit // limit: limit
-          }
-        }).then(res => {
-          console.log(res)
-		  console.log(type)
-          if (type == 1000) {
-            // 歌单的逻辑
-            this.playlists = res.data.result.playlists
-            // 总数
-            this.count = res.data.result.playlistCount
-            // 处理 播放次数
-            for (let i = 0; i < this.playlists.length; i++) {
-              if (this.playlists[i].playCount > 100000) {
-                this.playlists[i].playCount =
-                  parseInt(this.playlists[i].playCount / 10000) + '万'
-              }
-            }
-          } else {
-            // 保存mv数据
-            this.mv = res.data.result.mvs
-            // 总数
-            this.count = res.data.result.mvCount
-            // 处理数据
-            for (let i = 0; i < this.mv.length; i++) {
-              // 时间
-              let min = parseInt(this.mv[i].duration / 1000 / 60)
-              let sec = parseInt((this.mv[i].duration / 1000) % 60)
-              if (min < 10) {
-                min = '0' + min
-              }
-              if (sec < 10) {
-                sec = '0' + sec
-              }
-              this.mv[i].duration = min + ':' + sec
-
-              // 播放次数
-              if (this.mv[i].playCount > 100000) {
-                this.mv[i].playCount =
-                  parseInt(this.mv[i].playCount / 10000) + '万'
-              }
-            }
-          }
-        })
+		this.refresh()
       }
     },
     // 方法
     methods: {
 		refresh() {
+			// songs 歌曲
+			// lists 歌单
+			// mv    mv
+			let type = 1
+			
+			// 获取个数
+			let limit = 10
+			switch (this.activeIndex) {
+			  case 'songs':
+			    type = 1
+			    limit = 10
+			    break
+			  case 'lists':
+			    type = 1000
+			    limit = 10
+			    break
+			  case 'mv':
+			    type = 1004
+			    limit =8
+			    break
+			
+			  default:
+			    break
+			}
+			if(type === 1) {axios({
+				  url: 'http://127.0.0.1:8882/search',
+				  method: 'post',
+				  params: {
+				    key: this.$route.query.q,
+				  }
+				}).then(res => {
+				  console.log(res)
+				
+				  this.songList = res.data.data
+				  console.log(this.songList )
+				  // 计算歌曲时间
+				  // for (let i = 0; i < this.songList.length; i++) {
+				  //   let min = parseInt(this.songList[i].duration / 1000 / 60)
+				  //   let sec = parseInt((this.songList[i].duration / 1000) % 60)
+				  //   if (min < 10) {
+				  //     min = '0' + min
+				  //   }
+				  //   if (sec < 10) {
+				  //     sec = '0' + sec
+				  //   }
+				  //   // console.log(min + '|' + sec)
+				  //   this.songList[i].duration = min + ':' + sec
+				  // }
+				  // 保存总数
+				  this.count = res.data.data.length
+				})
+				this.InitializeData()
+				this.getDataByKeywordsAsync({
+							V: this,
+							// keywords: this.search
+						})
+				return
+			}
+			
 			axios({
-			  url: 'http://127.0.0.1:8882/search',
-			  method: 'post',
+			  url: 'https://autumnfish.cn/search',
+			  method: 'get',
 			  params: {
-			    key: this.$route.query.q,
+			    keywords: this.$route.query.q,
+			    type, // type:type,
+			    // 获取的数据量
+			    limit // limit: limit
 			  }
 			}).then(res => {
 			  console.log(res)
+			  console.log(type)
+			  if (type == 1000) {
+			    // 歌单的逻辑
+			    this.playlists = res.data.result.playlists
+			    // 总数
+			    this.count = res.data.result.playlistCount
+			    // 处理 播放次数
+			    for (let i = 0; i < this.playlists.length; i++) {
+			      if (this.playlists[i].playCount > 100000) {
+			        this.playlists[i].playCount =
+			          parseInt(this.playlists[i].playCount / 10000) + '万'
+			      }
+			    }
+			  } else {
+			    // 保存mv数据
+			    this.mv = res.data.result.mvs
+			    // 总数
+			    this.count = res.data.result.mvCount
+			    // 处理数据
+			    for (let i = 0; i < this.mv.length; i++) {
+			      // 时间
+			      let min = parseInt(this.mv[i].duration / 1000 / 60)
+			      let sec = parseInt((this.mv[i].duration / 1000) % 60)
+			      if (min < 10) {
+			        min = '0' + min
+			      }
+			      if (sec < 10) {
+			        sec = '0' + sec
+			      }
+			      this.mv[i].duration = min + ':' + sec
 			
-			  this.songList = res.data.data
-			  console.log(this.songList )
-			  // 计算歌曲时间
-			  // for (let i = 0; i < this.songList.length; i++) {
-			  //   let min = parseInt(this.songList[i].duration / 1000 / 60)
-			  //   let sec = parseInt((this.songList[i].duration / 1000) % 60)
-			  //   if (min < 10) {
-			  //     min = '0' + min
-			  //   }
-			  //   if (sec < 10) {
-			  //     sec = '0' + sec
-			  //   }
-			  //   // console.log(min + '|' + sec)
-			  //   this.songList[i].duration = min + ':' + sec
-			  // }
-			  // 保存总数
-			  this.count = res.data.data.length
+			      // 播放次数
+			      if (this.mv[i].playCount > 100000) {
+			        this.mv[i].playCount =
+			          parseInt(this.mv[i].playCount / 10000) + '万'
+			      }
+			    }
+			  }
 			})
-			this.InitializeData()
-			this.getDataByKeywordsAsync({
-						V: this,
-						// keywords: this.search
-					})
 		},
       // 去mv详情页
       toMV(id){

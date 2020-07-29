@@ -1,6 +1,7 @@
 package com.music.controller;
 
 import com.music.domain.CommentInfo;
+import com.music.domain.HistoryInfo;
 import com.music.domain.SongInfo;
 import com.music.domain.StarInfo;
 import com.music.mapper.SearchMapper;
@@ -68,6 +69,14 @@ public class MusicController {
         Date currentDate = GetDate.getCurrentDate();
         CommentInfo commentInfo = new CommentInfo(uid, mid, text, currentDate);
         musicService.commentMusic(commentInfo);
+        return Response.SUCCESS;
+    }
+
+    @RequestMapping(value = "/history", method = RequestMethod.POST)
+    @ResponseBody
+    public Response saveHistory(@RequestParam("uid") int uid,
+                                @RequestParam("mid") int mid) {
+        musicService.record(new HistoryInfo(uid, mid, new Date()));
         return Response.SUCCESS;
     }
 
