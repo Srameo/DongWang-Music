@@ -85,8 +85,10 @@
 		methods: {
 			toCloud() {
 				window.open("https://music.163.com/#/song?id=" + this.id)
-				// 播放次数 ++ 
-				// this.$http.
+				// 播放次数
+				let params = new URLSearchParams();
+				params.append("id", this.id)
+				this.$http.post("/music/play", params)
 			},
 			async getMusicInfo(id) {
 				axios({
