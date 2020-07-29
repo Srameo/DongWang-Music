@@ -95,11 +95,7 @@
       </div>
       <div>
             <transition name="el-fade-in-linear">
-<<<<<<< HEAD
-                <router-view></router-view>           
-=======
                 <router-view ref='router-v'></router-view>
->>>>>>> 60b9d63276b67c19dd9bcd9c089d3134417bc3f8
             </transition>
       </div>
    
