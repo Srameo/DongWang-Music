@@ -1,13 +1,22 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-29 14:45:50
+ * @LastEditTime: 2020-07-30 01:11:23
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \music_player\src\components\album\top.vue
+--> 
 <template>
     <section class="breadcumb-area bg-img bg-overlay">
         <div class="bradcumbContent">
-            <h2>album</h2>
+            <p>中软小组007</p>
+            <h2>我的收藏</h2>
         </div>
     </section>
 </template>
 
 <script>
-// import bgImg from '../../assets/core-img/favicon.ico'
+import bgImg from '../../assets/bg-img/breadcumb.jpg'
 
 export default {
     name: 'top',

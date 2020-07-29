@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-29 14:45:50
- * @LastEditTime: 2020-07-30 00:09:33
+ * @LastEditTime: 2020-07-30 01:22:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \music_player\src\components\album.vue
@@ -15,12 +15,14 @@
           <!-- Single Album -->
           <div
             class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item"
+            v-for="(item, index) in songs"
+            :key="index"
           >
-            <div class="single-album">
-              <img src="" alt="" />
+            <div class="single-album" @click="toMusicPlayer(item.id)">
+              <img :src="img[index]" alt="" />
               <div class="album-info">
-                <h5><!-- 歌曲名 --></h5>
-                <p><!-- 歌手名 --></p>
+                <h5>{{ item.name }}</h5>
+                <p>{{ item.singers[0].name }}</p>
               </div>
             </div>
           </div>
@@ -42,17 +44,16 @@ export default {
       // 收藏的歌曲信息
       songs: [],
       // 用户id
-      uid : null,
+      uid: null,
       // 获取图片
-      img : null,
+      img: [],
       // 收藏歌曲id
-      id : [],
+      id: [],
     };
   },
   created() {
-    // 获取图片
-    this.getPic();
-    // 获取收藏的歌曲
+    this.img = [];
+    // 获取当前用户id
     let token = window.sessionStorage.getItem("userToken");
     if (token) {
       console.log(token);
@@ -63,7 +64,18 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.uid = res.data.id;
-          console.log(this.uid)
+          // 获取所有歌曲信息
+          let params = new URLSearchParams();
+          params.append("id", this.uid);
+          this.$http.post("/music/getstars", params).then((res) => {
+            this.songs = res.data.data;
+            console.log(this.songs);
+            // 获取歌曲封面
+            for (let i = 0; i < this.songs.length; i++) {
+              this.getPic(this.songs[i].id);
+            }
+            console.log(this.img);
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -76,17 +88,21 @@ export default {
     handleClick(tab, event) {
       console.log(tab, event);
     },
-    getPic() {
+    // 获取图片方法
+    getPic(id) {
       axios({
         url: "http://musicapi.leanapp.cn/song/detail",
         method: "get",
         params: {
-          ids: this.id,
+          ids: id,
         },
       }).then((res) => {
         console.log(res.data);
-        this.img = res.data.songs[0].al.picUrl;
+        this.img.push(res.data.songs[0].al.picUrl);
       });
+    },
+    toMusicPlayer(id) {
+      this.$router.push("/music?id=" + id);
     },
   },
 };
