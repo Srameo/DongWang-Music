@@ -2,21 +2,21 @@
 <div>
     <top></top>
     <mid></mid>
-    <foot></foot>
+    <!-- <foot></foot> -->
 </div>
 </template>
 
 <script>
 import Top from './contact/top'
 import Mid from './contact/mid'
-import Foot from './contact/foot'
+// import Foot from './contact/foot'
 
 export default {
     name:'contact',
     components:{
         Top,
         Mid,
-        Foot
+        // Foot
     }
     
 }
