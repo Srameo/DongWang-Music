@@ -165,7 +165,7 @@ export default {
             }else{
             // 去搜索页 携带数据
             this.$router.push('/result?q='+this.inputValue)
-            }
+            } 
         },
 		back () { // 后退
 			this.$router.go(-1)
