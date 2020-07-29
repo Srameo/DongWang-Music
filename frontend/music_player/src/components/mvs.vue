@@ -12,7 +12,7 @@
             </h2>
 		</div>
 	</section>
-    <div class="mvs-container">
+        <div class="mvs-container">
                 
         <div class="filter-wrap">
         <div class="seciton-wrap">
@@ -188,6 +188,7 @@
         ></el-pagination>
         </div>
     </div>
+
   </div>
 </template>
 
@@ -289,7 +290,7 @@
   position: relative;
   z-index: 2;
   background-position: center center;
-  background-image: url(../assets/bg-img/breadcumb.jpg);
+  background-image: url(../assets/bg-img/blog1.jpg);
   background-size: cover; }
 .mvs-container {
   padding:50px 100px;
