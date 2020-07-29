@@ -18,7 +18,7 @@
 							<th>播放量</th>
 						</thead>
 						<tbody>
-							<tr v-for="(item, index) in songList" :key="index" class="el-table__row">
+							<tr v-for="(item, index) in songList" :key="index" class="el-table__row"  @click="toMusicPlayer(item.id)">
 								<!-- <button @click="playMusic(item.id)"></button> -->
 								<td>{{index+1}}</td>
 								<td>
@@ -118,6 +118,9 @@
 		},
 		// 方法
 		methods: {
+			toMusicPlayer(id) {
+				this.$router.push("/music?id=" + id)
+			},
 			refresh() {
 				// songs 歌曲
 				// lists 歌单

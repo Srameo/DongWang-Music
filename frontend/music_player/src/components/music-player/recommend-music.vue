@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div class="row"  >
 			<div class="col-12 col-lg-6">
 				<!-- <el-image :src="img"></el-image> -->
                 <div>
@@ -23,7 +23,12 @@ export default {
         return {
             img: require('../../assets/bg-img/breadcumb.jpg'),
         }
-    }
+    },
+	methods: {
+		toMusicPlayer() {
+			this.$router.push("/music?id=" + this.id)
+		},
+	},
 }
 </script>
 
