@@ -272,7 +272,7 @@
 <style>
 .mvs-container {
   padding-top: 20px;
-  display: block;
+  
 }
 
 .mvs-container .filter-wrap > div {
