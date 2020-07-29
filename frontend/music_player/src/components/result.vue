@@ -14,8 +14,8 @@
                     <th></th>
                     <th>音乐标题</th>
                     <th>歌手</th>
-                    <th>专辑</th>
-                    <th>时长</th>
+                    <th>标签</th>
+                    <th>播放量</th>
                 </thead>
                 <tbody>
                     <tr
@@ -34,12 +34,12 @@
                                 <span v-if="item.mvid != 0" class="iconfont icon-mv "><i class="el-icon-video-play"></i></span>
                             </div>
                             <!-- 二级标题 -->
-                            <span v-if="item.alias.length != 0">{{ item.alias[0] }}</span>
+                            <!-- <span v-if="item.alias.length != 0">{{ item.alias[0] }}</span> -->
                             </div>
                         </td>
-                        <td>{{ item.artists[0].name }}</td>
-                        <td>{{ item.album.name }}</td>
-                        <td>{{ item.duration }}</td>
+                        <td>{{ item.singers[0].name }}</td>
+                        <td><!-- <span v-for="tag in item.tags" :key="tag">{{ tag }}</span> -->{{item.tags[0]}}</td>
+                        <td>{{ item.num }}</td>
                     </tr>
                 </tbody>
                 </table>
@@ -118,40 +118,7 @@
     // 生命周期钩子 回调函数
     created() {
 
-      axios({
-        url: 'https://autumnfish.cn/search',
-        method: 'get',
-        params: {
-          keywords: this.$route.query.q,
-          type: 1,
-          // 获取的数据量
-          limit: 10
-        }
-      }).then(res => {
-        console.log(res)
-
-        this.songList = res.data.result.songs
-        // 计算歌曲时间
-        for (let i = 0; i < this.songList.length; i++) {
-          let min = parseInt(this.songList[i].duration / 1000 / 60)
-          let sec = parseInt((this.songList[i].duration / 1000) % 60)
-          if (min < 10) {
-            min = '0' + min
-          }
-          if (sec < 10) {
-            sec = '0' + sec
-          }
-          // console.log(min + '|' + sec)
-          this.songList[i].duration = min + ':' + sec
-        }
-        // 保存总数
-        this.count = res.data.result.songCount
-      })
-      this.InitializeData()
-	  this.getDataByKeywordsAsync({
-			V: this,
-			// keywords: this.search
-		})
+      this.refresh()
     },
     // 侦听器
     watch: {
@@ -256,6 +223,40 @@
     },
     // 方法
     methods: {
+		refresh() {
+			axios({
+			  url: 'http://192.168.1.5:8882/search',
+			  method: 'post',
+			  params: {
+			    key: this.$route.query.q,
+			  }
+			}).then(res => {
+			  console.log(res)
+			
+			  this.songList = res.data.data
+			  console.log(this.songList )
+			  // 计算歌曲时间
+			  // for (let i = 0; i < this.songList.length; i++) {
+			  //   let min = parseInt(this.songList[i].duration / 1000 / 60)
+			  //   let sec = parseInt((this.songList[i].duration / 1000) % 60)
+			  //   if (min < 10) {
+			  //     min = '0' + min
+			  //   }
+			  //   if (sec < 10) {
+			  //     sec = '0' + sec
+			  //   }
+			  //   // console.log(min + '|' + sec)
+			  //   this.songList[i].duration = min + ':' + sec
+			  // }
+			  // 保存总数
+			  this.count = res.data.data.length
+			})
+			this.InitializeData()
+			this.getDataByKeywordsAsync({
+						V: this,
+						// keywords: this.search
+					})
+		},
       // 去mv详情页
       toMV(id){
         this.$router.push(`/mv?q=${id}`)

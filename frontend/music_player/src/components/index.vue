@@ -89,7 +89,7 @@
       </div>
       <div>
             <transition name="el-fade-in-linear">
-                <router-view></router-view>
+                <router-view ref='router-v'></router-view>
             </transition>
       </div>
    
@@ -162,12 +162,11 @@ export default {
             if (this.inputValue == '') {
             // 提示用户
             this.$message.warning('请输入内容')
-            }else if(this.$route.path != '/result?q='+this.inputValue){
+            }else{
             // 去搜索页 携带数据
             this.$router.push('/result?q='+this.inputValue)
-            }  else {
-				// this.$route.
-			}
+			this.$refs['router-v'].refresh();
+            }
         },
 		back () { // 后退
 			this.$router.go(-1)
