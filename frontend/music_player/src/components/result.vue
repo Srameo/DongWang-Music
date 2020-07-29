@@ -11,7 +11,7 @@
             <el-tab-pane label="歌曲" name="songs">
                 <table class="el-table">
                 <thead>
-                    <th></th>
+                    <th></th> 
                     <th>音乐标题</th>
                     <th>歌手</th>
                     <th>标签</th>
