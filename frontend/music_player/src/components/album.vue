@@ -31,7 +31,6 @@
 										<p>歌手</p>
 									</div>
 								</div>
-
 							</div>
 						</el-tab-pane>
 					</el-tabs>

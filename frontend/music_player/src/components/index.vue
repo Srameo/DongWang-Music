@@ -1,6 +1,12 @@
 <template>
 	<!-- 页面顶部组件 -->
 	<div id="index">
+		<!-- 滚动条返回顶部 -->
+		<transition>
+			<div id="scrollUp" @click="goBackToTop" :style="btn_style">
+				回
+			</div>
+		</transition>
 		<div class="header-area" :style="this.style">
 			<!--   页面标题  -->
 			<!-- Navbar Area -->
@@ -142,8 +148,6 @@
 			</div>
 		</div>
 		<!-- ##### Footer Area Start ##### -->
-		<!-- 滚动条返回顶部 -->
-		<el-backtop target=".page-component__scroll .el-scrollbar__wrap"><i class="el-icon-caret-right"></i></el-backtop>
 	</div>
 </template>
 <script>
@@ -161,7 +165,9 @@
 				style: {
 					background: `rgba(0, 0, 0,100)`
 				},
-				notLogin: true
+				btn_style: {
+				},
+				notLogin: true,
 			}
 		},
 		mounted() {
@@ -172,15 +178,21 @@
 			window.removeEventListener("scroll", this.windowScroll); //销毁滚动事件
 		},
 		methods: {
+			goBackToTop: function() {
+				window.pageYOffset = 0;
+				document.documentElement.scrollTop = 0;
+				document.body.scrollTop = 0;
+			},
 			windowScroll: function() {
 				let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 				this.opacity = Math.abs(Math.round(scrollTop)) / 400;
 				this.style = {
 					background: `rgba(0, 0, 0,${this.opacity})`
 				}
-			},
-			toMusicPlayer: function() {
-				this.$router.push('/music')
+				this.btn_style = {
+					background: `rgba(255, 255, 255,${this.opacity})`,
+					opacity: `${this.opacity}`
+				}
 			},
 			// 
 			toResult() {
@@ -221,6 +233,12 @@
 	}
 </script>
 <style>
+	
+	#scrollUp {  background-color: #000000;
+  right: 50px;
+  position: fixed;
+  z-index: 1000;  border-radius: 0;  bottom: 50px;  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);  color: grey;  font-size: 24px;  height: 40px;  line-height: 40px;  right: 50px;  text-align: center;  width: 40px;  -webkit-transition-duration: 500ms;  transition-duration: 500ms;  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.15); }  @media only screen and (max-width: 767px) {    #scrollUp {      right: 30px;      bottom: 30px; } }  #scrollUp:hover {    background-color: #fff;  }
+  
 	.header-area {
 		position: absolute;
 		z-index: 1000;
@@ -228,15 +246,6 @@
 		top: 20px;
 		left: 0;
 		z-index: 1000;
-	}
-
-	.page-component__scroll {
-		height: 100vh;
-	}
-
-	.el-scrollbar__wrap {
-		overflow: scroll;
-		height: 100%;
 	}
 
 	#loginBtn {

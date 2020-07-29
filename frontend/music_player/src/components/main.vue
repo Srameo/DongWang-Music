@@ -49,8 +49,6 @@
                     </div>
                 </el-carousel-item>
             </el-carousel>
-
-
         </div>
     </div>
     <!-- ##### Hero Area End ##### --><!--轮播结束-->
