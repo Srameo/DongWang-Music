@@ -38,7 +38,7 @@ public interface MusicMapper {
     @Select("SELECT detail FROM style")
     List<String> getAllTags();
 
-    @Select("SELECT uid, mid, content, comment_time FROM comment WHERE mid=#{mid}")
+    @Select("SELECT uid, mid, content, comment_time AS commentTime FROM comment WHERE mid=#{mid}")
     List<CommentInfo> getCommentsByMusicId(@Param("mid") int id);
 
     /**

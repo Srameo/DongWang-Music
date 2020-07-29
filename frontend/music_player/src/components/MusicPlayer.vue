@@ -9,7 +9,7 @@
 <template>
     <div>
         <top :musicname="name" :id="id"></top>
-        <mid :id="id" :singers="singers" :name="name"></mid>
+        <mid :id="id" :singers="singers" :name="name" :tags="tags" :num="num"></mid>
     </div>
 </template>
 
@@ -24,9 +24,11 @@ export default {
     },
     data() {
         return {
-            id: 60008,
+            id: this.$route.query.id,
 			name: "",
-			singers: []
+			singers: [],
+			tags: [],
+			num: 0
         }
     },
 	mounted() {
@@ -40,6 +42,8 @@ export default {
 			console.log(res.data);
 			this.name = res.data.songInfo.name;
 			this.singers = res.data.songInfo.singers;
+			this.tags = res.data.songInfo.tags;
+			this.num = res.data.songInfo.num;
 		}).catch(err => {
 			console.log(err);
 		})
