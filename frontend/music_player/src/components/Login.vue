@@ -9,30 +9,30 @@
 			<!-- 表单输入区域 -->
 			<div class="login-body">
 				<el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" label-width="0" class="login-form">
-				  <!-- 用户名 -->
+					<!-- 用户名 -->
 					<el-form-item class="input-area" prop="username">
-				    <el-input v-model="loginForm.username" prefix-icon="el-icon-user" placeholder="用户名"></el-input>
-				  </el-form-item>
+						<el-input v-model="loginForm.username" prefix-icon="el-icon-user" placeholder="用户名"></el-input>
+					</el-form-item>
 					<!-- 密码 -->
 					<el-form-item class="input-area" prop="password">
-				    <el-input v-model="loginForm.password" type="password" prefix-icon="el-icon-view" placeholder="密码"></el-input>
-				  </el-form-item>
+						<el-input v-model="loginForm.password" type="password" prefix-icon="el-icon-view" placeholder="密码"></el-input>
+					</el-form-item>
 					<!-- 按钮 -->
 					<el-form-item class="btns">
-				    <el-button type="primary" @click="login">登录</el-button>
+						<el-button type="primary" @click="login">登录</el-button>
 						<el-button type="info" @click="redirectToRegister">注册</el-button>
-				  </el-form-item>
-				 </el-form>
+					</el-form-item>
+				</el-form>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-	export default{
+	export default {
 		inject: ["reload"],
-		data(){
-			return{
+		data() {
+			return {
 				// 表单数据
 				loginForm: {
 					username: "",
@@ -40,64 +40,87 @@
 				},
 				// 表单校验
 				loginRules: {
-					username: [
-						{ required: true, message: '用户名为必填项', trigger: 'blur' },
-            { min: 5, max: 20, message: '长度在 5 ~ 20 个字符', trigger: 'blur' }
+					username: [{
+							required: true,
+							message: '用户名为必填项',
+							trigger: 'blur'
+						},
+						{
+							min: 5,
+							max: 20,
+							message: '长度在 5 ~ 20 个字符',
+							trigger: 'blur'
+						}
 					],
-					password: [
-						{ required: true, message: '密码为必填项', trigger: 'blur' },
-            { min: 8, max: 16, message: '长度在 8 ~ 16 个字符', trigger: 'blur' }
+					password: [{
+							required: true,
+							message: '密码为必填项',
+							trigger: 'blur'
+						},
+						{
+							min: 8,
+							max: 16,
+							message: '长度在 8 ~ 16 个字符',
+							trigger: 'blur'
+						}
 					]
 				}
 			}
 		},
 		methods: {
-			login(){
+			login() {
 				// console.log(111);
-				this.$refs.loginFormRef.validate(async valid =>{
+				this.$refs.loginFormRef.validate(async valid => {
 					// console.log(valid);
-					if(!valid) return;
+					if (!valid) return;
 					let params = new URLSearchParams();
 					params.append('username', this.loginForm.username);
 					params.append('password', this.loginForm.password);
-					const {data:res} = await this.$http.post("/user/login", params);
+					const {
+						data: res
+					} = await this.$http.post("/user/login", params);
 					console.log(res);
-					if(res.code == 0){
+					if (res.code == 0) {
 						console.log(1);
 						this.$alert('恭喜您登录成功', '登录状态', {
-              confirmButtonText: '确定',
-              callback: action => {
-								this.$router.push({path:"/"});
+							confirmButtonText: '确定',
+							callback: action => {
+								this.$router.push({
+									path: "/"
+								});
 								window.sessionStorage.setItem("userToken", res.token);
 								this.reload();
-              }
-            });
-					}
-					else{
+							}
+						});
+					} else {
 						// 登陆失败
 						console.log("登录失败");
-            this.$message.error(res.message);
+						this.$message.error(res.message);
 					}
 				})
 			},
-			redirectToRegister(){
-				this.$router.push({path:"/register"});
+			redirectToRegister() {
+				this.$router.push({
+					path: "/register"
+				});
 			}
 		}
 	}
 </script>
 
 <style scoped>
-	.login-container{
+	.login-container {
 		width: 100%;
 		height: 100%;
 		position: relative;
 	}
-	.background-image{
+
+	.background-image {
 		width: 100%;
-		height:100%;
+		height: 100%;
 	}
-	.login-box{
+
+	.login-box {
 		width: 50%;
 		height: 40%;
 		position: absolute;
@@ -108,36 +131,43 @@
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
-		background-color: rgba(255,255,255, 0);
+		background-color: rgba(255, 255, 255, 0);
 	}
-	.login-header{
+
+	.login-header {
 		width: 50%;
 		height: 50px;
 	}
-	.login-header img{
+
+	.login-header img {
 		width: 100%;
 		height: 100%;
 	}
-	.login-body{
+
+	.login-body {
 		width: 50%;
 		height: 200px;
-		
+
 	}
-	.login-form{
+
+	.login-form {
 		width: 100%;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
 	}
-	.btns{
+
+	.btns {
 		display: flex;
 		justify-content: center;
 	}
-	.input-area{
+
+	.input-area {
 		padding: 0 10px;
 	}
-	.el-input__inner{
+
+	.el-input__inner {
 		background-color: transparent;
 	}
 </style>
