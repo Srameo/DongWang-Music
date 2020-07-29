@@ -30,6 +30,7 @@
 
 <script>
 	export default{
+		inject: ["reload"],
 		data(){
 			return{
 				// 表单数据
@@ -68,6 +69,7 @@
               callback: action => {
 								this.$router.push({path:"/"});
 								window.sessionStorage.setItem("userToken", res.token);
+								this.reload();
               }
             });
 					}

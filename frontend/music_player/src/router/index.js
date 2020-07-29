@@ -16,6 +16,7 @@ import contact from '../components/contact.vue';
 import result from '../components/result.vue';
 import rank from '../components/rank.vue';
 import musicPlayer from '../components/MusicPlayer.vue';
+import album from '../components/album.vue'
 
 Vue.use(VueRouter)
 
@@ -56,6 +57,10 @@ Vue.use(VueRouter)
 	{
 		path: "/music",
 		component: musicPlayer
+	},
+	{
+		path:'/album',
+		component:album
 	}
 ]
 
