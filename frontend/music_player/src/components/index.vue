@@ -39,7 +39,7 @@
                                 <ul>
                                     <li><router-link to="/main">主页</router-link></li>
                                     <li><router-link to="/album">我的收藏</router-link></li>
-                                    <li><router-link to="/mvs">歌曲</router-link></li>
+                                    <li><router-link to="/mvs">歌曲MV</router-link></li>
                                     <li><router-link to="/rank">排行榜</router-link></li>
                                     <li><router-link to="/contact">联系我们</router-link></li>
                                 </ul>
@@ -129,7 +129,8 @@
       </div>
         <!-- ##### Footer Area Start ##### -->
         <!-- 滚动条返回顶部 -->
-        <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
+        <!-- <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop> -->
+        <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647;"><i class="fa fa-angle-up"></i></a>
 	</div>
 </template>
 <script>
@@ -212,4 +213,27 @@ export default {
 #loginBtn{
     margin: 0 10px;
 }
+#scrollUp {
+  background-color: #000000;
+  border-radius: 0;
+  bottom: 50px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  font-size: 24px;
+  height: 40px;
+  line-height: 40px;
+  right: 50px;
+  text-align: center;
+  width: 40px;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.15); }
+  @media only screen and (max-width: 767px) {
+    #scrollUp {
+      right: 30px;
+      bottom: 30px; } }
+  #scrollUp:hover {
+    background-color: #fff;
+    color: #232323;
+  }
 </style>

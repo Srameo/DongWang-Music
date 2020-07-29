@@ -505,6 +505,7 @@
 		height:100%;
 	}
 	.register-box{
+    border-radius:20px;
 		width: 50%;
 		height: 60%;
 		position: absolute;
@@ -515,7 +516,8 @@
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
-		background-color: rgba(255,255,255, 0.5);
+    background-color: rgba(255,255,255, 0.5);
+    box-shadow: 10px 10px 50px 50px rgba(163, 111, 206, 0.7)
 	}
 	.register-header{
 		width: 50%;

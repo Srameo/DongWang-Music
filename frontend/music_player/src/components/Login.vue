@@ -1,6 +1,6 @@
 <template>
 	<div class="login-container">
-		<img src="../assets/core-img/login_background.jpg" class="background-image">
+		<img src="../assets/bg-img/blog1.jpg" class="background-image">
 		<div class="login-box">
 			<!-- 表单logo -->
 			<div class="login-header">
@@ -11,7 +11,7 @@
 				<el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" label-width="0" class="login-form">
 				  <!-- 用户名 -->
 					<el-form-item class="input-area" prop="username">
-				    <el-input v-model="loginForm.username" prefix-icon="el-icon-user" placeholder="用户名"></el-input>
+				    <el-input v-model="loginForm.username" prefix-icon="el-icon-user" placeholder="用户名" maxlength="10" show-word-limit></el-input>
 				  </el-form-item>
 					<!-- 密码 -->
 					<el-form-item class="input-area" prop="password">
@@ -98,6 +98,7 @@
 		height:100%;
 	}
 	.login-box{
+		border-radius:20px;
 		width: 50%;
 		height: 40%;
 		position: absolute;
@@ -108,7 +109,8 @@
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
-		background-color: rgba(255,255,255, 0);
+		background-color: rgba(15, 2, 2, 0.4);
+		box-shadow: 0 5px 10px rgba(0, 0, 0, .4)
 	}
 	.login-header{
 		width: 50%;
@@ -119,7 +121,7 @@
 		height: 100%;
 	}
 	.login-body{
-		width: 50%;
+		width: 30%;
 		height: 200px;
 		
 	}

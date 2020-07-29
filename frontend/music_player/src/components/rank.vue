@@ -8,12 +8,12 @@
 -->
 <template>
   <div>
-     <section class="breadcumb-area bg-img bg-overlay">
+     <section class="breadcumb-area bg-img bg-overlay1">
       <div class="bradcumbContent">
         <span class="sub-title">没人比我更懂</span>
         <h2>   
               <div>
-                <el-avatar src="http://p1.music.126.net/0m-U9koTLThkE45gCOsFKw==/109951163695436549.jpg"></el-avatar>
+                <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
               </div>
             排行榜
           </h2>
@@ -33,8 +33,9 @@
                         class="section-heading text-left mb-50 wow fadeInUp"
                         data-wow-delay="50ms"
                       >
-                        <p>See what’s new</p>
+                        <p>Nobody knows</p>
                         <h2>全部排行榜</h2>
+                        <p>better than me</p>
                       </div>
 
                       <!-- Single Top Item -->
@@ -180,8 +181,14 @@ export default {
 </script>
 
 <style>
+.bg-overlay1 {
+  position: relative;
+  z-index: 2;
+  background-position: center center;
+  background-image: url("../assets/bg-img/breadcumb2.jpg");
+  background-size: cover; }
 .nav-background {
-  background-image: url("../assets/core-img/breadcumb3.jpg");
+  background-image: url("../assets/bg-img/blog2.jpg");
 }
 .el-tabs {
   width: 100%;

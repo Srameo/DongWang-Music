@@ -290,7 +290,7 @@
   position: relative;
   z-index: 2;
   background-position: center center;
-  background-image: url(../assets/bg-img/blog1.jpg);
+  background-image: url("../assets/bg-img/bg-4.jpg");
   background-size: cover; }
 .mvs-container {
   padding:50px 100px;
