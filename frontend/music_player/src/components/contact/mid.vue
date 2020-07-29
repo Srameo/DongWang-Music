@@ -46,12 +46,25 @@
 
                     </div>
                 </div>
-                <!-- 中间东西 -->
-                <div class="col-12 col-lg-8" >
-                    <!-- ##### 这是谷歌对应地址的地图 ！打算修改成意见册 待定##### -->
-                    <el-image :src="require('../../assets/core-gif/IMG_5858.gif')" :style="'{width: 100%}'"></el-image>
+                <!-- 腾讯地图 -->
+                <div class="col-12 col-lg-4" >
+                    <div class="map-area mb-100"> 
+                        <iframe width="230" 
+                        height="340" 
+                        frameborder="0"
+                        scrolling="no"
+                        marginheight="0"
+                        marginwidth="0"
+                        src="http://apis.map.qq.com/tools/poimarker?type=0&marker=coord:38.987672,117.34208;title:我的位置;addr:天津市津南区软件学院&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp">
+                        </iframe>
+                    </div> 
                 </div>
-
+                <div class="col-12 col-lg-1" ></div>
+                <div class="col-12 col-lg-3" >
+                    <div >
+                        <el-image :src="require('../../assets/core-gif/IMG_5858.gif')"></el-image>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
