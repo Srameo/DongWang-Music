@@ -38,8 +38,8 @@
                             <div class="classynav">
                                 <ul>
                                     <li><router-link to="/main">主页</router-link></li>
-                                    <li><a href="/album">我的收藏</a></li>
-                                    <li><a href="albums-store.html">歌曲</a></li>
+                                    <li><router-link to="/album">我的收藏</router-link></li>
+                                    <li><router-link to="/mvs">歌曲</router-link></li>
                                     <li><router-link to="/rank">排行榜</router-link></li>
                                     <li><router-link to="/contact">联系我们</router-link></li>
                                 </ul>

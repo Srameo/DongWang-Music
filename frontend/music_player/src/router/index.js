@@ -16,7 +16,8 @@ import contact from '../components/contact.vue';
 import result from '../components/result.vue';
 import rank from '../components/rank.vue';
 import musicPlayer from '../components/MusicPlayer.vue';
-import album from '../components/album.vue'
+import mvs from '../components/mvs.vue';
+// import album from '../components/album.vue'
 
 Vue.use(VueRouter)
 
@@ -59,9 +60,13 @@ Vue.use(VueRouter)
 		component: musicPlayer
 	},
 	{
-		path:'/album',
-		component:album
-	}
+		path:'/mvs',
+		component: mvs
+	},
+	// {
+	// 	path:'/album',
+	// 	component:album
+	// }
 ]
 
 const router = new VueRouter({
