@@ -97,7 +97,7 @@
         <!-- ##### Header Area End -->  
       <!-- player在这里很诡异 会影响login！ -->
         <!-- 播放标签 -->
-      <!-- <div class="player"> -->
+     <!-- <div class="player">
             <!-- autoplay 自动播放 -->
             <!-- <audio :src='musicUrl' controls autoplay></audio> -->
       <!-- </div> -->
