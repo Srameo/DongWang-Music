@@ -443,12 +443,29 @@
 				})
       },
 
-      async sendVerifyCode(){
+      sendVerifyCode(){
         this.notSendVerifyCode = false;
         // console.log(this.registerForm.email)
-        let _this = this;
-        const {data: res} = await this.$http.post("/user/sendVerifyCode", {email:_this.registerForm.email});
-        console.log(res);
+        let params = new URLSearchParams();
+        params.append('email', this.registerForm.email);
+        let _this = this
+        console.log(1)
+        this.$http.post("/user/sendVerifyCode", params).then(res => {
+          console.log(res);
+        }).catch(err => {
+          console.error(err);
+        })
+        
+        // // console.log(res);
+        // if(res.code == 0){
+        //   // 发送成功
+        // }else{
+        //   // 发送失败
+        //   console.log(1);
+        //   this.fullscreenLoading = false;
+        //   this.$message.error(res.message);
+        //   this.notSendVerifyCode = true;
+        // }
       }
 
 		}
