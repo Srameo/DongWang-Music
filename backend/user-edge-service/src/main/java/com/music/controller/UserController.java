@@ -11,12 +11,8 @@ import com.music.util.randoncode.RC;
 import com.music.util.response.LoginResponse;
 import com.music.util.response.Response;
 import com.music.util.token.Token;
-import org.apache.commons.lang.StringUtils;
 import org.apache.thrift.TException;
-import org.apache.thrift.TServiceClient;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
