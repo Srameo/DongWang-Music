@@ -67,7 +67,7 @@
                                         </div >
                                         <!-- Login/Register -->
                                         <div class="login-register-btn mr-50 ">
-                                            <router-link to="/login" id="loginBtn">Login </router-link>
+                                            <router-link to="/login" id="loginBtn">Login</router-link>
                                             <router-link to="/register" id="registerBtn">Register</router-link>
                                         </div>
 
@@ -165,7 +165,7 @@ export default {
             }else{
             // 去搜索页 携带数据
             this.$router.push('/result?q='+this.inputValue)
-			// this.$refs['router-v'].refresh(); 除了这个还有啥方法么
+			this.$refs['router-v'].refresh(); 
             }
         },
 		back () { // 后退
