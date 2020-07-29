@@ -286,7 +286,6 @@ img {
   position: relative;
   z-index: 2;
   background-position: center center;
-  background-image: url(../bg-img/breadcumb.jpg);
   background-size: cover; }
   .bg-overlay::after {
     background-color: rgba(0, 0, 0, 0.65);
@@ -364,7 +363,7 @@ img {
   width: 100%;
   top: 0px;
   left: 0;
-  z-index: 1000; }
+   }
   .header-area .oneMusic-main-menu {
     position: relative;
     width: 100%;
