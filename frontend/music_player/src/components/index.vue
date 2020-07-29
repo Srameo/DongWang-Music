@@ -67,8 +67,8 @@
                                         </div >
                                         <!-- Login/Register -->
                                         <div class="login-register-btn mr-50 ">
-                                            <router-link to="/login" id="loginBtn">Login</router-link>
-                                            <router-link to="/register" id="registerBtn">Register</router-link>
+                                            <router-link to="/login" id="loginBtn">Login/</router-link>
+                                            <router-link to="/register" id="registerBtn">/Register</router-link>
                                         </div>
 
                                         <!-- Cart Button   考虑模态框-->

@@ -1,5 +1,6 @@
 package com.music.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 import com.music.domain.SparseMatrixElement;
@@ -8,6 +9,16 @@ import java.util.List;
 
 @Component
 public interface RecommendMapper {
+
+    @Select("SELECT sid FROM user_style WHERE uid=#{id}")
+    List<Integer> getFavoriteTags(@Param("id") int id);
+
+    @Select("SELECT id FROM music WHERE id in (" +
+            "   SELECT mid AS id FROM music_style WHERE sid in (" +
+            "       SELECT sid FROM user_style WHERE uid=#{id}" +
+            "   )" +
+            ") ORDER BY num DESC LIMIT 30")
+    List<Long> getTopMusicByUser(@Param("id") Integer id);
 
     @Select("SELECT count(id) FROM users")
     Integer getUserNum();

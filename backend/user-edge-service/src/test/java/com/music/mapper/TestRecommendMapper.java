@@ -25,4 +25,14 @@ public class TestRecommendMapper {
         System.out.println(recommendMapper.getNewMusicId());
         System.out.println(recommendMapper.getNewUserId());
     }
+
+    @Test
+    void testGetFavoriteTags() {
+        System.out.println(recommendMapper.getFavoriteTags(3));
+    }
+
+    @Test
+    void testGetSongsByTag() {
+        System.out.println(recommendMapper.getTopMusicByUser(3));
+    }
 }

@@ -1,6 +1,7 @@
 package com.music.controller;
 
 import com.music.mapper.RecommendMapper;
+import com.music.service.RankService;
 import com.music.service.RecommendService;
 import com.music.thrift.ServiceProvider;
 import com.music.util.response.RecommendResponse;
@@ -34,6 +35,9 @@ public class RecommendController {
         List<Long> recommendList = null;
         try {
             recommendList = rs.getUserRecommendDetail(uid);
+            if (recommendList.size() == 0) {
+                recommendList = recommendMapper.getTopMusicByUser((int)uid);
+            }
         } catch (TException e) {
             e.printStackTrace();
             return Response.RECOMMEND_ERROR;

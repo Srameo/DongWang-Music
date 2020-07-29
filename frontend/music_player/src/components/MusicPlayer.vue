@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-29 13:46:36
+ * @LastEditTime: 2020-07-29 15:27:49
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \music_player\src\components\MusicPlayer.vue
+--> 
 <template>
     <div>
         <top :musicname="name" :id="id"></top>
@@ -23,7 +31,7 @@ export default {
     },
 	mounted() {
 		axios({
-			url: 'http://192.168.1.5:8882/music/get',
+			url: 'http://127.0.0.1:8882/music/get',
 			method: 'post',
 			params: {
 				id: this.id
