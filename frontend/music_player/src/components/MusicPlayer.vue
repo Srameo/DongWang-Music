@@ -28,7 +28,7 @@ export default {
 			name: "",
 			singers: [],
 			tags: [],
-			num: 0
+			num: 0, 
         }
     },
 	mounted() {

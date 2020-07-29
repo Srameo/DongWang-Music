@@ -1,7 +1,7 @@
 <template>
     <section class="breadcumb-area bg-img bg-overlay">
         <div class="bradcumbContent">
-            <p>See what’s new</p>
+            <p>中软小组007</p>
             <h2>Contact</h2>
         </div>
     </section>
