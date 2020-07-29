@@ -21,7 +21,7 @@
             </ul>
           </div>
         </div>
-        <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tabs v-model="activeName">
           <!-- 推荐歌曲 -->
           <el-tab-pane label="推荐歌曲" name="first">
             <el-table :data="recommendMusics" style="width: 100%">
@@ -83,7 +83,7 @@ export default {
       cmts: ["111", "222", "333", "444"],
       recommendMusics: [],
       img: require("../../assets/bg-img/breadcumb.jpg"),
-      activeName: "second",
+      activeName: "first",
       // name: "",
     };
   },
@@ -102,9 +102,6 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-    },
-    handleClick(tab, event) {
-      console.log(tab, event);
     },
   },
   mounted() {
