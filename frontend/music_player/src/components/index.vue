@@ -165,7 +165,7 @@ export default {
   name: "index",
   provide() {
     return {
-      reload: this.reload,
+      reload: this.reload
     };
   },
   data() {
