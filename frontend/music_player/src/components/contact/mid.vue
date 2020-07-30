@@ -42,13 +42,14 @@
       </el-col>
       <el-col :span="8">
         <div class="message-box">
+          <el-divider content-position="left">意见册</el-divider>
           <div class="input-header">
             <input type="text" placeholder="Name" v-model="name">
             <input type="text" placeholder="Email" v-model="email">
             <input type="text" placeholder="Subject" v-model="subject">
           </div>
           <div class="input-message">
-            <textarea cols="30" rows="10" placeholder="Message" v-model="message"></textarea>
+            <textarea cols="30" rows="7" placeholder="Message" v-model="message"></textarea>
           </div>
           <el-button type="text" class="send-button" @click="submitComment">Send >></el-button>
         </div>

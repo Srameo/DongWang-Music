@@ -5,7 +5,7 @@
         <span class="sub-title">没人比我更懂</span>
         <h2>播放
           <div> 
-            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            <el-avatar src="http://p2.music.126.net/_ldY-Tf5dCIubyyeATSrdA==/109951164322846413.jpg"></el-avatar>
           </div>MV
         </h2>
       </div>
@@ -13,7 +13,7 @@
     <div class="outer-container">
       <div class="mv-container">
         <div class="mv-wrap">
-          <h3 class="title">mv详细信息🦄</h3>
+          <h3 class="title">mv详细信息🌈</h3>
           <!-- mv -->
           <div class="video-wrap">
             <video controls :src="url" autoplay></video>
@@ -53,7 +53,7 @@
                     <span class="name">{{item.user.nickname}}</span>
                     <span class="comment">: {{item.content}}</span>
                   </div>
-                  <div class="date">{{ item.time | dateFormat }}</div>
+                  <div class="date">{{ item.time | dateFormat}}</div>
                 </div>
                 </div>
               </div>

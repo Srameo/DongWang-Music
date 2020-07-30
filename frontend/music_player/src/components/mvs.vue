@@ -6,7 +6,7 @@
         <h2>
           最新
           <div>
-            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            <el-avatar src="http://p2.music.126.net/_ldY-Tf5dCIubyyeATSrdA==/109951164322846413.jpg"></el-avatar>
           </div>MV
         </h2>
       </div>
