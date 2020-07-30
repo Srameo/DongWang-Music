@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-29 14:45:50
- * @LastEditTime: 2020-07-30 13:14:17
+ * @LastEditTime: 2020-07-30 14:26:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \music_player\src\components\album.vue
@@ -11,28 +11,48 @@
     <top></top>
     <section class="album-catagory section-padding-100-0">
       <div class="container">
-        <div class="row oneMusic-albums">
-          <!-- Single Album -->
-          <div
-            class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item"
-            v-for="(item, index) in songs"
-            :key="index"
-          >
-            <div class="single-album" @click="toMusicPlayer(item.id)">
-              <img :src="img[index]" alt />
-              <div class="album-info">
-                <h5>{{ item.name }}</h5>
-                <p>{{ item.singers[0].name }}</p>
+        <el-tabs v-model="activeName">
+          <!-- 我的收藏 -->
+          <el-tab-pane label="我的收藏" name="first">
+            <div class="row oneMusic-albums">
+              <!-- Single Album -->
+              <div
+                class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item"
+                v-for="(item, index) in songs"
+                :key="index"
+              >
+                <div class="single-album" @click="toMusicPlayer(item.id)">
+                  <img :src="img[index]" alt />
+                  <div class="album-info">
+                    <h5>{{ item.name }}</h5>
+                    <p>{{ item.singers[0].name }}</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div>
-          <el-table :data="recommendMusics" style="width: 100%">
-            <el-table-column prop="name" label="歌曲名称" style="width: 50%"></el-table-column>
-            <el-table-column prop="singer_name" label="歌手" style="width: 50%"></el-table-column>
-          </el-table>
-        </div>
+          </el-tab-pane>
+          <el-tab-pane label="推荐歌曲" name="second">
+            <!-- 推荐歌曲 -->
+            <div class="recommend-content">
+              <el-table
+                :data="recommendMusics"
+                style="width: 100%"
+                @row-click="handleToMusicPlayer"
+              >
+                <el-table-column
+                  prop="name"
+                  label="歌曲名称"
+                  style="width: 50%"
+                ></el-table-column>
+                <el-table-column
+                  prop="singer_name"
+                  label="歌手"
+                  style="width: 50%"
+                ></el-table-column>
+              </el-table>
+            </div>
+          </el-tab-pane>
+        </el-tabs>
       </div>
     </section>
   </div>
@@ -47,6 +67,7 @@ export default {
   },
   data() {
     return {
+      activeName: "first",
       // 收藏的歌曲信息
       songs: [],
       // 用户id
@@ -55,6 +76,7 @@ export default {
       img: [],
       // 收藏歌曲id
       id: [],
+      // 推荐歌曲列表
       recommendMusics: [],
     };
   },
@@ -77,7 +99,7 @@ export default {
             url: "http://127.0.0.1:8882/recommend/user",
             method: "post",
             params: {
-              id: this.uid, 
+              id: this.uid,
             },
           })
             .then((res) => {
@@ -124,9 +146,6 @@ export default {
           console.log(err);
         });
     },
-    handleClick(tab, event) {
-      console.log(tab, event);
-    },
     // 获取图片方法
     getPic(id) {
       axios({
@@ -140,8 +159,11 @@ export default {
         this.img.push(res.data.songs[0].al.picUrl);
       });
     },
-    toMusicPlayer(id) {
+        toMusicPlayer(id) {
       this.$router.push("/music?id=" + id);
+    },
+    handleToMusicPlayer(row,event,column) {
+      this.$router.push("/music?id=" + row.id);
     },
   },
 };
