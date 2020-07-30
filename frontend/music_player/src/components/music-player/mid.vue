@@ -25,7 +25,7 @@
               <li class="info-content">
                 <div v-if="stared && uid" @click="star">
                   <el-button size="mini" type="warning" icon="el-icon-star-off" circle></el-button>
-                  <span class="star-text">取消收藏</span>
+                  <span class="star-text">已收藏</span>
                 </div>
                 <div v-else-if="uid" @click="star">
                   <el-button

@@ -1,6 +1,10 @@
 <template>
   <!-- 页面顶部组件 -->
   <div id="index">
+    <!-- 模态框 -->
+    <el-drawer :visible.sync="dialogVisable" class="dialog" append-to-body>
+      <el-image :src="require('../assets/core-img/timg.jpg')" class="drawer-img"></el-image>
+    </el-drawer>
     <!-- 滚动条返回顶部 -->
     <transition>
       <div id="scrollUp" @click="goBackToTop" :style="btn_style">回</div>
@@ -90,7 +94,7 @@
                     </div>
 
                     <!-- Cart Button   考虑模态框-->
-                    <div class="cart-btn">
+                    <div class="cart-btn" @click="dialogVisable = true">
                       <a class="chuanpu-picture">
                         <p>
                           <span class="icon-favorites"></span>
@@ -107,6 +111,7 @@
         </div>
       </div>
     </div>
+
     <div>
       <transition name="el-fade-in-linear">
         <router-view ref="router-v"></router-view>
@@ -165,7 +170,7 @@ export default {
   name: "index",
   provide() {
     return {
-      reload: this.reload
+      reload: this.reload,
     };
   },
   data() {
@@ -177,6 +182,7 @@ export default {
       },
       btn_style: {},
       notLogin: true,
+      dialogVisable: false,
     };
   },
   mounted() {
@@ -278,6 +284,15 @@ export default {
 }
 #scrollUp:hover {
   background-color: #fff;
+}
+
+.dialog {
+  position: fixed;
+  z-index: 9999;
+}
+
+.drawer-img {
+  margin: 50px;
 }
 
 .header-area {
