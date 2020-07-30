@@ -13,7 +13,7 @@
     <div class="outer-container">
       <div class="mv-container">
         <div class="mv-wrap">
-          <h3 class="title">💫mv详细信息🦄</h3>
+          <h3 class="title">mv详细信息🦄</h3>
           <!-- mv -->
           <div class="video-wrap">
             <video controls :src="url" autoplay></video>
@@ -30,9 +30,9 @@
             </div>
             <div class="mv-info">
               <!-- 标题 -->
-              <h6 class="title">{{ mvInfo.name }}</h6>
+              <h6 class="title">{{ mvInfo.name }}<span class="number">    播放：{{ mvInfo.playCount }}次</span></h6>
               <!-- 播放次数 -->
-              <span class="number">播放：{{ mvInfo.playCount }}次</span>
+              
               <!-- 描述 -->
               <p class="desc">{{ mvInfo.desc }}</p>
             </div>
