@@ -9,7 +9,7 @@
 <template>
   <div>
     <top :musicname="name" :id="id"></top>
-    <mid :id="id" :singers="singers" :name="name" :tags="tags" :num="num"></mid>
+    <mid :id="id" :singers="singers" :name="name" :tags="tags" :num="num" ref="mid"></mid>
   </div>
 </template>
 
@@ -30,6 +30,30 @@ export default {
       tags: [],
       num: 0,
     };
+  },
+  methods: {
+    refresh() {
+      this.id = this.$route.query.id;
+      console.log("parent refresh");
+      axios({
+        url: "http://127.0.0.1:8882/music/get",
+        method: "post",
+        params: {
+          id: this.id,
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+          this.name = res.data.songInfo.name;
+          this.singers = res.data.songInfo.singers;
+          this.tags = res.data.songInfo.tags;
+		  this.num = res.data.songInfo.num;
+		  this.$refs['mid'].refresh();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   mounted() {
     axios({
