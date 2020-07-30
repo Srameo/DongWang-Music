@@ -82,7 +82,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next)=>{
 	if(to.path!='/album')return next();
 	const user = window.sessionStorage.getItem("userToken");
-	if(!user) return next("/");
+	if(!user) return next("/login");
 	return next();
 })
 
