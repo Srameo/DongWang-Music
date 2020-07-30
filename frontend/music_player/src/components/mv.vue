@@ -78,14 +78,14 @@
           <div class="mvs">
             <div class="items">
               <div v-for="(item, index) in simiMvs" :key="index" class="item">
-                <div class="img-wrap">
+                <div class="img-wrap" @click='toMV(item.id)'>
                   <img :src="item.cover" alt />
-                  <span class="iconfont icon-play"></span>
+                  <span class="iconfont icon-play" ><i class="el-icon-caret-right"></i></span>
                   <div class="num-wrap">
                     <div class="iconfont icon-play"></div>
                     <div class="num">{{ item.playCount }}</div>
                   </div>
-                  <span class="time">{{ item.duration }}</span>
+                  <span class="time">{{ item.duration | timeFormat}}</span>
                 </div>
                 <div class="info-wrap">
                   <div class="name">{{ item.name }}</div>
@@ -216,6 +216,14 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
+    toMv(id){
+			this.$router.push({
+				params: {
+					id
+				}
+			})
+			this.$router.go(0)
+    }
   },
 };
 </script>

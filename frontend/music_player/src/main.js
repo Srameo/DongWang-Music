@@ -17,6 +17,15 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+// 全局时间过滤器
+Vue.filter('timeFormat', (times) => {
+  let minutes = parseInt(times / 1000 / 60) + ''
+  minutes = minutes.padStart(2, '0')
+  let seconds = parseInt(times / 1000 % 60) + ''
+  seconds = seconds.padStart(2, '0')
+  return `${minutes} : ${seconds}`
+})
 Vue.filter('dateFormat', function (originVal) {
 	const dt = new Date(originVal)
 	const year = dt.getFullYear()
