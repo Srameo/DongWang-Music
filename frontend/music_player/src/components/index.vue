@@ -51,7 +51,7 @@
                       <router-link to="/album">我的收藏</router-link>
                     </li>
                     <li>
-                      <router-link to="/mvs">歌曲MV</router-link>
+                      <router-link to="/mvs" @click="toMvs">歌曲MV</router-link>
                     </li>
                     <li>
                       <router-link to="/rank">排行榜</router-link>
@@ -139,7 +139,7 @@
                   <router-link to="/main">主页</router-link>
                 </li>
                 <li>
-                  <router-link to="/mvs">歌曲MV</router-link>
+                  <router-link to="/mvs" @click="toMvs">歌曲MV</router-link>
                 </li>
                 <li>
                   <router-link to="/rank">排行榜</router-link>
@@ -161,7 +161,7 @@ export default {
   name: "index",
   provide() {
     return {
-      reload: this.reload,
+      reload: this.reload
     };
   },
   data() {
@@ -201,6 +201,9 @@ export default {
         background: `rgba(255, 255, 255,${this.opacity})`,
         opacity: `${this.opacity}`,
       };
+    },
+    toMvs() {
+      this.ref['router-v'].getList()
     },
     //
     toResult() {
