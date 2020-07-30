@@ -5,26 +5,44 @@
         <div class="song-info">
           <!-- 歌曲信息界面 -->
           <el-image class="song-img" :src="img" @click="toCloud"></el-image>
-          <span>{{ nme }}</span>
+
           <div class="all-info">
-            <div class="singer-info" v-for="singer in singers" :key="singer.id">
-              <i class="el-icon-user icon" style="font-size:25px"></i>
-              <span class="singer-name">{{ singer.name }}</span>
+            <div class="song-name">
+              <h1>🌈{{ nme }}</h1>
             </div>
+
             <ul class="info">
+              <li class="info-content">
+                <div class="singer-info">
+                  <i class="el-icon-user icon"></i>
+                  <span
+                    class="singer-name"
+                    v-for="singer in singers"
+                    :key="singer.id"
+                    >{{ singer.name }}</span
+                  >
+                </div>
+              </li>
               <li class="info-content">
                 <div class="song-tag">
                   <i class="el-icon-house icon"></i>标签:
-                  <span v-for="(tag, index) in tags" :key="index">{{ tag }}</span>
+                  <span v-for="(tag, index) in tags" :key="index">{{
+                    tag
+                  }}</span>
                 </div>
               </li>
               <li class="info-content">
                 <i class="el-icon-s-data icon"></i>
-                <span>播放量：{{ num }}</span>
+                <span>播放量：{{ num }}次</span>
               </li>
               <li class="info-content">
                 <div v-if="stared && uid" @click="star">
-                  <el-button size="mini" type="warning" icon="el-icon-star-off" circle></el-button>
+                  <el-button
+                    size="mini"
+                    type="warning"
+                    icon="el-icon-star-off"
+                    circle
+                  ></el-button>
                   <span class="star-text">已收藏</span>
                 </div>
                 <div v-else-if="uid" @click="star">
@@ -44,9 +62,21 @@
         <el-tabs v-model="activeName">
           <!-- 推荐歌曲 -->
           <el-tab-pane label="推荐歌曲" name="first">
-            <el-table :data="recommendMusics" style="width: 100%" @row-click="toMusicPlayer">
-              <el-table-column prop="name" label="歌曲名称" style="width: 50%"></el-table-column>
-              <el-table-column prop="singer_name" label="歌手" style="width: 50%"></el-table-column>
+            <el-table
+              :data="recommendMusics"
+              style="width: 100%"
+              @row-click="toMusicPlayer"
+            >
+              <el-table-column
+                prop="name"
+                label="歌曲名称"
+                style="width: 50%"
+              ></el-table-column>
+              <el-table-column
+                prop="singer_name"
+                label="歌手"
+                style="width: 50%"
+              ></el-table-column>
             </el-table>
           </el-tab-pane>
           <el-tab-pane label="评论" name="second">
@@ -357,7 +387,7 @@ export default {
         });
   },
   filters: {
-    formatDate: function (value) {
+    formatDate: function(value) {
       // 时间戳转换日期格式方法
       if (value == null) {
         return "";
@@ -422,12 +452,16 @@ audio {
 }
 
 .info {
-  font-size: 20px;
+  font-size: 28px;
   margin-top: 20px;
 }
-
-.singer-name {
-  font-size: 25px;
+.info-content {
+  font-size: 18px;
+  margin-top: 5px;
+}
+.info-content span{
+  display: inline-block;
+  padding-top: 3px;
 }
 
 .comment-item {
@@ -458,9 +492,8 @@ audio {
 
 .icon {
   float: left;
-  width: 20px;
-  height: 20px;
-  margin: 5px 10px 0 3px;
+  font-size: 28px;
+  margin: 2px 10px 0 0;
 }
 
 .comment-user {
@@ -476,6 +509,12 @@ audio {
   color: #0c73c2;
 }
 .star-text {
-  margin-left: 5px;
+  margin-left: 9px;
+}
+.singer-name{
+  margin-right: 5px;
+}
+.song-tag span{
+  margin-right: 5px;
 }
 </style>
