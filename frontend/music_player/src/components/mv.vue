@@ -3,9 +3,8 @@
     <section class="breadcumb-area bg-img bg-overlay">
       <div class="bradcumbContent">
         <span class="sub-title">没人比我更懂</span>
-        <h2>
-          最新
-          <div>
+        <h2>播放
+          <div> 
             <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
           </div>MV
         </h2>
@@ -14,7 +13,7 @@
     <div class="outer-container">
       <div class="mv-container">
         <div class="mv-wrap">
-          <h3 class="title">mv详情</h3>
+          <h3 class="title">💫mv详细信息🦄</h3>
           <!-- mv -->
           <div class="video-wrap">
             <video controls :src="url" autoplay></video>
@@ -31,8 +30,7 @@
             </div>
             <div class="mv-info">
               <!-- 标题 -->
-              <h2 class="title">{{ mvInfo.name }}</h2>
-              <span class="date">发布：2014-11-04</span>
+              <h6 class="title">{{ mvInfo.name }}</h6>
               <!-- 播放次数 -->
               <span class="number">播放：{{ mvInfo.playCount }}次</span>
               <!-- 描述 -->
@@ -73,19 +71,20 @@
             :limit="limit"
           ></el-pagination>
         </div>
+        <!-- 相关推荐 -->
         <div class="mv-recommend">
           <h3 class="title">相关推荐</h3>
           <div class="mvs">
             <div class="items">
               <div v-for="(item, index) in simiMvs" :key="index" class="item">
-                <div class="img-wrap">
+                <div class="img-wrap" @click='toMv(item.id)'>
                   <img :src="item.cover" alt />
-                  <span class="iconfont icon-play"></span>
+                  <span class="iconfont icon-play" ><i class="el-icon-caret-right"></i></span>
                   <div class="num-wrap">
                     <div class="iconfont icon-play"></div>
-                    <div class="num">{{ item.playCount }}</div>
+                    <div class="num">{{ item.playCount | playCountFilter}}</div>
                   </div>
-                  <span class="time">{{ item.duration }}</span>
+                  <span class="time">{{ item.duration | timeFormat}}</span>
                 </div>
                 <div class="info-wrap">
                   <div class="name">{{ item.name }}</div>
@@ -94,6 +93,8 @@
               </div>
             </div>
           </div>
+        </div>
+        <div>
         </div>
       </div>
     </div>
@@ -196,7 +197,7 @@ export default {
       
       this.comments=res.data.hotComments;
       console.log(res.data.hotComments);
-      						计算歌曲时间
+      						// 计算歌曲时间
 						for (let i = 0; i < this.comments.length; i++) {
 						  let min = parseInt(this.comments[i].time / 1000 / 60)
 						  let sec = parseInt((this.comments[i].time / 1000) % 60)
@@ -209,13 +210,17 @@ export default {
 						  // console.log(min + '|' + sec)
 						  this.comments[i].time = min + ':' + sec
 						}
-						保存总数
+						// 保存总数
     });
   },
   methods: {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
+    toMv(id){
+			this.$router.push(`/mv?q=${id}`)
+		  this.$router.go(0)
+    }
   },
 };
 </script>
@@ -243,7 +248,7 @@ export default {
 }
 
 .mv-container .title {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .mv-container .mv-wrap {

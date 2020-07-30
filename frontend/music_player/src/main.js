@@ -17,6 +17,15 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+// 全局时间过滤器
+Vue.filter('timeFormat', (times) => {
+  let minutes = parseInt(times / 1000 / 60) + ''
+  minutes = minutes.padStart(2, '0')
+  let seconds = parseInt(times / 1000 % 60) + ''
+  seconds = seconds.padStart(2, '0')
+  return `${minutes} : ${seconds}`
+})
 Vue.filter('dateFormat', function (originVal) {
 	const dt = new Date(originVal)
 	const year = dt.getFullYear()
@@ -27,4 +36,12 @@ Vue.filter('dateFormat', function (originVal) {
 	const seconds = (dt.getSeconds() + '').padStart(2, '0')
 
 	return `${year}-${month}-${date} ${hour}:${minute}:${seconds}`
+})
+//播放量过滤
+Vue.filter('playCountFilter', (val) => {
+	if (val >= 100000) {
+		return `${parseInt(val / 10000)}万`
+	} else {
+		return val
+	}
 })

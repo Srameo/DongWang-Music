@@ -78,4 +78,12 @@ const router = new VueRouter({
   routes
 })
 
+// 挂载路由导航
+router.beforeEach((to, from, next)=>{
+	if(to.path!='/album')return next();
+	const user = window.sessionStorage.getItem("userToken");
+	if(!user) return next("/");
+	return next();
+})
+
 export default router
