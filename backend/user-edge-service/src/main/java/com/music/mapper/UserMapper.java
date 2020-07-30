@@ -13,6 +13,9 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserMapper {
 
+    @Select("SELECT count(uid) FROM stars WHERE uid=#{uid} AND mid=#{mid}")
+    Integer staredOrNot(@Param("uid") int uid, @Param("mid") int mid);
+
     @Select("SELECT username FROM users WHERE id=#{id}")
     String getUserNameById(@Param("id") int id);
 
