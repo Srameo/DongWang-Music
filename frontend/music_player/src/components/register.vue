@@ -44,13 +44,6 @@
           <el-form-item class="input-area" prop="age">
             <el-input v-model.number="registerForm.age" prefix-icon="el-icon-view" placeholder="年龄"></el-input>
           </el-form-item>
-          <!-- 性别 -->
-          <el-form-item class="input-area">
-            <el-radio-group v-model.number="registerForm.gender">
-              <el-radio :label="0">男</el-radio>
-              <el-radio :label="1">女</el-radio>
-            </el-radio-group>
-          </el-form-item>
           <!-- 验证码 -->
           <el-form-item class="input-area" prop="verifyCode">
             <el-input
@@ -58,6 +51,13 @@
               prefix-icon="el-icon-view"
               placeholder="验证码"
             ></el-input>
+          </el-form-item>
+          <!-- 性别 -->
+          <el-form-item class="input-area">
+            <el-radio-group v-model.number="registerForm.gender">
+              <el-radio :label="0">男</el-radio>
+              <el-radio :label="1">女</el-radio>
+            </el-radio-group>
           </el-form-item>
           <!-- 按钮 -->
           <el-form-item class="btns">
