@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-29 14:45:50
- * @LastEditTime: 2020-07-30 01:22:54
+ * @LastEditTime: 2020-07-30 13:14:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \music_player\src\components\album.vue
@@ -26,6 +26,14 @@
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <el-table :data="recommendMusics" style="width: 100%">
+            <el-table-column prop="name" label="歌曲名称" style="width: 50%">
+            </el-table-column>
+            <el-table-column prop="singer_name" label="歌手" style="width: 50%">
+            </el-table-column>
+          </el-table>
         </div>
       </div>
     </section>
