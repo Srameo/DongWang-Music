@@ -35,6 +35,7 @@ public class RecommendController {
         List<Long> recommendList = null;
         try {
             recommendList = rs.getUserRecommendDetail(uid);
+            System.out.println(recommendList);
             if (recommendList.size() == 0) {
                 recommendList = recommendMapper.getTopMusicByUser((int)uid);
             }

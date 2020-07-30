@@ -91,7 +91,11 @@
 
                     <!-- Cart Button   考虑模态框-->
                     <div class="cart-btn">
-                        <a class="chuanpu-picture"><p><span class="icon-favorites "></span></p></a>
+                      <a class="chuanpu-picture">
+                        <p>
+                          <span class="icon-favorites"></span>
+                        </p>
+                      </a>
                     </div>
                     <!-- <href="//music.163.com/outchain/player?type=2&id=36990266&auto=1&height=66"><p><span class="icon-favorites "></span></p></a> -->
                   </div>
@@ -203,7 +207,7 @@ export default {
       };
     },
     toMvs() {
-      this.ref['router-v'].getList()
+      this.ref["router-v"].getList();
     },
     //
     toResult() {
