@@ -42,52 +42,25 @@
         <div class="comment-wrap">
           <p class="title">
             精彩评论
-            <span class="number">(666)</span>
+            <span class="number">{{comments.length}}</span>
           </p>
-          <div class="comments-wrap">
+          <div class="comments-wrap" v-for="(item,index) in comments" :key='index'>
             <div class="item">
               <div class="icon-wrap">
-                <img src="../assets/bg-img/pa3.jpg" alt />
+                <img :src="item.user.avatarUrl" alt />
               </div>
               <div class="content-wrap">
                 <div class="content">
-                  <span class="name">爱斯基摩：</span>
-                  <span class="comment">谁说的，长大了依旧可爱哈</span>
+                  <span class="name">{{item.user.nickname}}</span>
+                  <span class="comment">: {{item.content}}</span>
                 </div>
-                <div class="re-content">
-                  <span class="name">小苹果：</span>
-                  <span class="comment">还是小时候比较可爱</span>
-                </div>
-                <div class="date">2020-02-12 17:26:11</div>
+                <div class="date">{{ item.time | dateFormat }}</div>
+              </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- 最新评论 -->
-        <div class="comment-wrap">
-          <p class="title">
-            最新评论
-            <span class="number">(666)</span>
-          </p>
-          <div class="comments-wrap">
-            <div class="item">
-              <div class="icon-wrap">
-                <img src="../assets/bg-img/pa3.jpg" alt />
-              </div>
-              <div class="content-wrap">
-                <div class="content">
-                  <span class="name">爱斯基摩：</span>
-                  <span class="comment">谁说的，长大了依旧可爱哈</span>
-                </div>
-                <div class="re-content">
-                  <span class="name">小苹果：</span>
-                  <span class="comment">还是小时候比较可爱</span>
-                </div>
-                <div class="date">2020-02-12 17:26:11</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- 最新评论  不要了-->
         <!-- 分页器 -->
         <el-pagination
           @current-change="handleCurrentChange"
@@ -122,7 +95,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -181,6 +153,7 @@ export default {
       // console.log(res)
       // 保存相关MV
       this.simiMvs = res.data.mvs;
+
     });
 
     // 获取 mv的信息
@@ -218,8 +191,23 @@ export default {
         offset: 0,
       },
     }).then((res) => {
-      console.log(res.data);
-      this.comments=res.data.hotcomments;
+      
+      this.comments=res.data.hotComments;
+      console.log(res.data.hotComments);
+      						计算歌曲时间
+						for (let i = 0; i < this.comments.length; i++) {
+						  let min = parseInt(this.comments[i].time / 1000 / 60)
+						  let sec = parseInt((this.comments[i].time / 1000) % 60)
+						  if (min < 10) {
+						    min = '0' + min
+						  }
+						  if (sec < 10) {
+						    sec = '0' + sec
+						  }
+						  // console.log(min + '|' + sec)
+						  this.comments[i].time = min + ':' + sec
+						}
+						保存总数
     });
   },
   methods: {
