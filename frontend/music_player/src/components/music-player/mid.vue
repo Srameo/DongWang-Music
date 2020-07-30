@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     star() {
-      console.log("star clicked")
+      console.log("star clicked");
       let u = "";
       if (!this.stared) {
         u = "http://127.0.0.1:8882/music/star";
@@ -143,9 +143,9 @@ export default {
           mid: this.id,
           uid: this.uid,
         },
-      }).then(res => {
-        console.log("success")
-        this.getStarInfo()
+      }).then((res) => {
+        console.log("success");
+        this.getStarInfo();
       });
     },
     getStarInfo() {
@@ -158,7 +158,7 @@ export default {
         },
       }).then((res) => {
         this.stared = res.data;
-        console.log(this.stared)
+        console.log(this.stared);
       });
     },
     toCloud() {
