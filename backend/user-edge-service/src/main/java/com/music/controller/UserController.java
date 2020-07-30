@@ -32,6 +32,12 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @RequestMapping(value = "/get", method = RequestMethod.POST)
+    @ResponseBody
+    public Response getUserNameById(int id) {
+        return new LoginResponse(userService.getUserNameById(id), "0");
+    }
+
     /**
      * 登录功能
      * @param username

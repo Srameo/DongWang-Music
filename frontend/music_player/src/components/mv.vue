@@ -1,22 +1,13 @@
 <template>
+<div>
+  
   <div class="mv-container">
-    <div>{{$router.query.q}}</div>
-    <section class="breadcumb-area bg-img bg-overlay">
-      <div class="bradcumbContent">
-        <span class="sub-title">没人比我更懂</span>
-        <h2>
-          最新
-          <div>
-            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-          </div>MV
-        </h2>
-      </div>
-    </section>
+
     <div class="mv-wrap">
       <h3 class="title">mv详情</h3>
       <!-- mv -->
       <div class="video-wrap">
-        <video controls :src="url"></video>
+        <video controls :src="url" autoplay></video>
       </div>
       <!-- mv信息 -->
       <div class="info-wrap">
@@ -47,7 +38,11 @@
         <div class="comments-wrap">
           <div class="item">
             <div class="icon-wrap">
+<<<<<<< HEAD
               <!-- <img src="../assets/avatar.jpg" alt /> -->
+=======
+              <img src="../assets/bg-img/pa3.jpg" alt />
+>>>>>>> 00df25e11b515ad47d954c6623267fbc7112376d
             </div>
             <div class="content-wrap">
               <div class="content">
@@ -72,6 +67,7 @@
         <div class="comments-wrap">
           <div class="item">
             <div class="icon-wrap">
+<<<<<<< HEAD
               <!-- <img src="../assets/avatar.jpg" alt /> -->
             </div>
             <div class="content-wrap">
@@ -105,6 +101,9 @@
           <div class="item">
             <div class="icon-wrap">
               <!-- <img src="../assets/avatar.jpg" alt /> -->
+=======
+              <img src="../assets/bg-img/pa3.jpg" alt />
+>>>>>>> 00df25e11b515ad47d954c6623267fbc7112376d
             </div>
             <div class="content-wrap">
               <div class="content">
@@ -118,6 +117,7 @@
               <div class="date">2020-02-12 17:26:11</div>
             </div>
           </div>
+
         </div>
       </div>
       <!-- 分页器 -->
@@ -154,6 +154,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -180,6 +181,12 @@ export default {
     };
   },
   created() {
+    // this.InitializeData()
+		// 根据 id 查询对应id详情信息
+		/* this.getMvUrlByIdAsync({
+			V: this,
+			id: this.id
+		}) */
     // 获取mv播放地址
     axios({
       url: "https://autumnfish.cn/mv/url",
@@ -190,7 +197,8 @@ export default {
         id: this.$route.query.q,
       },
     }).then((res) => {
-      // console.log(res)
+      console.log(this.$route.query.q);
+      console.log('加载地址');
       this.url = res.data.data.url;
     });
     // 获取 相关的mv
