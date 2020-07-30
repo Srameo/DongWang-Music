@@ -16,7 +16,7 @@
       <h3 class="title">mv详情</h3>
       <!-- mv -->
       <div class="video-wrap">
-        <video controls :src="url"></video>
+        <video controls :src="url" autoplay></video>
       </div>
       <!-- mv信息 -->
       <div class="info-wrap">
@@ -47,7 +47,7 @@
         <div class="comments-wrap">
           <div class="item">
             <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt />
+              <img src="../assets/bg-img/pa3.jpg" alt />
             </div>
             <div class="content-wrap">
               <div class="content">
@@ -72,7 +72,7 @@
         <div class="comments-wrap">
           <div class="item">
             <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt />
+              <img src="../assets/bg-img/pa3.jpg" alt />
             </div>
             <div class="content-wrap">
               <div class="content">
@@ -86,38 +86,7 @@
               <div class="date">2020-02-12 17:26:11</div>
             </div>
           </div>
-          <div class="item">
-            <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt />
-            </div>
-            <div class="content-wrap">
-              <div class="content">
-                <span class="name">爱斯基摩：</span>
-                <span class="comment">谁说的，长大了依旧可爱哈</span>
-              </div>
-              <div class="re-content">
-                <span class="name">小苹果：</span>
-                <span class="comment">还是小时候比较可爱</span>
-              </div>
-              <div class="date">2020-02-12 17:26:11</div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt />
-            </div>
-            <div class="content-wrap">
-              <div class="content">
-                <span class="name">爱斯基摩：</span>
-                <span class="comment">谁说的，长大了依旧可爱哈</span>
-              </div>
-              <div class="re-content">
-                <span class="name">小苹果：</span>
-                <span class="comment">还是小时候比较可爱</span>
-              </div>
-              <div class="date">2020-02-12 17:26:11</div>
-            </div>
-          </div>
+
         </div>
       </div>
       <!-- 分页器 -->
@@ -180,6 +149,12 @@ export default {
     };
   },
   created() {
+    this.InitializeData()
+		// 根据 id 查询对应id详情信息
+		this.getMvUrlByIdAsync({
+			V: this,
+			id: this.id
+		})
     // 获取mv播放地址
     axios({
       url: "https://autumnfish.cn/mv/url",
@@ -190,7 +165,8 @@ export default {
         id: this.$route.query.q,
       },
     }).then((res) => {
-      // console.log(res)
+      console.log(this.$route.query.q);
+      console.log('加载地址');
       this.url = res.data.data.url;
     });
     // 获取 相关的mv

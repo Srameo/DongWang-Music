@@ -9,8 +9,11 @@
 <template>
     <section class="breadcumb-area bg-img bg-overlay">
         <div class="bradcumbContent">
-            <p>中软小组007</p>
-            <h2>我的收藏</h2>
+            <p>没人比我更懂</p>
+             <div>
+                <el-avatar src="http://p3.music.126.net/xm1X-fSyn05AjQZcZV05tQ==/109951165162829329.jpg?param=130y130"></el-avatar>
+            </div>
+            <h2>你的收藏</h2>
         </div>
     </section>
 </template>
