@@ -27,8 +27,17 @@
             href="https://github.com/Srameo/DongWang-Music.git"
           >https://github.com/Srameo/DongWang-Music.git</a>
         </span>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <span class="drawer-copywrite">
-          <p>
+          <p class="copywrite-text">
             <router-link to="/contact">Copyright &copy;2020 All rights reserved | 中软小组007</router-link>
             <!-- <i class="fa fa-heart-o" aria-hidden="true"></i> -->
           </p>
@@ -326,7 +335,6 @@ export default {
 }
 
 .drawer-copywrite {
-  bottom: 100px;
   margin: 100px 0 0 0;
 }
 
