@@ -34,8 +34,15 @@ public class UserController {
 
     @RequestMapping(value = "/get", method = RequestMethod.POST)
     @ResponseBody
-    public Response getUserNameById(int id) {
+    public Response getUserNameById(@RequestParam("id") int id) {
         return new LoginResponse(userService.getUserNameById(id), "0");
+    }
+
+    @RequestMapping(value = "/stared", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean getUserNameById(@RequestParam("uid") int uid,
+                                   @RequestParam("mid") int mid) {
+        return userService.staredOrNot(uid, mid);
     }
 
     /**
