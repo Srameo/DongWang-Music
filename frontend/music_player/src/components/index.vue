@@ -7,7 +7,7 @@
     </el-drawer>
     <!-- 滚动条返回顶部 -->
     <transition>
-      <p id="scrollUp" @click="goBackToTop" :style="btn_style">💦</p>
+      <el-button id="scrollUp" @click="goBackToTop" :style="btn_style"><img src='../assets/core-img/top_btn.jpg'></el-button>
     </transition>
 	<!--  -->
     <div class="header-area" :style="this.style">

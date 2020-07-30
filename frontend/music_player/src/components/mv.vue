@@ -230,7 +230,7 @@ export default {
   position: relative;
   z-index: 2;
   background-position: center center;
-  background-image: url("../assets/bg-img/bg-4.jpg");
+  background-image: url("../assets/core-img/mv.jpg");
   background-size: cover;
 }
 
