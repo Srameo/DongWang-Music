@@ -41,7 +41,11 @@
         <el-tabs v-model="activeName">
           <!-- 推荐歌曲 -->
           <el-tab-pane label="推荐歌曲" name="first">
-            <el-table :data="recommendMusics" style="width: 100%">
+            <el-table
+              :data="recommendMusics"
+              style="width: 100%"
+              @row-click="toMusicPlayer"
+            >
               <el-table-column prop="name" label="歌曲名称" style="width: 50%">
               </el-table-column>
               <el-table-column
@@ -158,10 +162,6 @@ export default {
         this.musicUrl = url;
       });
     },
-    toCloud() {
-      window.open("https://music.163.com/#/song?id=" + this.id);
-      // 播放次数
-    },
     async getMusicInfo(id) {
       let params = new URLSearchParams();
       params.append("id", id);
@@ -211,6 +211,9 @@ export default {
         this.cmts[i].name = res.data.token;
       });
       return token;
+    },
+    toMusicPlayer(row, event, column) {
+      this.$router.push("/music?id=" + row.id);
     },
   },
   created() {
@@ -302,7 +305,7 @@ export default {
 </script>
 
 <style scoped>
-h4{
+h4 {
   color: #999;
 }
 .player {
@@ -392,10 +395,10 @@ audio {
 .comment-user span {
   color: #0c73c2;
 }
-.star-text{
+.star-text {
   margin-left: 5px;
 }
-.el-button{
+.el-button {
   color: black;
   background-color: white;
   border-color: black;
