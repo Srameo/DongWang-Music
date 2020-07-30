@@ -38,11 +38,7 @@
         <div class="comments-wrap">
           <div class="item">
             <div class="icon-wrap">
-<<<<<<< HEAD
-              <!-- <img src="../assets/avatar.jpg" alt /> -->
-=======
               <img src="../assets/bg-img/pa3.jpg" alt />
->>>>>>> 00df25e11b515ad47d954c6623267fbc7112376d
             </div>
             <div class="content-wrap">
               <div class="content">
@@ -67,43 +63,7 @@
         <div class="comments-wrap">
           <div class="item">
             <div class="icon-wrap">
-<<<<<<< HEAD
-              <!-- <img src="../assets/avatar.jpg" alt /> -->
-            </div>
-            <div class="content-wrap">
-              <div class="content">
-                <span class="name">爱斯基摩：</span>
-                <span class="comment">谁说的，长大了依旧可爱哈</span>
-              </div>
-              <div class="re-content">
-                <span class="name">小苹果：</span>
-                <span class="comment">还是小时候比较可爱</span>
-              </div>
-              <div class="date">2020-02-12 17:26:11</div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="icon-wrap">
-              <!-- <img src="../assets/avatar.jpg" alt /> -->
-            </div>
-            <div class="content-wrap">
-              <div class="content">
-                <span class="name">爱斯基摩：</span>
-                <span class="comment">谁说的，长大了依旧可爱哈</span>
-              </div>
-              <div class="re-content">
-                <span class="name">小苹果：</span>
-                <span class="comment">还是小时候比较可爱</span>
-              </div>
-              <div class="date">2020-02-12 17:26:11</div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="icon-wrap">
-              <!-- <img src="../assets/avatar.jpg" alt /> -->
-=======
               <img src="../assets/bg-img/pa3.jpg" alt />
->>>>>>> 00df25e11b515ad47d954c6623267fbc7112376d
             </div>
             <div class="content-wrap">
               <div class="content">
