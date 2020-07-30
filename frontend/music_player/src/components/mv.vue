@@ -1,16 +1,8 @@
 <template>
+<div>
+  
   <div class="mv-container">
-    <section class="breadcumb-area bg-img bg-overlay">
-      <div class="bradcumbContent">
-        <span class="sub-title">没人比我更懂</span>
-        <h2>
-          最新
-          <div>
-            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-          </div>MV
-        </h2>
-      </div>
-    </section>
+
     <div class="mv-wrap">
       <h3 class="title">mv详情</h3>
       <!-- mv -->
@@ -122,6 +114,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
