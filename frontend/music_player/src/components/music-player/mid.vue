@@ -8,7 +8,7 @@
 
           <div class="all-info">
             <div class="song-name">
-              <h1>🌈{{ nme }}</h1>
+              <h1>{{ nme }}🎹</h1>
             </div>
 
             <ul class="info">
