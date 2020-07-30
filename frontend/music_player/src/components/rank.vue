@@ -1,5 +1,13 @@
 <!--
  * @Author: your name
+ * @Date: 2020-07-29 13:46:36
+ * @LastEditTime: 2020-07-30 13:30:11
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \music_player\src\components\rank.vue
+--> 
+<!--
+ * @Author: your name
  * @Date: 2020-07-28 16:07:31
  * @LastEditTime: 2020-07-29 14:44:55
  * @LastEditors: Please set LastEditors
@@ -8,16 +16,7 @@
 -->
 <template>
   <div>
-    <section class="breadcumb-area bg-img bg-overlay1">
-      <div class="bradcumbContent">
-        <span class="sub-title">没人比我更懂</span>
-        <h2>
-          <div>
-            <el-avatar src="http://p2.music.126.net/pVik5zMtELjKz-zUxIqW7w==/109951164827431706.jpg"></el-avatar>
-          </div>排行榜
-        </h2>
-      </div>
-    </section>
+    <top></top>
     <div class="album-catagory section-padding-100-0">
       <div class="container">
         <div class="row">
@@ -114,6 +113,7 @@
 </template>
 
 <script>
+import top from './rank/top'
 export default {
   data() {
     return {
@@ -126,6 +126,9 @@ export default {
       // 当前榜单类别
       tag: "全部",
     };
+  },
+  components:{
+    top
   },
   watch: {
     tag() {
@@ -186,13 +189,6 @@ export default {
 </script>
 
 <style>
-.bg-overlay1 {
-  position: relative;
-  z-index: 2;
-  background-position: center center;
-  background-image: url("../assets/bg-img/breadcumb2.jpg");
-  background-size: cover;
-}
 .nav-background {
   background-image: url("../assets/bg-img/blog2.jpg");
 }

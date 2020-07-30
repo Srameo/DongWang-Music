@@ -395,4 +395,9 @@ audio {
 .star-text{
   margin-left: 5px;
 }
+.el-button{
+  color: black;
+  background-color: white;
+  border-color: black;
+}
 </style>
