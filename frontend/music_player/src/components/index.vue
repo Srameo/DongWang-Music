@@ -84,9 +84,9 @@
 										</div>
 
 										<!-- Cart Button   考虑模态框-->
-										<!-- <div class="cart-btn">
-                                            <a class="chuanpu-picture" href="../assets/core-img/timg.jpg"><p><span class="icon-favorites "></span></p></a>
-                                        </div> -->
+										<div class="cart-btn">
+                                            <a class="chuanpu-picture"><p><span class="icon-favorites "></span></p></a>
+                                        </div>
 										<!-- <href="//music.163.com/outchain/player?type=2&id=36990266&auto=1&height=66"><p><span class="icon-favorites "></span></p></a> -->
 
 									</div>

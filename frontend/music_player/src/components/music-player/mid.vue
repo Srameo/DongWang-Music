@@ -17,7 +17,7 @@
               <li class="info-content">
                 <div>
                   <i class="el-icon-house icon"></i>标签:
-                  <span v-for="(tag, index) in tags">{{ tag }} </span>
+                  <span v-for="(tag, index) in tags" :key=index>{{ tag }} </span>
                 </div>
               </li>
               <li class="info-content">
@@ -260,6 +260,19 @@ export default {
 </script>
 
 <style scoped>
+.player {
+  background: #f1f3f4;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+audio {
+  width: 100%;
+  border-radius: none;
+  outline: none;
+}
 .song-info {
   position: relative;
   height: 250px;
