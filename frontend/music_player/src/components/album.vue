@@ -19,7 +19,7 @@
             :key="index"
           >
             <div class="single-album" @click="toMusicPlayer(item.id)">
-              <img :src="img[index]" alt="" />
+              <img :src="img[index]" alt />
               <div class="album-info">
                 <h5>{{ item.name }}</h5>
                 <p>{{ item.singers[0].name }}</p>
