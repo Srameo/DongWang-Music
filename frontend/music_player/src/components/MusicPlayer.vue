@@ -9,7 +9,7 @@
 <template>
   <div>
     <top :musicname="name" :id="id"></top>
-    <mid :id="id" :singers="singers" :name="name" :tags="tags" :num="num" ref="mid"></mid>
+    <mid :id="id" :singers="singers" :nme="name" :tags="tags" :num="num" ref="mid"></mid>
   </div>
 </template>
 

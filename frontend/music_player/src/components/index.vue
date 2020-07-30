@@ -2,8 +2,38 @@
   <!-- 页面顶部组件 -->
   <div id="index">
     <!-- 模态框 -->
-    <el-drawer :visible.sync="dialogVisable" class="dialog" append-to-body>
-      <el-image :src="require('../assets/core-img/timg.jpg')" class="drawer-img"></el-image>
+    <el-drawer :visible.sync="dialogVisable" class="dialog" :title="'中软小组007'" append-to-body>
+      <div class="drawer">
+        <el-image :src="require('../assets/core-img/timg.jpg')"></el-image>
+        <h4>项目简介</h4>
+        <span>一个可以提供音乐推荐系统的网站</span>
+        <br />
+        <br />
+        <h4>数据来源</h4>
+        <span>
+          MV 歌单:
+          <a href="https://autumnfish.cn/">https://autumnfish.cn/</a>
+        </span>
+        <br />
+        <span>
+          歌曲相关信息:
+          <a href="http://musicapi.leanapp.cn/">http://musicapi.leanapp.cn/</a>
+        </span>
+        <br />
+        <br />
+        <h4>GitHub</h4>
+        <span>
+          <a
+            href="https://github.com/Srameo/DongWang-Music.git"
+          >https://github.com/Srameo/DongWang-Music.git</a>
+        </span>
+        <span class="drawer-copywrite">
+          <p>
+            <router-link to="/contact">Copyright &copy;2020 All rights reserved | 中软小组007</router-link>
+            <!-- <i class="fa fa-heart-o" aria-hidden="true"></i> -->
+          </p>
+        </span>
+      </div>
     </el-drawer>
     <!-- 滚动条返回顶部 -->
     <transition>
@@ -291,8 +321,13 @@ export default {
   z-index: 9999;
 }
 
-.drawer-img {
-  margin: 50px;
+.drawer {
+  margin: 0 50px 0 50px;
+}
+
+.drawer-copywrite {
+  bottom: 100px;
+  margin: 100px 0 0 0;
 }
 
 .header-area {
