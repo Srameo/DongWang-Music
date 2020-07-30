@@ -13,7 +13,8 @@ public class RootPath {
         int index = nowPath.indexOf(projectName);
         String rootPath = nowPath;
         if (index != -1) {
-            rootPath = nowPath.substring(0, index + projectName.length() + 1);
+            System.out.println(nowPath);
+            rootPath = nowPath.substring(0, index + projectName.length());
         }
         return rootPath;
     }
