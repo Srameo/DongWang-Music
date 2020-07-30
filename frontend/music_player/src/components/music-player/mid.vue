@@ -44,19 +44,9 @@
         <el-tabs v-model="activeName">
           <!-- 推荐歌曲 -->
           <el-tab-pane label="推荐歌曲" name="first">
-            <el-table
-              :data="recommendMusics"
-              style="width: 100%"
-              @row-click="toMusicPlayer"
-            >
-              <el-table-column prop="name" label="歌曲名称" style="width: 50%">
-              </el-table-column>
-              <el-table-column
-                prop="singer_name"
-                label="歌手"
-                style="width: 50%"
-              >
-              </el-table-column>
+            <el-table :data="recommendMusics" style="width: 100%" @row-click="toMusicPlayer">
+              <el-table-column prop="name" label="歌曲名称" style="width: 50%"></el-table-column>
+              <el-table-column prop="singer_name" label="歌手" style="width: 50%"></el-table-column>
             </el-table>
           </el-tab-pane>
           <el-tab-pane label="评论" name="second">
@@ -138,6 +128,47 @@ export default {
     };
   },
   methods: {
+    refresh() {
+      console.log("id changed");
+        this.getPic();
+        this.playMusic();
+        console.log(this.singers);
+        axios({
+          url: "http://127.0.0.1:8882/music/get/comments",
+          method: "post",
+          params: {
+            id: this.id,
+          },
+        })
+          .then((res) => {
+            console.log(res.data);
+            this.cmts = res.data.commentInfos;
+            // 获取评论人姓名
+            for (let i = 0; i < this.cmts.length; i++) {
+              this.getCmtName(this.cmts[i].uid, i);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          }),
+          axios({
+            url: "http://127.0.0.1:8882/recommend/music",
+            method: "post",
+            params: {
+              id: this.id,
+            },
+          })
+            .then((res) => {
+              console.log(res.data);
+              this.recommendMusics = new Array();
+              for (let i = 0; i < res.data.ids.length; i++) {
+                this.getMusicInfo(res.data.ids[i]);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+    },
     star() {
       console.log("star clicked");
       let u = "";
@@ -258,11 +289,10 @@ export default {
     },
     toMusicPlayer(row, event, column) {
       this.$router.push("/music?id=" + row.id);
+      this.$parent.refresh();
     },
   },
   created() {
-    this.getPic();
-    this.playMusic();
     let token = window.sessionStorage.getItem("userToken");
     if (token) {
       console.log(token);
@@ -287,6 +317,8 @@ export default {
     }
   },
   mounted() {
+    this.getPic();
+    this.playMusic();
     console.log(this.singers);
     axios({
       url: "http://127.0.0.1:8882/music/get/comments",
@@ -344,6 +376,11 @@ export default {
         s = s < 10 ? "0" + s : s;
         return y + "-" + MM + "-" + d + " " + h + ":" + m + ":" + s;
       }
+    },
+    watch: {
+      id() {
+        
+      },
     },
   },
 };
