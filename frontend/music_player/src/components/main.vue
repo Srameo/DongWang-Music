@@ -28,7 +28,18 @@
                       <!-- <h6 data-animation="fadeInUp" data-delay="100ms">Latest album</h6>
                       <h2 data-animation="fadeInUp" data-delay="300ms">Beyond Time </h2>-->
                       <router-link
+                        v-if="notLogin"
                         to="/login"
+                        data-animation="fadeInUp"
+                        data-delay="500ms"
+                        class="btn oneMusic-btn mt-50"
+                      >
+                        让我懂你
+                        <i class="el-icon-s-promotion"></i>
+                      </router-link>
+                      <router-link
+                        v-else
+                        to="/rank"
                         data-animation="fadeInUp"
                         data-delay="500ms"
                         class="btn oneMusic-btn mt-50"
@@ -63,7 +74,18 @@
                       </h2>
                       <h6 data-animation="fadeInUp" data-delay="300ms">better than me!</h6>
                       <router-link
+                        v-if="notLogin"
                         to="/login"
+                        data-animation="fadeInUp"
+                        data-delay="500ms"
+                        class="btn oneMusic-btn mt-50"
+                      >
+                        让我懂你
+                        <i class="el-icon-s-promotion"></i>
+                      </router-link>
+                      <router-link
+                        v-else
+                        to="/rank"
                         data-animation="fadeInUp"
                         data-delay="500ms"
                         class="btn oneMusic-btn mt-50"
@@ -82,7 +104,7 @@
     </div>
     <!-- ##### Hero Area End ##### -->
     <!--轮播结束-->
-    <!-- <bottom></bottom> -->
+    <bottom></bottom>
   </div>
 </template>
 
@@ -93,6 +115,26 @@ export default {
   name: "main",
   components: {
     bottom,
+  },
+  inject: ["reload"],
+  data() {
+    return {
+      notLogin: true,
+    };
+  },
+  mounted() {
+    this.checkLogin();
+    console.log("执行了main");
+    console.log(this.notLogin);
+  },
+  methods: {
+    checkLogin() {
+      if (window.sessionStorage.getItem("userToken") != null) {
+        this.notLogin = false;
+      } else {
+        this.notLogin = true;
+      }
+    },
   },
 };
 </script>
