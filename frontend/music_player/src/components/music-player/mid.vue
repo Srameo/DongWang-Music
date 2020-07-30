@@ -443,12 +443,4 @@ audio {
 .star-text {
   margin-left: 5px;
 }
-<<<<<<< HEAD
-.el-button {
-  color: black;
-  background-color: white;
-  border-color: black;
-}
-=======
->>>>>>> bee80362ed191bec6302451b1214def7d3cd4ea3
 </style>

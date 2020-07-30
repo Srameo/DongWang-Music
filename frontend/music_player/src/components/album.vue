@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-29 14:45:50
- * @LastEditTime: 2020-07-30 14:04:34
+ * @LastEditTime: 2020-07-30 14:26:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \music_player\src\components\album.vue
@@ -37,7 +37,7 @@
               <el-table
                 :data="recommendMusics"
                 style="width: 100%"
-                @row-click="toMusicPlayer"
+                @row-click="handleToMusicPlayer"
               >
                 <el-table-column
                   prop="name"
@@ -159,7 +159,10 @@ export default {
         this.img.push(res.data.songs[0].al.picUrl);
       });
     },
-    toMusicPlayer(row,event,column) {
+        toMusicPlayer(id) {
+      this.$router.push("/music?id=" + id);
+    },
+    handleToMusicPlayer(row,event,column) {
       this.$router.push("/music?id=" + row.id);
     },
   },
