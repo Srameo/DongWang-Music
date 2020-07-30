@@ -22,7 +22,7 @@
                 :key="index"
               >
                 <div class="single-album" @click="toMusicPlayer(item.id)">
-                  <img :src="img[index]" alt />
+                  <img :src="item.img" alt />
                   <div class="album-info">
                     <h5>{{ item.name }}</h5>
                     <p>{{ item.singers[0].name }}</p>
@@ -118,7 +118,7 @@ export default {
             console.log(this.songs);
             // 获取歌曲封面
             for (let i = 0; i < this.songs.length; i++) {
-              this.getPic(this.songs[i].id);
+              this.getPic(this.songs[i].id, i);
             }
             console.log(this.img);
           });
@@ -147,7 +147,7 @@ export default {
         });
     },
     // 获取图片方法
-    getPic(id) {
+    getPic(id, i) {
       axios({
         url: "http://musicapi.leanapp.cn/song/detail",
         method: "get",
@@ -156,6 +156,7 @@ export default {
         },
       }).then((res) => {
         console.log(res.data);
+        this.songs[i].img = res.data.songs[0].al.picUrl
         this.img.push(res.data.songs[0].al.picUrl);
       });
     },
