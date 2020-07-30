@@ -1,8 +1,20 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-29 13:46:36
+ * @LastEditTime: 2020-07-30 15:15:48
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \music_player\src\components\music-player\top.vue
+--> 
 <template>
     <section class="breadcumb-area bg-img bg-overlay">
         <div class="bradcumbContent">
-            <p>{{id}}</p>
-            <h3>{{musicname}}</h3>
+        <span class="sub-title">没人比我更懂</span>
+        <h2>
+          <div>
+            <el-avatar src="http://p2.music.126.net/Y0It48uESD-eycOa9Pdfog==/109951164245036271.jpg"></el-avatar>
+          </div>好的音乐
+        </h2>
         </div>
     </section>
 </template>

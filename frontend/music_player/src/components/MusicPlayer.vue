@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-29 13:46:36
- * @LastEditTime: 2020-07-29 15:27:49
- * @LastEditors: your name
+ * @LastEditTime: 2020-07-30 15:05:59
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \music_player\src\components\MusicPlayer.vue
 -->
