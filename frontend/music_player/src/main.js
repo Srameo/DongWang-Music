@@ -37,3 +37,11 @@ Vue.filter('dateFormat', function (originVal) {
 
 	return `${year}-${month}-${date} ${hour}:${minute}:${seconds}`
 })
+//播放量过滤
+Vue.filter('playCountFilter', (val) => {
+	if (val >= 100000) {
+		return `${parseInt(val / 10000)}万`
+	} else {
+		return val
+	}
+})
