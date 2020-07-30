@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <img src="../assets/bg-img/blog1.jpg" class="background-image" />
+    <img src="../assets/core-img/login.jpg" class="background-image" />
     <div class="login-box">
       <!-- 表单logo -->
       <div class="login-header">
@@ -115,7 +115,7 @@ export default {
 }
 .login-box {
   border-radius: 20px;
-  width: 50%;
+  width: 45%;
   height: 40%;
   position: absolute;
   top: 50%;
@@ -129,7 +129,7 @@ export default {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
 .login-header {
-  width: 50%;
+  width: 55%;
   height: 50px;
 }
 .login-header img {
@@ -137,7 +137,7 @@ export default {
   height: 100%;
 }
 .login-body {
-  width: 30%;
+  width: 35%;
   height: 200px;
 }
 .login-form {

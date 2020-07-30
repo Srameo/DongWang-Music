@@ -5,7 +5,7 @@
         <span class="sub-title">没人比我更懂</span>
         <h2>播放
           <div> 
-            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            <el-avatar src="http://p2.music.126.net/_ldY-Tf5dCIubyyeATSrdA==/109951164322846413.jpg"></el-avatar>
           </div>MV
         </h2>
       </div>
@@ -13,7 +13,7 @@
     <div class="outer-container">
       <div class="mv-container">
         <div class="mv-wrap">
-          <h3 class="title">💫mv详细信息🦄</h3>
+          <h3 class="title">mv详细信息🌈</h3>
           <!-- mv -->
           <div class="video-wrap">
             <video controls :src="url" autoplay></video>
@@ -30,9 +30,9 @@
             </div>
             <div class="mv-info">
               <!-- 标题 -->
-              <h6 class="title">{{ mvInfo.name }}</h6>
+              <h6 class="title">{{ mvInfo.name }}<span class="number">    播放：{{ mvInfo.playCount }}次</span></h6>
               <!-- 播放次数 -->
-              <span class="number">播放：{{ mvInfo.playCount }}次</span>
+              
               <!-- 描述 -->
               <p class="desc">{{ mvInfo.desc }}</p>
             </div>
@@ -53,7 +53,7 @@
                     <span class="name">{{item.user.nickname}}</span>
                     <span class="comment">: {{item.content}}</span>
                   </div>
-                  <div class="date">{{ item.time | dateFormat }}</div>
+                  <div class="date">{{ item.time | dateFormat}}</div>
                 </div>
                 </div>
               </div>
@@ -230,7 +230,7 @@ export default {
   position: relative;
   z-index: 2;
   background-position: center center;
-  background-image: url("../assets/bg-img/bg-4.jpg");
+  background-image: url("../assets/core-img/mv.jpg");
   background-size: cover;
 }
 

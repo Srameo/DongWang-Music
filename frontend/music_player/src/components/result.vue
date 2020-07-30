@@ -2,8 +2,10 @@
 	<div class="result-container">
 		<section class="breadcumb-area bg-img bg-overlay">
 			<div class="bradcumbContent">
-				<!-- <span class="sub-title">找到 {{ count }} 个结果</span> -->
+				<span class="sub-title">没人比我更懂</span>
 				<h2><i class="el-icon-service" style="color:lightblue;"></i>{{ $route.query.q }}</h2>
+				<span class="sub-title">ps:找到 {{ count }} 个结果</span>
+				<!-- <i class="lab u-icn u-icn-37"></i> -->
 			</div>
 		</section>
 		<div class="hello">

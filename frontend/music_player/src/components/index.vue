@@ -55,8 +55,9 @@
 
     <!-- 滚动条返回顶部 -->
     <transition>
-      <div id="scrollUp" @click="goBackToTop" :style="btn_style">回</div>
+      <el-button id="scrollUp" @click="goBackToTop" :style="btn_style"><img src='../assets/core-img/top_btn.jpg'></el-button>
     </transition>
+	<!--  -->
     <div class="header-area" :style="this.style">
       <!--   页面标题  -->
       <!-- Navbar Area -->
@@ -354,7 +355,7 @@ export default {
   border-radius: 0;
   bottom: 50px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
-  color: grey;
+  color:rgba(0, 0, 0, 0.3);
   font-size: 24px;
   height: 40px;
   line-height: 40px;
