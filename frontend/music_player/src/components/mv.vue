@@ -77,7 +77,7 @@
           <div class="mvs">
             <div class="items">
               <div v-for="(item, index) in simiMvs" :key="index" class="item">
-                <div class="img-wrap" @click='toMV(item.id)'>
+                <div class="img-wrap" @click='toMv(item.id)'>
                   <img :src="item.cover" alt />
                   <span class="iconfont icon-play" ><i class="el-icon-caret-right"></i></span>
                   <div class="num-wrap">
@@ -218,12 +218,8 @@ export default {
       console.log(`当前页: ${val}`);
     },
     toMv(id){
-			this.$router.push({
-				params: {
-					id
-				}
-			})
-			this.$router.go(0)
+			this.$router.push(`/mv?q=${id}`)
+		  this.$router.go(0)
     }
   },
 };

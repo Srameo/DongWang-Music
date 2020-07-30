@@ -130,11 +130,29 @@ export default {
   methods: {
     refresh() {
       console.log("id changed");
-        this.getPic();
-        this.playMusic();
-        console.log(this.singers);
+      this.getPic();
+      this.playMusic();
+      console.log(this.singers);
+      axios({
+        url: "http://127.0.0.1:8882/music/get/comments",
+        method: "post",
+        params: {
+          id: this.id,
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+          this.cmts = res.data.commentInfos;
+          // 获取评论人姓名
+          for (let i = 0; i < this.cmts.length; i++) {
+            this.getCmtName(this.cmts[i].uid, i);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        }),
         axios({
-          url: "http://127.0.0.1:8882/music/get/comments",
+          url: "http://127.0.0.1:8882/recommend/music",
           method: "post",
           params: {
             id: this.id,
@@ -142,32 +160,14 @@ export default {
         })
           .then((res) => {
             console.log(res.data);
-            this.cmts = res.data.commentInfos;
-            // 获取评论人姓名
-            for (let i = 0; i < this.cmts.length; i++) {
-              this.getCmtName(this.cmts[i].uid, i);
+            this.recommendMusics = new Array();
+            for (let i = 0; i < res.data.ids.length; i++) {
+              this.getMusicInfo(res.data.ids[i]);
             }
           })
           .catch((err) => {
             console.log(err);
-          }),
-          axios({
-            url: "http://127.0.0.1:8882/recommend/music",
-            method: "post",
-            params: {
-              id: this.id,
-            },
-          })
-            .then((res) => {
-              console.log(res.data);
-              this.recommendMusics = new Array();
-              for (let i = 0; i < res.data.ids.length; i++) {
-                this.getMusicInfo(res.data.ids[i]);
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          });
     },
     star() {
       console.log("star clicked");
@@ -378,9 +378,7 @@ export default {
       }
     },
     watch: {
-      id() {
-        
-      },
+      id() {},
     },
   },
 };
