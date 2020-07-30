@@ -1,6 +1,6 @@
 <template>
   <div class="mv-container">
-    <div>{{$router.query.q}}</div>
+    <div>{{$route.query.q}}</div>
     <section class="breadcumb-area bg-img bg-overlay">
       <div class="bradcumbContent">
         <span class="sub-title">没人比我更懂</span>
@@ -149,12 +149,12 @@ export default {
     };
   },
   created() {
-    this.InitializeData()
+    // this.InitializeData()
 		// 根据 id 查询对应id详情信息
-		this.getMvUrlByIdAsync({
+		/* this.getMvUrlByIdAsync({
 			V: this,
 			id: this.id
-		})
+		}) */
     // 获取mv播放地址
     axios({
       url: "https://autumnfish.cn/mv/url",
