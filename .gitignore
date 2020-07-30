@@ -47,3 +47,5 @@ backend/input/
 backend/output/
 
 node_modules/
+
+.vscode
