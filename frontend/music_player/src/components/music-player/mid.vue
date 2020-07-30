@@ -13,11 +13,13 @@
                 {{ singer.name }}
               </span>
             </div>
-            <ul class="song-info">
+            <ul class="info">
               <li class="info-content">
-                <div>
+                <div class="song-tag">
                   <i class="el-icon-house icon"></i>标签:
-                  <span v-for="(tag, index) in tags" :key=index>{{ tag }} </span>
+                  <span v-for="(tag, index) in tags" :key="index"
+                    >{{ tag }}
+                  </span>
                 </div>
               </li>
               <li class="info-content">
@@ -26,11 +28,12 @@
               </li>
               <li class="info-content">
                 <el-button
+                  size="mini"
                   type="warning"
                   icon="el-icon-star-off"
                   circle
                 ></el-button
-                >收藏
+                ><span class="star-text">收藏</span>
               </li>
             </ul>
           </div>
@@ -52,9 +55,12 @@
           <el-tab-pane label="评论" name="second">
             <!-- 所有评论 -->
             <div class="comment-item" v-for="(c, index) in cmts" :key="index">
+              <h4 class="comment-user">
+                用户：<span>{{ c.name }}</span>
+              </h4>
               <comment :txt="c.content"></comment>
               <div class="comment-time">
-                <span>{{ c.commentTime }}</span>
+                <span>{{ c.commentTime | formatDate }}</span>
               </div>
             </div>
           </el-tab-pane>
@@ -113,6 +119,7 @@ export default {
       cmt: "",
       uid: null,
       musicUrl: "",
+      user: null,
     };
   },
   methods: {
@@ -196,6 +203,15 @@ export default {
           });
       });
     },
+    getCmtName(id, i) {
+      let token = null;
+      let params = new URLSearchParams();
+      params.append("id", id);
+      this.$http.post("/user/get", params).then((res) => {
+        this.cmts[i].name = res.data.token;
+      });
+      return token;
+    },
   },
   created() {
     this.getPic();
@@ -234,6 +250,10 @@ export default {
       .then((res) => {
         console.log(res.data);
         this.cmts = res.data.commentInfos;
+        // 获取评论人姓名
+        for (let i = 0; i < this.cmts.length; i++) {
+          this.getCmtName(this.cmts[i].uid, i);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -256,10 +276,35 @@ export default {
           console.log(err);
         });
   },
+  filters: {
+    formatDate: function(value) {
+      // 时间戳转换日期格式方法
+      if (value == null) {
+        return "";
+      } else {
+        let date = new Date(value);
+        let y = date.getFullYear(); // 年
+        let MM = date.getMonth() + 1; // 月
+        MM = MM < 10 ? "0" + MM : MM;
+        let d = date.getDate(); // 日
+        d = d < 10 ? "0" + d : d;
+        let h = date.getHours(); // 时
+        h = h < 10 ? "0" + h : h;
+        let m = date.getMinutes(); // 分
+        m = m < 10 ? "0" + m : m;
+        let s = date.getSeconds(); // 秒
+        s = s < 10 ? "0" + s : s;
+        return y + "-" + MM + "-" + d + " " + h + ":" + m + ":" + s;
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
+h4{
+  color: #999;
+}
 .player {
   background: #f1f3f4;
   height: 60px;
@@ -293,7 +338,7 @@ audio {
   margin-left: 40px;
 }
 
-.song-info {
+.info {
   font-size: 20px;
   margin-top: 20px;
 }
@@ -311,6 +356,19 @@ audio {
   border-color: #ededed;
 }
 
+.comment-item comment {
+  overflow: hidden;
+  word-break: break-all;
+  word-wrap: break-word;
+  line-height: 24px;
+  text-align: justify;
+}
+
+.comment-time {
+  line-height: 28px;
+  color: #999;
+}
+
 .btn {
   border: 1px solid #000;
 }
@@ -319,6 +377,22 @@ audio {
   float: left;
   width: 20px;
   height: 20px;
-  margin: 5px 7px 0 0;
+  margin: 5px 10px 0 3px;
+}
+
+.comment-user {
+  font-weight: 400;
+  margin-bottom: 6px;
+  overflow: hidden;
+  height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 100%;
+}
+.comment-user span {
+  color: #0c73c2;
+}
+.star-text{
+  margin-left: 5px;
 }
 </style>
