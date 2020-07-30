@@ -77,7 +77,7 @@
       <div class="mvs">
         <div class="items">
           <div class="item" v-for="(item, index) in list" :key="index">
-            <div class="img-wrap">
+            <div class="img-wrap" @click="toMv(item.id)">
               <img :src="item.cover" alt />
               <div class="num-wrap">
                 <div class="iconfont icon-play"></div>
@@ -194,6 +194,9 @@ export default {
       this.page = val;
       this.getList();
     },
+    toMv (id) {
+			this.$router.push(`/mv?q=${id}`)
+		}
   },
 };
 </script>

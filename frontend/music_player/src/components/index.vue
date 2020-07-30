@@ -1,6 +1,10 @@
 <template>
   <!-- 页面顶部组件 -->
   <div id="index">
+    <!-- 滚动条返回顶部 -->
+    <transition>
+      <div id="scrollUp" @click="goBackToTop" :style="btn_style">回</div>
+    </transition>
     <div class="header-area" :style="this.style">
       <!--   页面标题  -->
       <!-- Navbar Area -->
@@ -47,7 +51,7 @@
                       <router-link to="/album">我的收藏</router-link>
                     </li>
                     <li>
-                      <router-link to="/mvs">歌曲</router-link>
+                      <router-link to="/mvs">歌曲MV</router-link>
                     </li>
                     <li>
                       <router-link to="/rank">排行榜</router-link>
@@ -86,9 +90,9 @@
                     </div>
 
                     <!-- Cart Button   考虑模态框-->
-                    <!-- <div class="cart-btn">
-                                            <a class="chuanpu-picture" href="../assets/core-img/timg.jpg"><p><span class="icon-favorites "></span></p></a>
-                    </div>-->
+                    <div class="cart-btn">
+                        <a class="chuanpu-picture"><p><span class="icon-favorites "></span></p></a>
+                    </div>
                     <!-- <href="//music.163.com/outchain/player?type=2&id=36990266&auto=1&height=66"><p><span class="icon-favorites "></span></p></a> -->
                   </div>
                 </div>
@@ -150,10 +154,6 @@
       </div>
     </div>
     <!-- ##### Footer Area Start ##### -->
-    <!-- 滚动条返回顶部 -->
-    <el-backtop target=".page-component__scroll .el-scrollbar__wrap">
-      <i class="el-icon-caret-right"></i>
-    </el-backtop>
   </div>
 </template>
 <script>
@@ -171,6 +171,7 @@ export default {
       style: {
         background: `rgba(0, 0, 0,100)`,
       },
+      btn_style: {},
       notLogin: true,
     };
   },
@@ -182,6 +183,11 @@ export default {
     window.removeEventListener("scroll", this.windowScroll); //销毁滚动事件
   },
   methods: {
+    goBackToTop: function () {
+      window.pageYOffset = 0;
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    },
     windowScroll: function () {
       let scrollTop =
         window.pageYOffset ||
@@ -191,9 +197,10 @@ export default {
       this.style = {
         background: `rgba(0, 0, 0,${this.opacity})`,
       };
-    },
-    toMusicPlayer: function () {
-      this.$router.push("/music");
+      this.btn_style = {
+        background: `rgba(255, 255, 255,${this.opacity})`,
+        opacity: `${this.opacity}`,
+      };
     },
     //
     toResult() {
@@ -237,6 +244,35 @@ export default {
 };
 </script>
 <style>
+#scrollUp {
+  background-color: #000000;
+  right: 50px;
+  position: fixed;
+  z-index: 1000;
+  border-radius: 0;
+  bottom: 50px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+  color: grey;
+  font-size: 24px;
+  height: 40px;
+  line-height: 40px;
+  right: 50px;
+  text-align: center;
+  width: 40px;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.15);
+}
+@media only screen and (max-width: 767px) {
+  #scrollUp {
+    right: 30px;
+    bottom: 30px;
+  }
+}
+#scrollUp:hover {
+  background-color: #fff;
+}
+
 .header-area {
   position: absolute;
   z-index: 1000;
@@ -244,15 +280,6 @@ export default {
   top: 20px;
   left: 0;
   z-index: 1000;
-}
-
-.page-component__scroll {
-  height: 100vh;
-}
-
-.el-scrollbar__wrap {
-  overflow: scroll;
-  height: 100%;
 }
 
 #loginBtn {

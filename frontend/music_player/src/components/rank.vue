@@ -13,7 +13,7 @@
         <span class="sub-title">没人比我更懂</span>
         <h2>
           <div>
-            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            <el-avatar src="http://p2.music.126.net/pVik5zMtELjKz-zUxIqW7w==/109951164827431706.jpg"></el-avatar>
           </div>排行榜
         </h2>
       </div>

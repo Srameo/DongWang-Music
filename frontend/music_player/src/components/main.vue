@@ -1,6 +1,7 @@
 <template>
 <!-- 首页 -->
    <!-- ##### Hero Area Start ##### -->
+   <div>
     <div class="hero-area">
         <div class="hero-slides">
             <!-- Single Hero Slide -->
@@ -49,17 +50,21 @@
                     </div>
                 </el-carousel-item>
             </el-carousel>
-
-
         </div>
     </div>
     <!-- ##### Hero Area End ##### --><!--轮播结束-->
-
+    <!-- <bottom></bottom> -->
+   </div>
 </template>
 
 <script>
+import bottom from './main/bottom'
+
 export default {
-   name:'main'
+    name:'main',
+    components: {
+    bottom,
+  },
 }
 </script>
 
