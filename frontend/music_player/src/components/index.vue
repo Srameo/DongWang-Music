@@ -6,7 +6,7 @@
       <el-drawer
         :visible.sync="dialogVisable"
         class="dialog"
-        :title="'中软小组007'"
+        
         append-to-body
       >
         <div class="drawer">
@@ -382,7 +382,7 @@ export default {
 }
 
 .drawer {
-  margin: 0 50px 0 50px;
+  margin: 0 10px 0 10px;
 }
 
 .drawer-copywrite {
