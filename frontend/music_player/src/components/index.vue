@@ -89,69 +89,25 @@
                       <el-button type="text" v-else @click="logout">Quit</el-button>
                     </div>
 
-								<!-- Nav Start -->
-								<div class="classynav">
-									<ul>
-										<li>
-											<router-link to="/main">主页</router-link>
-										</li>
-										<li>
-											<router-link to="/album">我的收藏</router-link>
-										</li>
-										<li>
-											<router-link to="/mvs">歌曲MV</router-link>
-										</li>
-										<li>
-											<router-link to="/rank">排行榜</router-link>
-										</li>
-										<li>
-											<router-link to="/contact">联系我们</router-link>
-										</li>
-									</ul>
-
-									<!-- Login/Register & Cart Button -->
-									<div class="login-register-cart-button d-flex align-items-center">
-										<!-- 搜索框-->
-										<div class="cart-btn">
-											<div class="col-lg-9 ">
-												<div class="el-input el-input--small el-input--prefix">
-													<!-- 搜索框 -->
-													<input type="text" autocomplete="off" placeholder="搜索" class="el-input__inner" v-model="inputValue"
-													 @keyup.enter="toResult" />
-													<span class="el-input__prefix">
-														<i class="el-input__icon el-icon-search"></i>
-													</span>
-												</div>
-											</div>
-										</div>
-										<!-- Login/Register -->
-										<div class="login-register-btn mr-50 ">
-											<router-link to="/login" id="loginBtn" v-if="notLogin">登录 </router-link>
-											<router-link to="/register" id="registerBtn" v-if="notLogin">注册</router-link>
-											<el-button type="text" v-else @click="logout">Quit</el-button>
-										</div>
-
-										<!-- Cart Button   考虑模态框-->
-										<div class="cart-btn">
-                                            <a class="chuanpu-picture"><p><span class="icon-favorites "></span></p></a>
-                                        </div>
-										<!-- <href="//music.163.com/outchain/player?type=2&id=36990266&auto=1&height=66"><p><span class="icon-favorites "></span></p></a> -->
-
-									</div>
-								</div>
-								<!-- Nav End -->
-
-							</div>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div>
-			<transition name="el-fade-in-linear">
-				<router-view ref='router-v'></router-view>
-			</transition>
-		</div>
+                    <!-- Cart Button   考虑模态框-->
+                    <div class="cart-btn">
+                        <a class="chuanpu-picture"><p><span class="icon-favorites "></span></p></a>
+                    </div>
+                    <!-- <href="//music.163.com/outchain/player?type=2&id=36990266&auto=1&height=66"><p><span class="icon-favorites "></span></p></a> -->
+                  </div>
+                </div>
+                <!-- Nav End -->
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <transition name="el-fade-in-linear">
+        <router-view ref="router-v"></router-view>
+      </transition>
+    </div>
 
     <!-- ##### Header Area End -->
     <!-- player在这里很诡异 会影响login！ -->

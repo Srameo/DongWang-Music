@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style>
-.bg-overlay {
+/* .bg-overlay {
   position: relative;
   z-index: 2;
   background-position: center center;
@@ -52,5 +52,5 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    content: ""; }
+    content: ""; } */
 </style>

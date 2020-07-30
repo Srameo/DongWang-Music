@@ -1,6 +1,5 @@
 <template>
   <div class="mv-container">
-    <div>{{$route.query.q}}</div>
     <section class="breadcumb-area bg-img bg-overlay">
       <div class="bradcumbContent">
         <span class="sub-title">没人比我更懂</span>
