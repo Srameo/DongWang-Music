@@ -63,6 +63,13 @@ public class MusicController {
         return Response.SUCCESS;
     }
 
+    @RequestMapping(value = "/cancelstar", method = RequestMethod.POST)
+    @ResponseBody
+    public Response StarMusic(@RequestParam("uid") int uid, @RequestParam("mid") int mid){
+        musicService.cancelStarMusic(uid, mid);
+        return Response.SUCCESS;
+    }
+
     @RequestMapping(value = "/tags", method = RequestMethod.GET)
     @ResponseBody
     public List<String> getAllTags() {

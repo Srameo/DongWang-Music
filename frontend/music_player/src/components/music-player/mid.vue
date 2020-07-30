@@ -9,31 +9,34 @@
           <div class="all-info">
             <div class="singer-info" v-for="singer in singers" :key="singer.id">
               <i class="el-icon-user icon" style="font-size:25px"></i>
-              <span class="singer-name">
-                {{ singer.name }}
-              </span>
+              <span class="singer-name">{{ singer.name }}</span>
             </div>
             <ul class="info">
               <li class="info-content">
                 <div class="song-tag">
                   <i class="el-icon-house icon"></i>标签:
-                  <span v-for="(tag, index) in tags" :key="index"
-                    >{{ tag }}
-                  </span>
+                  <span v-for="(tag, index) in tags" :key="index">{{ tag }}</span>
                 </div>
               </li>
               <li class="info-content">
-                <i class="el-icon-s-data icon"></i
-                ><span>播放量：{{ num }}</span>
+                <i class="el-icon-s-data icon"></i>
+                <span>播放量：{{ num }}</span>
               </li>
               <li class="info-content">
-                <el-button
-                  size="mini"
-                  type="warning"
-                  icon="el-icon-star-off"
-                  circle
-                ></el-button
-                ><span class="star-text">收藏</span>
+                <div v-if="stared && uid" @click="star">
+                  <el-button size="mini" type="warning" icon="el-icon-star-off" circle></el-button>
+                  <span class="star-text">取消收藏</span>
+                </div>
+                <div v-else-if="uid" @click="star">
+                  <el-button
+                    size="mini"
+                    type="warning"
+                    icon="el-icon-star-off"
+                    :style="el_style"
+                    circle
+                  ></el-button>
+                  <span class="star-text">收藏</span>
+                </div>
               </li>
             </ul>
           </div>
@@ -41,7 +44,11 @@
         <el-tabs v-model="activeName">
           <!-- 推荐歌曲 -->
           <el-tab-pane label="推荐歌曲" name="first">
-            <el-table :data="recommendMusics" style="width: 100%">
+            <el-table
+              :data="recommendMusics"
+              style="width: 100%"
+              @row-click="toMusicPlayer"
+            >
               <el-table-column prop="name" label="歌曲名称" style="width: 50%">
               </el-table-column>
               <el-table-column
@@ -56,7 +63,8 @@
             <!-- 所有评论 -->
             <div class="comment-item" v-for="(c, index) in cmts" :key="index">
               <h4 class="comment-user">
-                用户：<span>{{ c.name }}</span>
+                用户：
+                <span>{{ c.name }}</span>
               </h4>
               <comment :txt="c.content"></comment>
               <div class="comment-time">
@@ -84,7 +92,8 @@
         </div>
         <div class="col-12 text-center">
           <button class="btn oneMusic-btn mt-15" type="submit" @click="comment">
-            Send<i class="fa fa-angle-double-right"></i>
+            Send
+            <i class="fa fa-angle-double-right"></i>
           </button>
         </div>
       </div>
@@ -120,9 +129,48 @@ export default {
       uid: null,
       musicUrl: "",
       user: null,
+      stared: false,
+      el_style: {
+        color: `black`,
+        "background-color": `white`,
+        "border-color": `black`,
+      },
     };
   },
   methods: {
+    star() {
+      console.log("star clicked");
+      let u = "";
+      if (!this.stared) {
+        u = "http://127.0.0.1:8882/music/star";
+      } else {
+        u = "http://127.0.0.1:8882/music/cancelstar";
+      }
+      axios({
+        url: u,
+        method: "post",
+        params: {
+          mid: this.id,
+          uid: this.uid,
+        },
+      }).then((res) => {
+        console.log("success");
+        this.getStarInfo();
+      });
+    },
+    getStarInfo() {
+      axios({
+        url: "http://127.0.0.1:8882/user/stared",
+        method: "post",
+        params: {
+          mid: this.id,
+          uid: this.uid,
+        },
+      }).then((res) => {
+        this.stared = res.data;
+        console.log(this.stared);
+      });
+    },
     toCloud() {
       window.open("https://music.163.com/#/song?id=" + this.id);
       // 播放次数
@@ -157,10 +205,6 @@ export default {
         // 直接获取父组件，可以修改任意的值
         this.musicUrl = url;
       });
-    },
-    toCloud() {
-      window.open("https://music.163.com/#/song?id=" + this.id);
-      // 播放次数
     },
     async getMusicInfo(id) {
       let params = new URLSearchParams();
@@ -212,6 +256,9 @@ export default {
       });
       return token;
     },
+    toMusicPlayer(row, event, column) {
+      this.$router.push("/music?id=" + row.id);
+    },
   },
   created() {
     this.getPic();
@@ -226,6 +273,7 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.uid = res.data.id;
+          this.getStarInfo();
           let p = new URLSearchParams();
           p.append("uid", this.uid);
           p.append("mid", this.id);
@@ -277,7 +325,7 @@ export default {
         });
   },
   filters: {
-    formatDate: function(value) {
+    formatDate: function (value) {
       // 时间戳转换日期格式方法
       if (value == null) {
         return "";
@@ -302,7 +350,7 @@ export default {
 </script>
 
 <style scoped>
-h4{
+h4 {
   color: #999;
 }
 .player {
@@ -392,7 +440,15 @@ audio {
 .comment-user span {
   color: #0c73c2;
 }
-.star-text{
+.star-text {
   margin-left: 5px;
 }
+<<<<<<< HEAD
+.el-button {
+  color: black;
+  background-color: white;
+  border-color: black;
+}
+=======
+>>>>>>> bee80362ed191bec6302451b1214def7d3cd4ea3
 </style>

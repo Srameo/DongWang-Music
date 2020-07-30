@@ -30,4 +30,10 @@ public class TestUserMapper {
         userMapper.registerUser(userInfo);
     }
 
+    @Test
+    public void testStaredOrNot() {
+        System.out.println(userMapper.staredOrNot(5, 60008));
+        System.out.println(userMapper.staredOrNot(5, 1));
+    }
+
 }

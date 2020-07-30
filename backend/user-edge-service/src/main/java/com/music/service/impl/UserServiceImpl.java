@@ -15,6 +15,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.getUserNameById(id);
     }
 
+    @Override
+    public boolean staredOrNot(int uid, int mid) {
+        return userMapper.staredOrNot(uid, mid) > 0;
+    }
+
     @Resource
     private UserMapper userMapper;
 
