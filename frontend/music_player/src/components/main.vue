@@ -55,7 +55,7 @@
         </div>
     </div>
     <!-- ##### Hero Area End ##### --><!--轮播结束-->
-    <!-- <bottom></bottom> -->
+    <bottom></bottom>
    </div>
 </template>
 
