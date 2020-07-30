@@ -47,7 +47,7 @@
         <div class="comments-wrap">
           <div class="item">
             <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt />
+              <!-- <img src="../assets/avatar.jpg" alt /> -->
             </div>
             <div class="content-wrap">
               <div class="content">
@@ -72,7 +72,7 @@
         <div class="comments-wrap">
           <div class="item">
             <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt />
+              <!-- <img src="../assets/avatar.jpg" alt /> -->
             </div>
             <div class="content-wrap">
               <div class="content">
@@ -88,7 +88,7 @@
           </div>
           <div class="item">
             <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt />
+              <!-- <img src="../assets/avatar.jpg" alt /> -->
             </div>
             <div class="content-wrap">
               <div class="content">
@@ -104,7 +104,7 @@
           </div>
           <div class="item">
             <div class="icon-wrap">
-              <img src="../assets/avatar.jpg" alt />
+              <!-- <img src="../assets/avatar.jpg" alt /> -->
             </div>
             <div class="content-wrap">
               <div class="content">
