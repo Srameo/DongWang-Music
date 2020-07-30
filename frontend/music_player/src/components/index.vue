@@ -2,9 +2,57 @@
   <!-- 页面顶部组件 -->
   <div id="index">
     <!-- 模态框 -->
-    <el-drawer :visible.sync="dialogVisable" class="dialog" append-to-body>
-      <el-image :src="require('../assets/core-img/timg.jpg')" class="drawer-img"></el-image>
-    </el-drawer>
+    <el-container>
+      <el-drawer
+        :visible.sync="dialogVisable"
+        class="dialog"
+        :title="'中软小组007'"
+        append-to-body
+      >
+        <div class="drawer">
+          <el-main>
+            <el-image :src="require('../assets/core-img/timg.jpg')"></el-image>
+            <h4>项目简介</h4>
+            <span>一个可以提供音乐推荐系统的网站</span>
+            <br />
+            <br />
+            <h4>数据来源</h4>
+            <span>
+              MV 歌单:
+              <a href="https://autumnfish.cn/">https://autumnfish.cn/</a>
+            </span>
+            <br />
+            <span>
+              歌曲相关信息:
+              <a href="http://musicapi.leanapp.cn/"
+                >http://musicapi.leanapp.cn/</a
+              >
+            </span>
+            <br />
+            <br />
+            <h4>GitHub</h4>
+            <span>
+              <a href="https://github.com/Srameo/DongWang-Music.git"
+                >https://github.com/Srameo/DongWang-Music.git</a
+              >
+            </span>
+          </el-main>
+          <el-divider></el-divider>
+          <el-footer>
+            <span class="drawer-copywrite">
+              <p class="copywrite-text">
+                <router-link to="/contact"
+                  >Copyright &copy;2020 All rights reserved |
+                  中软小组007</router-link
+                >
+                <!-- <i class="fa fa-heart-o" aria-hidden="true"></i> -->
+              </p>
+            </span>
+          </el-footer>
+        </div>
+      </el-drawer>
+    </el-container>
+
     <!-- 滚动条返回顶部 -->
     <transition>
       <el-button id="scrollUp" @click="goBackToTop" :style="btn_style"><img src='../assets/core-img/top_btn.jpg'></el-button>
@@ -26,14 +74,41 @@
               </div>
               <!-- 后退前进刷新 -->
               <div class="col-1">
-                <el-tooltip content="后退一步" :enterable="false" placement="bottom" effect="light">
-                  <i @click="back()" class="el-icon-arrow-left" style="color:Gold;"></i>
+                <el-tooltip
+                  content="后退一步"
+                  :enterable="false"
+                  placement="bottom"
+                  effect="light"
+                >
+                  <i
+                    @click="back()"
+                    class="el-icon-arrow-left"
+                    style="color:Gold;"
+                  ></i>
                 </el-tooltip>
-                <el-tooltip content="前进一步" :enterable="false" placement="bottom" effect="light">
-                  <i @click="go()" class="el-icon-arrow-right" style="color:lightgreen;"></i>
+                <el-tooltip
+                  content="前进一步"
+                  :enterable="false"
+                  placement="bottom"
+                  effect="light"
+                >
+                  <i
+                    @click="go()"
+                    class="el-icon-arrow-right"
+                    style="color:lightgreen;"
+                  ></i>
                 </el-tooltip>
-                <el-tooltip content="刷新页面" :enterable="false" placement="bottom" effect="light">
-                  <i @click="reload()" class="el-icon-refresh-right" style="color:white;"></i>
+                <el-tooltip
+                  content="刷新页面"
+                  :enterable="false"
+                  placement="bottom"
+                  effect="light"
+                >
+                  <i
+                    @click="reload()"
+                    class="el-icon-refresh-right"
+                    style="color:white;"
+                  ></i>
                 </el-tooltip>
               </div>
               <!-- Menu -->
@@ -67,7 +142,9 @@
                   </ul>
 
                   <!-- Login/Register & Cart Button -->
-                  <div class="login-register-cart-button d-flex align-items-center">
+                  <div
+                    class="login-register-cart-button d-flex align-items-center"
+                  >
                     <!-- 搜索框-->
                     <div class="cart-btn">
                       <div class="col-lg-9">
@@ -89,9 +166,18 @@
                     </div>
                     <!-- Login/Register -->
                     <div class="login-register-btn mr-50">
-                      <router-link to="/login" id="loginBtn" v-if="notLogin">登录</router-link>
-                      <router-link to="/register" id="registerBtn" v-if="notLogin">注册</router-link>
-                      <el-button type="text" v-else @click="logout">Quit</el-button>
+                      <router-link to="/login" id="loginBtn" v-if="notLogin"
+                        >登录</router-link
+                      >
+                      <router-link
+                        to="/register"
+                        id="registerBtn"
+                        v-if="notLogin"
+                        >注册</router-link
+                      >
+                      <el-button type="text" v-else @click="logout"
+                        >Quit</el-button
+                      >
                     </div>
 
                     <!-- Cart Button   考虑模态框-->
@@ -137,7 +223,10 @@
               <img src="../assets/core-img/logo.png" alt />
             </router-link>
             <p class="copywrite-text">
-              <router-link to="/contact">Copyright &copy;2020 All rights reserved | 中软小组007</router-link>
+              <router-link to="/contact"
+                >Copyright &copy;2020 All rights reserved |
+                中软小组007</router-link
+              >
               <i class="fa fa-heart-o" aria-hidden="true"></i>
             </p>
           </div>
@@ -194,12 +283,12 @@ export default {
     window.removeEventListener("scroll", this.windowScroll); //销毁滚动事件
   },
   methods: {
-    goBackToTop: function () {
+    goBackToTop: function() {
       window.pageYOffset = 0;
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
     },
-    windowScroll: function () {
+    windowScroll: function() {
       let scrollTop =
         window.pageYOffset ||
         document.documentElement.scrollTop ||
@@ -292,8 +381,12 @@ export default {
   z-index: 9999;
 }
 
-.drawer-img {
-  margin: 50px;
+.drawer {
+  margin: 0 50px 0 50px;
+}
+
+.drawer-copywrite {
+  margin: 100px 0 0 0;
 }
 
 .header-area {
@@ -307,5 +400,8 @@ export default {
 
 #loginBtn {
   margin: 0 10px;
+}
+.drawer-copywrite p a {
+  color: black;
 }
 </style>
