@@ -29,10 +29,8 @@
         </div>
         <div>
           <el-table :data="recommendMusics" style="width: 100%">
-            <el-table-column prop="name" label="歌曲名称" style="width: 50%">
-            </el-table-column>
-            <el-table-column prop="singer_name" label="歌手" style="width: 50%">
-            </el-table-column>
+            <el-table-column prop="name" label="歌曲名称" style="width: 50%"></el-table-column>
+            <el-table-column prop="singer_name" label="歌手" style="width: 50%"></el-table-column>
           </el-table>
         </div>
       </div>
@@ -57,6 +55,7 @@ export default {
       img: [],
       // 收藏歌曲id
       id: [],
+      recommendMusics: [],
     };
   },
   created() {
@@ -74,6 +73,23 @@ export default {
           this.uid = res.data.id;
           // 获取所有歌曲信息
           let params = new URLSearchParams();
+          axios({
+            url: "http://127.0.0.1:8882/recommend/user",
+            method: "post",
+            params: {
+              id: this.uid, 
+            },
+          })
+            .then((res) => {
+              console.log(res);
+              this.recommendMusics = new Array();
+              for (let i = 0; i < res.data.ids.length; i++) {
+                this.getMusicInfo(res.data.ids[i]);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
           params.append("id", this.uid);
           this.$http.post("/music/getstars", params).then((res) => {
             this.songs = res.data.data;
@@ -92,7 +108,22 @@ export default {
       this.uid = null;
     }
   },
+  mounted() {},
   methods: {
+    async getMusicInfo(id) {
+      let params = new URLSearchParams();
+      params.append("id", id);
+      this.$http
+        .post("/music/get", params)
+        .then((res) => {
+          let data = res.data.songInfo;
+          data.singer_name = data.singers[0].name;
+          this.recommendMusics.push(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     handleClick(tab, event) {
       console.log(tab, event);
     },
