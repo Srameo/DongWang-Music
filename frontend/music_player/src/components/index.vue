@@ -11,9 +11,10 @@
       >
         <div class="drawer">
           <el-main>
-            <el-image :src="require('../assets/core-img/timg.jpg')"></el-image>
             <h4>项目简介</h4>
             <span>一个可以提供音乐推荐系统的网站</span>
+            <br />
+            <el-image :src="require('../assets/core-img/timg.jpg')"></el-image>
             <br />
             <br />
             <h4>数据来源</h4>
