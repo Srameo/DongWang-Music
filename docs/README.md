@@ -1,6 +1,6 @@
 # 没人比我更懂音乐
 
-![trump](../frontend/music_player/src/assets/core-img/timg.jpg)
+![trump](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596182854869&di=05be73712ef5d6e5a5f0aa6e706a1812&imgtype=0&src=http%3A%2F%2Fpics2.baidu.com%2Ffeed%2F08f790529822720e7897f61dad33de40f01fabff.jpeg%3Ftoken%3D5b1670d2fb4c81b3f2b280dd412daa64)
 
 - [没人比我更懂音乐](#没人比我更懂音乐)
 - [简介](#简介)
